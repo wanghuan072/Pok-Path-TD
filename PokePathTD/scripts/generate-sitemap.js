@@ -21,7 +21,12 @@ const config = {
     { path: '/tools/pokemon-categories', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools/enemy-counter', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools/route-strategy', priority: '0.7', changefreq: 'monthly' },
-    { path: '/wiki', priority: '0.6', changefreq: 'monthly' }
+    { path: '/wiki', priority: '0.6', changefreq: 'monthly' },
+    { path: '/about-us', priority: '0.5', changefreq: 'monthly' },
+    { path: '/contact-us', priority: '0.5', changefreq: 'monthly' },
+    { path: '/copyright', priority: '0.5', changefreq: 'monthly' },
+    { path: '/privacy-policy', priority: '0.5', changefreq: 'monthly' },
+    { path: '/terms-of-service', priority: '0.5', changefreq: 'monthly' }
   ]
 }
 
