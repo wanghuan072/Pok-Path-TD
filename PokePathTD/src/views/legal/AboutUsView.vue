@@ -62,27 +62,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  document.title = 'About Us - PokéPath TD - pokepathtd.org'
-
-  let metaDescription = document.querySelector('meta[name="description"]')
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta')
-    metaDescription.setAttribute('name', 'description')
-    document.head.appendChild(metaDescription)
-  }
-  metaDescription.setAttribute('content', 'Learn about PokéPath TD Community, an unofficial community resource for PokéPath TD game. Discover our mission, what we offer, and how we help players.')
-
-  let metaKeywords = document.querySelector('meta[name="keywords"]')
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta')
-    metaKeywords.setAttribute('name', 'keywords')
-    document.head.appendChild(metaKeywords)
-  }
-  metaKeywords.setAttribute('content', 'about PokéPath TD Community, PokéPath TD game community, PokéPath TD resources, PokéPath TD fan site')
-})
 </script>
 
 <style scoped>

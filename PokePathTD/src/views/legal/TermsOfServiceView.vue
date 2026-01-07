@@ -58,27 +58,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  document.title = 'Terms of Service - PokéPath TD - pokepathtd.org'
-
-  let metaDescription = document.querySelector('meta[name="description"]')
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta')
-    metaDescription.setAttribute('name', 'description')
-    document.head.appendChild(metaDescription)
-  }
-  metaDescription.setAttribute('content', 'Terms of Service for PokéPath TD Community. Read our terms and conditions for using our website and services.')
-
-  let metaKeywords = document.querySelector('meta[name="keywords"]')
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta')
-    metaKeywords.setAttribute('name', 'keywords')
-    document.head.appendChild(metaKeywords)
-  }
-  metaKeywords.setAttribute('content', 'terms of service, PokéPath TD, terms and conditions, user agreement')
-})
+// SEO handled globally by useAutoSEO and router meta
 </script>
 
 <style scoped>

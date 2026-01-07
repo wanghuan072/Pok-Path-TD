@@ -734,7 +734,7 @@ const featuredEnemies = computed(() => {
 
 .game-mechanics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -1463,7 +1463,7 @@ const featuredEnemies = computed(() => {
   }
 
   .game-mechanics-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:  repeat(2, 1fr);
     gap: 0.8rem;
   }
 
