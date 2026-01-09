@@ -161,8 +161,8 @@
                 </div>
 
                 <!-- View Details Button -->
-                <button class="view-details-btn" @click.stop="goToStrategyGuide(stage.id)">
-                  <span>View Strategy Guide</span>
+                <button class="view-details-btn" @click.stop="goToRouteDetail(stage.id)">
+                  <span>View Route Details</span>
                   <span class="btn-arrow">→</span>
                 </button>
               </div>
@@ -180,7 +180,7 @@
           <div class="intro-content">
             <p>
               The Routes Guide provides comprehensive strategies for every map in PokéPath TD.
-              Use filters to find routes by difficulty, terrain, and playstyle, then access detailed strategy guides with recommended teams and tactics.
+              Use filters to find routes by difficulty, terrain, and playstyle, then access detailed strategy guides with recommended teams and tactics. Explore our in-depth guides for challenging routes like <a href="/map-router/how-to-beat-route-3-2-regice-dewgong-strategy" class="inline-link">Route 3-2 (Regice)</a> and <a href="/map-router/how-to-beat-route-2-1-raikou-wave-100" class="inline-link">Route 2-1 (Raikou)</a>.
             </p>
             <div class="intro-steps">
               <div class="intro-step">
@@ -200,8 +200,8 @@
               <div class="intro-step">
                 <span class="step-number">3</span>
                 <div class="step-content">
-                  <h4>Access Strategy Guides</h4>
-                  <p>Click "View Strategy Guide" to get detailed walkthroughs, optimal team compositions, and tactical advice for each route.</p>
+                  <h4>Access Route Details</h4>
+                  <p>Click "View Route Details" to get detailed terrain analysis, optimal team compositions, and tactical advice for each route. For example, check out our <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">Route 1-1 guide</a> for Articuno strategies.</p>
                 </div>
               </div>
               <div class="intro-step">
@@ -250,7 +250,7 @@
             <div class="faq-item">
               <h3 class="faq-question">What if I don't have the recommended Pokémon?</h3>
               <p class="faq-answer">
-                Strategy guides include alternative team suggestions and adaptation tips. Focus on type advantages and role coverage rather than exact Pokémon matches.
+                Strategy guides include alternative team suggestions and adaptation tips. Focus on type advantages and role coverage rather than exact Pokémon matches. See our <a href="/map-router/how-to-beat-route-2-3-suicune-wave-100" class="inline-link">Route 2-3 guide</a> for alternative strategies.
               </p>
             </div>
             <div class="faq-item">
@@ -346,11 +346,10 @@ const toggleTerrain = (terrain) => {
   }
 }
 
-// Navigate to strategy guide
-const goToStrategyGuide = (routeId) => {
+// Navigate to route detail page
+const goToRouteDetail = (routeId) => {
   router.push({
-    path: '/tools/route-strategy',
-    query: { route: routeId }
+    path: `/map-router/${routeId}`
   })
 }
 
@@ -885,11 +884,38 @@ const displayStages = computed(() => filteredStages.value)
   font-weight: 600;
 }
 
-.faq-answer {
-  color: rgba(245, 248, 240, 0.8);
-  line-height: 1.6;
-  margin: 0;
-  font-size: 0.95rem;
+  .faq-answer {
+    color: rgba(245, 248, 240, 0.8);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .faq-answer a {
+    color: #6ba3e8;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(107, 163, 232, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .faq-answer a:hover {
+    color: #5cb85c;
+    border-bottom-color: rgba(92, 184, 92, 0.5);
+  }
+
+/* Inline Links */
+.inline-link {
+  color: #6ba3e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(107, 163, 232, 0.3);
+  transition: all 0.2s ease;
+}
+
+.inline-link:hover {
+  color: #5cb85c;
+  border-bottom-color: rgba(92, 184, 92, 0.5);
 }
 
 /* 1024px 响应式样式 */

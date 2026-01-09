@@ -196,6 +196,7 @@
                     <li>Use recommended types as a starting point</li>
                     <li>Consider wave count (each route has 100 waves)</li>
                     <li>Plan for different enemy types throughout the route</li>
+                    <li>Study detailed route guides like <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">Route 1-1</a>, <a href="/map-router/how-to-beat-route-2-2-entei" class="inline-link">Route 2-2</a>, and <a href="/map-router/how-to-beat-route-3-3-registeel-wave-100-guide" class="inline-link">Route 3-3</a> for advanced strategies</li>
                   </ul>
                 </div>
                 <div class="wiki-card">
@@ -205,6 +206,7 @@
                     <li>Use DPS Calculator to compare Pokémon effectiveness</li>
                     <li>Check All Pokemon for top-performing Pokémon</li>
                     <li>Experiment with different team compositions</li>
+                    <li>Learn from route-specific guides such as <a href="/map-router/how-to-beat-route-1-2-zapdos-wave-100" class="inline-link">Route 1-2 (Zapdos)</a> for boss fight strategies</li>
                   </ul>
                 </div>
               </div>
@@ -534,11 +536,25 @@ import AppFooter from '../components/AppFooter.vue'
   margin: 0 0 6px 0;
 }
 
-.ability-desc {
-  font-size: 0.85rem;
-  color: rgba(245, 248, 240, 0.7);
-  margin: 0;
-  line-height: 1.5;
+  .ability-desc {
+    font-size: 0.85rem;
+    color: rgba(245, 248, 240, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+/* Inline Links */
+.inline-link {
+  color: #6ba3e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(107, 163, 232, 0.3);
+  transition: all 0.2s ease;
+}
+
+.inline-link:hover {
+  color: #5cb85c;
+  border-bottom-color: rgba(92, 184, 92, 0.5);
 }
 
 /* 1024px 响应式样式 */

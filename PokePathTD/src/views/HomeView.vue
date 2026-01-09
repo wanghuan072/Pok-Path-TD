@@ -219,11 +219,11 @@
             <h2 class="section-title">Route Strategies - PokéPath TD Map Guides</h2>
             <div class="section-title-line"></div>
           </div>
-          <p class="section-description">Detailed guides for all 9 routes with recommended teams and terrain analysis
+          <p class="section-description">Detailed guides for all 9 routes with recommended teams and terrain analysis. Check out our comprehensive guides for <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">Route 1-1 (Articuno)</a> and <a href="/map-router/how-to-beat-route-3-1-regirock-wave-100-guide" class="inline-link">Route 3-1 (Regirock)</a>.
           </p>
         </div>
         <div class="routes-preview-grid">
-          <a v-for="route in featuredRoutes.slice(0, 3)" :key="route.id" :href="`/map-router#${route.id}`"
+          <a v-for="route in featuredRoutes.slice(0, 3)" :key="route.id" :href="`/map-router/${route.id}`"
             class="route-preview-card">
             <div class="route-preview-image">
               <img v-if="route.mapImage" :src="route.mapImage" :alt="route.name" class="route-preview-img" />
@@ -1131,8 +1131,22 @@ const featuredEnemies = computed(() => {
   transition: transform 0.3s ease;
 }
 
-.tool-card:hover .tool-arrow {
-  transform: translateX(4px);
+  .tool-card:hover .tool-arrow {
+    transform: translateX(4px);
+  }
+
+/* Inline Links */
+.inline-link {
+  color: #6ba3e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(107, 163, 232, 0.3);
+  transition: all 0.2s ease;
+}
+
+.inline-link:hover {
+  color: #5cb85c;
+  border-bottom-color: rgba(92, 184, 92, 0.5);
 }
 
 /* 1024px 响应式样式 */

@@ -8,6 +8,7 @@ import DpsCalculatorView from '../views/tools/DpsCalculatorView.vue'
 import PokemonCategoriesView from '../views/tools/PokemonCategoriesView.vue'
 import EnemyCounterView from '../views/tools/EnemyCounterView.vue'
 import RouteStrategyView from '../views/tools/RouteStrategyView.vue'
+import RouteDetailView from '../views/RouteDetailView.vue'
 import TierListView from '../views/TierListView.vue'
 import WikiView from '../views/WikiView.vue'
 
@@ -51,6 +52,17 @@ const router = createRouter({
         title: 'Route Strategies - Map Guide | PokéPath TD Strategy Guide',
         description: 'Detailed route strategies for all PokéPath TD maps. Terrain analysis, recommended teams, and optimal gameplay tactics.',
         keywords: 'Route Strategy, Map Guide, Terrain Analysis, Team Composition',
+        image: '/images/logo.webp'
+      }
+    },
+    {
+      path: '/map-router/:id',
+      name: 'route-detail',
+      component: RouteDetailView,
+      meta: {
+        title: 'Route Detail - PokéPath TD Strategy Guide',
+        description: 'Detailed terrain analysis, team recommendations, and strategies for this route.',
+        keywords: 'Route Detail, Terrain Analysis, Team Composition, Strategy Guide',
         image: '/images/logo.webp'
       }
     },

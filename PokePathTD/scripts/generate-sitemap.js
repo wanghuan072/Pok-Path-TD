@@ -6,6 +6,19 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// 所有路线详情页 ID（已更新为新的 SEO 友好 ID）
+const routeIds = [
+  'how-to-beat-route-1-1-articuno',
+  'how-to-beat-route-1-2-zapdos-wave-100',
+  'how-to-beat-route-1-3-moltres',
+  'how-to-beat-route-2-1-raikou-wave-100',
+  'how-to-beat-route-2-2-entei',
+  'how-to-beat-route-2-3-suicune-wave-100',
+  'how-to-beat-route-3-1-regirock-wave-100-guide',
+  'how-to-beat-route-3-2-regice-dewgong-strategy',
+  'how-to-beat-route-3-3-registeel-wave-100-guide'
+]
+
 // 站点配置
 const config = {
   baseUrl: 'https://pokepathgame.org', // 替换为实际域名
@@ -14,6 +27,12 @@ const config = {
     { path: '/', priority: '1.0', changefreq: 'weekly' },
     { path: '/all-pokemon', priority: '0.9', changefreq: 'weekly' },
     { path: '/map-router', priority: '0.8', changefreq: 'weekly' },
+    // 添加所有路线详情页
+    ...routeIds.map(id => ({
+      path: `/map-router/${id}`,
+      priority: '0.8',
+      changefreq: 'monthly'
+    })),
     { path: '/enemies', priority: '0.8', changefreq: 'weekly' },
     { path: '/tier-list', priority: '0.8', changefreq: 'weekly' },
     { path: '/tools', priority: '0.7', changefreq: 'monthly' },
