@@ -310,7 +310,7 @@ const currentIframeSrc = ref('')
 // Game version URLs
 const gameVersions = {
   '1.2.5': 'https://html-classic.itch.zone/html/15902423/PokePath%20TD%20WEB/index.html',
-  '1.3.3': 'https://poke-path-td-game.vercel.app' // 替换为实际的1.3.3版本链接
+  '1.3.3': 'https://poke-path-td-game-1-3-6.vercel.app/' // 替换为实际的1.3.3版本链接
 }
 
 const loadGame = (version) => {
