@@ -68,6 +68,10 @@
                   <span class="play-icon">▶</span>
                   <span class="version-text">Play PokéPath TD 1.3.3</span>
                 </button>
+                <button class="version-button" @click="loadGame('1.3.6')">
+                  <span class="play-icon">▶</span>
+                  <span class="version-text">Play PokéPath TD 1.3.6</span>
+                </button>
               </div>
             </div>
           </div>
@@ -252,6 +256,10 @@
           </a>
         </div>
         <div class="section-footer">
+          <a href="/map-router/how-to-beat-route-1-3-6" class="btn-secondary">
+            <span>Route 1-3-6 Guide</span>
+            <span class="btn-arrow">→</span>
+          </a>
           <a href="/map-router" class="btn-secondary">
             <span>View All Routes</span>
             <span class="btn-arrow">→</span>
@@ -310,7 +318,8 @@ const currentIframeSrc = ref('')
 // Game version URLs
 const gameVersions = {
   '1.2.5': 'https://html-classic.itch.zone/html/15902423/PokePath%20TD%20WEB/index.html',
-  '1.3.3': 'https://poke-path-td-game-1-3-6.vercel.app/' // 替换为实际的1.3.3版本链接
+  '1.3.3': 'https://hozygame.online/',
+  '1.3.6': 'https://v136.hozygame.online/'
 }
 
 const loadGame = (version) => {
@@ -615,8 +624,12 @@ const featuredEnemies = computed(() => {
 }
 
 .section-footer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   margin-top: 32px;
+  flex-wrap: wrap;
 }
 
 /* Video Section */
@@ -698,6 +711,15 @@ const featuredEnemies = computed(() => {
 
 .version-button:nth-child(2):hover {
   box-shadow: 0 12px 32px rgba(92, 184, 92, 0.4);
+}
+
+.version-button:nth-child(3) {
+  background: linear-gradient(135deg, #f0ad4e 0%, #d9534f 100%);
+  box-shadow: 0 8px 24px rgba(240, 173, 78, 0.3);
+}
+
+.version-button:nth-child(3):hover {
+  box-shadow: 0 12px 32px rgba(240, 173, 78, 0.4);
 }
 
 .play-icon {
