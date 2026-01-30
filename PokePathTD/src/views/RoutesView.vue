@@ -18,78 +18,6 @@
       </section>
 
       <div class="container">
-        <!-- Filters Section -->
-        <section class="filters-section">
-          <div class="filters-container">
-            <div class="filters-header">
-              <h2 class="filters-title">Filter Routes</h2>
-              <button v-if="hasActiveFilters" @click="clearFilters" class="clear-filters-btn">
-                Clear Filters
-              </button>
-            </div>
-            <div class="filters-grid">
-              <!-- Difficulty Filter -->
-              <div class="filter-group">
-                <label class="filter-label">Difficulty</label>
-                <div class="filter-buttons">
-                  <button
-                    v-for="difficulty in ['All', 'Easy', 'Medium', 'Hard', 'Very Hard']"
-                    :key="difficulty"
-                    @click="selectedDifficulty = difficulty === 'All' ? '' : difficulty"
-                    :class="[
-                      'filter-btn',
-                      { active: selectedDifficulty === (difficulty === 'All' ? '' : difficulty) },
-                    ]"
-                  >
-                    {{ difficulty }}
-                  </button>
-                </div>
-              </div>
-
-              <!-- Terrain Filter -->
-              <div class="filter-group">
-                <label class="filter-label">Terrain</label>
-                <div class="filter-buttons">
-                  <button
-                    v-for="terrain in allTerrains"
-                    :key="terrain"
-                    @click="toggleTerrain(terrain)"
-                    :class="['filter-btn', { active: selectedTerrains.includes(terrain) }]"
-                  >
-                    {{ terrain }}
-                  </button>
-                </div>
-              </div>
-
-              <!-- Playstyle Filter -->
-              <div class="filter-group">
-                <label class="filter-label">Playstyle</label>
-                <div class="filter-buttons">
-                  <button
-                    v-for="style in [
-                      'All',
-                      'Balanced',
-                      'Aggressive',
-                      'Defensive',
-                      'Tactical',
-                      'Versatile',
-                      'Elite',
-                    ]"
-                    :key="style"
-                    @click="selectedPlaystyle = style === 'All' ? '' : style"
-                    :class="[
-                      'filter-btn',
-                      { active: selectedPlaystyle === (style === 'All' ? '' : style) },
-                    ]"
-                  >
-                    {{ style }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- Routes Grid -->
         <section class="page-section">
           <div class="routes-container">
@@ -178,16 +106,16 @@
         <div class="intro-card">
           <h2 class="intro-title">📖 How to Use PokéPath TD Routes Guide</h2>
           <div class="intro-content">
-            <p>
+              <p>
               The Routes Guide provides comprehensive strategies for every map in PokéPath TD.
-              Use filters to find routes by difficulty, terrain, and playstyle, then access detailed strategy guides with recommended teams and tactics. Explore our in-depth guides for challenging routes like <a href="/map-router/how-to-beat-route-3-2-regice-dewgong-strategy" class="inline-link">Route 3-2 (Regice)</a> and <a href="/map-router/how-to-beat-route-2-1-raikou-wave-100" class="inline-link">Route 2-1 (Raikou)</a>.
+              Browse all available routes and access detailed strategy guides with recommended teams and tactics. Explore our in-depth guides for challenging routes like <a href="/map-router/how-to-beat-route-3-2-regice-dewgong-strategy" class="inline-link">Route 3-2 (Regice)</a> and <a href="/map-router/how-to-beat-route-2-1-raikou-wave-100" class="inline-link">Route 2-1 (Raikou)</a>.
             </p>
             <div class="intro-steps">
               <div class="intro-step">
                 <span class="step-number">1</span>
                 <div class="step-content">
-                  <h4>Filter by Difficulty & Terrain</h4>
-                  <p>Use the filter options to narrow down routes by difficulty level (Easy to Very Hard) and terrain types to match your preferred challenges.</p>
+                  <h4>Browse All Routes</h4>
+                  <p>Explore all available routes organized by route number. Each route card displays key information including difficulty rating, terrain types, and recommended playstyles.</p>
                 </div>
               </div>
               <div class="intro-step">
@@ -269,82 +197,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import { stages, difficultyColors } from '../data/routes.js'
 
 const router = useRouter()
-
-// Filters
-const selectedDifficulty = ref('')
-const selectedTerrains = ref([])
-const selectedPlaystyle = ref('')
-
-// Get all unique terrains
-const allTerrains = computed(() => {
-  const terrainSet = new Set()
-  stages.forEach((stage) => {
-    if (stage.terrain) {
-      stage.terrain.forEach((terrain) => terrainSet.add(terrain))
-    }
-  })
-  return Array.from(terrainSet).sort()
-})
-
-// Filtered stages
-const filteredStages = computed(() => {
-  return stages.filter((stage) => {
-    // Difficulty filter
-    if (selectedDifficulty.value && stage.difficulty !== selectedDifficulty.value) {
-      return false
-    }
-
-    // Terrain filter
-    if (selectedTerrains.value.length > 0) {
-      const hasMatchingTerrain = selectedTerrains.value.some(
-        (terrain) => stage.terrain && stage.terrain.includes(terrain)
-      )
-      if (!hasMatchingTerrain) {
-        return false
-      }
-    }
-
-    // Playstyle filter
-    if (selectedPlaystyle.value && stage.playstyle !== selectedPlaystyle.value) {
-      return false
-    }
-
-    return true
-  })
-})
-
-// Check if any filters are active
-const hasActiveFilters = computed(() => {
-  return (
-    selectedDifficulty.value !== '' ||
-    selectedTerrains.value.length > 0 ||
-    selectedPlaystyle.value !== ''
-  )
-})
-
-// Clear all filters
-const clearFilters = () => {
-  selectedDifficulty.value = ''
-  selectedTerrains.value = []
-  selectedPlaystyle.value = ''
-}
-
-// Toggle terrain filter
-const toggleTerrain = (terrain) => {
-  const index = selectedTerrains.value.indexOf(terrain)
-  if (index > -1) {
-    selectedTerrains.value.splice(index, 1)
-  } else {
-    selectedTerrains.value.push(terrain)
-  }
-}
 
 // Navigate to route detail page
 const goToRouteDetail = (routeId) => {
@@ -353,8 +212,8 @@ const goToRouteDetail = (routeId) => {
   })
 }
 
-// Use filtered stages
-const displayStages = computed(() => filteredStages.value)
+// Display all stages
+const displayStages = computed(() => stages)
 </script>
 
 <style scoped>
@@ -648,105 +507,6 @@ const displayStages = computed(() => filteredStages.value)
   margin: 0;
 }
 
-/* Filters Section */
-.filters-section {
-  padding: 30px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.filters-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  background: rgba(26, 35, 50, 0.7);
-  border: 1px solid rgba(107, 163, 232, 0.2);
-  border-radius: 12px;
-  padding: 24px;
-  backdrop-filter: blur(10px);
-}
-
-.filters-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.filters-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #f5f8f0;
-  margin: 0;
-}
-
-.clear-filters-btn {
-  padding: 6px 16px;
-  background: rgba(107, 163, 232, 0.2);
-  border: 1px solid rgba(107, 163, 232, 0.4);
-  border-radius: 8px;
-  color: #6ba3e8;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.clear-filters-btn:hover {
-  background: rgba(107, 163, 232, 0.3);
-  border-color: #6ba3e8;
-}
-
-.filters-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.filter-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba(245, 248, 240, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.filter-btn {
-  padding: 6px 14px;
-  background: rgba(15, 20, 30, 0.5);
-  border: 1px solid rgba(107, 163, 232, 0.3);
-  border-radius: 8px;
-  color: rgba(245, 248, 240, 0.8);
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.filter-btn:hover {
-  border-color: #6ba3e8;
-  background: rgba(107, 163, 232, 0.15);
-}
-
-.filter-btn.active {
-  background: rgba(107, 163, 232, 0.3);
-  border-color: #6ba3e8;
-  color: #6ba3e8;
-  font-weight: 600;
-}
-
-
 /* View Details Button */
 .view-details-btn {
   width: 100%;
@@ -884,11 +644,11 @@ const displayStages = computed(() => filteredStages.value)
   font-weight: 600;
 }
 
-  .faq-answer {
-    color: rgba(245, 248, 240, 0.8);
-    line-height: 1.6;
-    margin: 0;
-    font-size: 0.95rem;
+.faq-answer {
+  color: rgba(245, 248, 240, 0.8);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
   }
 
   .faq-answer a {
@@ -936,12 +696,6 @@ const displayStages = computed(() => filteredStages.value)
   .strategy-tag { padding: 4px 10px; font-size: 0.75rem; }
   .route-description p { font-size: 0.8rem; }
   .view-details-btn { padding: 8px 14px; font-size: 0.85rem; }
-  .filters-section { padding: 24px 0; }
-  .filters-container { padding: 20px; }
-  .filters-title { font-size: 1.2rem; }
-  .clear-filters-btn { padding: 5px 14px; font-size: 0.8rem; }
-  .filter-label { font-size: 0.85rem; }
-  .filter-btn { padding: 5px 12px; font-size: 0.8rem; }
   .intro-section { padding: 1.8rem 0; }
   .intro-card { padding: 1.8rem; }
   .intro-title { font-size: 1.4rem; margin-bottom: 1.3rem; }
@@ -986,16 +740,6 @@ const displayStages = computed(() => filteredStages.value)
   .route-description p { font-size: 0.8rem; }
   .view-details-btn { padding: 0.8rem 1.2rem; font-size: 0.8rem; margin-top: 0.8rem; gap: 0.6rem; }
   .btn-arrow { font-size: 1.1rem; }
-  .filters-section { padding: 1.2rem 0; }
-  .filters-container { padding: 1.2rem; }
-  .filters-header { flex-direction: column; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
-  .filters-title { font-size: 1.4rem; }
-  .clear-filters-btn { padding: 0.4rem 1.2rem; font-size: 0.75rem; }
-  .filters-grid { gap: 1.2rem; }
-  .filter-group { gap: 0.8rem; }
-  .filter-label { font-size: 0.8rem; }
-  .filter-buttons { gap: 0.6rem; }
-  .filter-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
   .intro-section { padding: 1.2rem 0; }
   .intro-card { padding: 1.2rem; }
   .intro-title { font-size: 1.4rem; margin-bottom: 0.8rem; }

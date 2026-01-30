@@ -33,7 +33,12 @@
                 <div class="category-divider"></div>
               </div>
               <div class="category-pokemons">
-                <div v-for="pokemon in category.pokemons" :key="pokemon.id" class="pokemon-card">
+                <div 
+                  v-for="pokemon in category.pokemons" 
+                  :key="pokemon.id" 
+                  class="pokemon-card"
+                  @click="openPokemonModal(pokemon, category.pokemons)"
+                >
                   <div class="pokemon-card-border-left"></div>
                   <div class="pokemon-card-content">
                     <div class="pokemon-image">
@@ -48,64 +53,74 @@
                       </div>
                     </div>
                     <div class="pokemon-info">
-                      <h3 class="pokemon-name">{{ pokemon.name }}</h3>
+                      <h3 class="pokemon-name">
+                        {{ pokemon.name }}{{ pokemon.level ? ` [${pokemon.level}]` : '' }}
+                      </h3>
                       <div class="pokemon-stats-grid">
                         <div class="stat-box">
                           <div class="stat-icon">⚔️</div>
                           <div class="stat-content">
                             <span class="stat-label">Power</span>
-                            <span class="stat-value">{{ pokemon.power }}</span>
+                            <span class="stat-value">{{ pokemon.property?.power ?? pokemon.power }}</span>
                           </div>
                         </div>
                         <div class="stat-box">
                           <div class="stat-icon">⏱️</div>
                           <div class="stat-content">
                             <span class="stat-label">Recharge</span>
-                            <span class="stat-value">{{ pokemon.recharge }}s</span>
+                            <span class="stat-value">{{ pokemon.property?.recharge ?? pokemon.recharge }}s</span>
                           </div>
                         </div>
                         <div class="stat-box">
                           <div class="stat-icon">💥</div>
                           <div class="stat-content">
                             <span class="stat-label">Critical</span>
-                            <span class="stat-value">{{ pokemon.critical }}</span>
+                            <span class="stat-value">{{ pokemon.property?.critical ?? pokemon.critical }}</span>
                           </div>
                         </div>
                         <div class="stat-box">
                           <div class="stat-icon">📏</div>
                           <div class="stat-content">
                             <span class="stat-label">Range</span>
-                            <span class="stat-value">{{ pokemon.range }}</span>
+                            <span class="stat-value">{{ pokemon.property?.range ?? pokemon.range }}</span>
                           </div>
                         </div>
                       </div>
                       <div class="pokemon-meta">
-                        <div class="meta-row">
-                          <div class="meta-item">
-                            <span class="meta-label">Shape:</span>
-                            <span class="meta-value shape-tag">
-                              <span class="tag-icon">🔷</span>
-                              <span class="tag-text">{{ pokemon.shape }}</span>
-                            </span>
+                        <div class="pokemon-meta-state">
+                          <div class="meta-row">
+                            <div class="meta-item">
+                              <span class="meta-label">Shape:</span>
+                              <span class="meta-value">{{ pokemon.state?.shape ?? pokemon.shape }}</span>
+                            </div>
+                            <div class="meta-item">
+                              <span class="meta-label">Target:</span>
+                              <span class="meta-value">{{ pokemon.state?.target ?? pokemon.target }}</span>
+                            </div>
                           </div>
-                          <div class="meta-item">
-                            <span class="meta-label">Target:</span>
-                            <span class="meta-value target-tag">
-                              <span class="tag-icon">🎯</span>
-                              <span class="tag-text">{{ pokemon.target }}</span>
-                            </span>
+                          <div class="meta-row" v-if="pokemon.state?.acquisition || pokemon.terrain">
+                            <div class="meta-item" v-if="pokemon.state?.acquisition">
+                              <span class="meta-label">Acquisition:</span>
+                              <span class="meta-value">{{ pokemon.state.acquisition }}</span>
+                            </div>
+                            <div class="meta-item" v-if="pokemon.terrain">
+                              <span class="meta-label">Terrain:</span>
+                              <div class="terrain-tags">
+                                <span
+                                  v-for="terrain in pokemon.terrain"
+                                  :key="terrain"
+                                  class="terrain-tag"
+                                >
+                                  {{ terrain }}
+                                </span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="meta-row">
-                          <span class="meta-label">Terrain:</span>
-                          <div class="terrain-tags">
-                            <span
-                              v-for="terrain in pokemon.terrain"
-                              :key="terrain"
-                              class="terrain-tag"
-                            >
-                              {{ terrain }}
-                            </span>
+                          <div class="meta-row" v-if="pokemon.state?.lv">
+                            <div class="meta-item">
+                              <span class="meta-label">Lvl 100 Cost:</span>
+                              <span class="meta-value">$ {{ pokemon.state.lv }}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -132,36 +147,38 @@
             <h2 class="intro-title">📖 How to Use All Pokémon Database</h2>
             <div class="intro-content">
               <p>
-                The All Pokémon Database provides comprehensive information about every Pokémon in PokéPath TD.
-                Use this tool to explore detailed stats, evolution paths, and build optimal team compositions for strategic gameplay.
+                Welcome to the <strong>most comprehensive and accurate</strong> PokéPath TD Pokémon database available! Our database features <strong>every single Pokémon</strong> in the game, including all standard forms, Mega evolutions, and even <strong>hidden Pokémon</strong> that are rarely documented elsewhere. With over 100+ Pokémon entries covering everything from #000 Charmander to #102 Gholdengo, including rare finds like M-Charizard X, M-Sceptile, M-Absol, M-Alakazam, and many more, this is your complete reference guide for building the ultimate teams.
+              </p>
+              <p>
+                Whether you're looking for the latest additions like Sobble, Inteleon, Rowlet, Decidueye, or discovering hidden gems like Carbink and Gholdengo, our database is continuously updated to ensure you have access to the <strong>most complete and up-to-date</strong> Pokémon information available. Use this tool to explore detailed stats, evolution paths, unique abilities, and build optimal team compositions for strategic gameplay.
               </p>
               <div class="intro-steps">
                 <div class="intro-step">
                   <span class="step-number">1</span>
                   <div class="step-content">
                     <h4>Browse by Evolution Family</h4>
-                    <p>Explore Pokémon organized by their evolution families, from basic forms to level 100 variants.</p>
+                    <p>Explore Pokémon organized by their evolution families, from basic forms to level 100 variants. Includes all standard Pokémon, Mega evolutions, and hidden forms.</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">2</span>
                   <div class="step-content">
                     <h4>Review Combat Stats</h4>
-                    <p>Check detailed HP, attack, defense, speed, and special stats for each Pokémon form.</p>
+                    <p>Check detailed Power, Recharge, Critical, Range, and other combat stats for each Pokémon form. All data is verified and updated regularly.</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">3</span>
                   <div class="step-content">
                     <h4>Understand Abilities</h4>
-                    <p>Learn about unique abilities, type advantages, and strategic roles in team composition.</p>
+                    <p>Learn about unique abilities, terrain advantages, target types, and strategic roles. Discover hidden abilities that can turn the tide of battle.</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">4</span>
                   <div class="step-content">
                     <h4>Plan Team Strategies</h4>
-                    <p>Use the database to build balanced teams with proper type coverage and role distribution.</p>
+                    <p>Use the database to build balanced teams with proper type coverage, terrain advantages, and role distribution. Find the perfect combination for any challenge.</p>
                   </div>
                 </div>
               </div>
@@ -207,9 +224,27 @@
                 </p>
               </div>
               <div class="faq-item">
+                <h3 class="faq-question">How complete is this Pokémon database?</h3>
+                <p class="faq-answer">
+                  Our database is the <strong>most comprehensive and accurate</strong> PokéPath TD Pokémon reference available. We cover <strong>every single Pokémon</strong> in the game, including all standard forms (#000-#102), Mega evolutions (M-Charizard X, M-Sceptile, M-Absol, M-Alakazam), and even <strong>hidden Pokémon</strong> that are rarely documented elsewhere. With over 100+ entries continuously updated, you'll find Pokémon that other databases miss, making this your definitive source for complete Pokémon information.
+                </p>
+              </div>
+              <div class="faq-item">
+                <h3 class="faq-question">What are hidden Pokémon and why are they important?</h3>
+                <p class="faq-answer">
+                  Hidden Pokémon are rare or special forms that aren't always visible in standard game menus or other databases. These include Mega evolutions, special variants, and Pokémon with unique abilities like Carbink, Gholdengo, and various Mega forms. Understanding these hidden Pokémon is crucial for advanced team building, as they often provide unique strategic advantages that can make the difference between victory and defeat in challenging routes.
+                </p>
+              </div>
+              <div class="faq-item">
                 <h3 class="faq-question">How often is the Pokémon database updated?</h3>
                 <p class="faq-answer">
-                  The database is regularly updated with new Pokémon information, stat corrections, and ability details as the game receives updates. We also refine descriptions based on community feedback and gameplay experience.
+                  The database is <strong>regularly updated</strong> with the latest Pokémon additions, including newly released Pokémon like Sobble, Inteleon, Rowlet, Decidueye, Fuecoco, Skeledirge, and many others. We also update stat corrections, ability details, and add newly discovered hidden Pokémon as they're found. Our commitment is to maintain the <strong>most complete and up-to-date</strong> database, ensuring you always have access to the latest information for optimal gameplay.
+                </p>
+              </div>
+              <div class="faq-item">
+                <h3 class="faq-question">Why should I use this database over others?</h3>
+                <p class="faq-answer">
+                  Unlike other databases that may be incomplete or outdated, ours is the <strong>most accurate and comprehensive</strong> resource available. We include <strong>all Pokémon</strong>, including hidden forms and Mega evolutions that other sources miss. Our data is verified, regularly updated, and organized for easy navigation. Whether you're a beginner or an advanced player, you'll find everything you need here - from basic stats to advanced strategic information about rare and hidden Pokémon.
                 </p>
               </div>
             </div>
@@ -219,14 +254,44 @@
     </div>
 
     <AppFooter />
+
+    <!-- Pokemon Detail Modal -->
+    <PokemonDetailModal
+      :is-open="isModalOpen"
+      :pokemon="selectedPokemon"
+      :evolution-family="currentEvolutionFamily"
+      @close="closeModal"
+      @select-pokemon="handlePokemonSelect"
+    />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
+import PokemonDetailModal from '../components/PokemonDetailModal.vue'
 import pokemonData from '../data/pokemon.js'
+
+const isModalOpen = ref(false)
+const selectedPokemon = ref(null)
+const currentEvolutionFamily = ref([])
+
+const openPokemonModal = (pokemon, evolutionFamily) => {
+  selectedPokemon.value = pokemon
+  currentEvolutionFamily.value = evolutionFamily
+  isModalOpen.value = true
+}
+
+const closeModal = () => {
+  isModalOpen.value = false
+  selectedPokemon.value = null
+  currentEvolutionFamily.value = []
+}
+
+const handlePokemonSelect = (pokemon) => {
+  selectedPokemon.value = pokemon
+}
 
 // 按 category 分组
 const categoryGroups = computed(() => {
@@ -337,6 +402,7 @@ const categoryGroups = computed(() => {
   backdrop-filter: blur(10px);
   position: relative;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .pokemon-card:hover {
@@ -478,37 +544,17 @@ const categoryGroups = computed(() => {
 }
 
 .meta-value {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  background: rgba(107, 163, 232, 0.1);
-  border: 1px solid rgba(107, 163, 232, 0.25);
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #6ba3e8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(245, 248, 240, 0.85);
 }
 
-.shape-tag {
-  background: rgba(155, 89, 182, 0.1);
-  border-color: rgba(155, 89, 182, 0.25);
-  color: #9b59b6;
-}
-
-.target-tag {
-  background: rgba(230, 126, 34, 0.1);
-  border-color: rgba(230, 126, 34, 0.25);
-  color: #e67e22;
-}
-
-.tag-icon {
-  font-size: 0.7rem;
-  line-height: 1;
-}
-
-.tag-text {
-  line-height: 1.2;
+.pokemon-meta-state {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(107, 163, 232, 0.15);
 }
 
 .terrain-tags {

@@ -2,6 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import wikiData from '../src/data/wiki.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,6 +20,18 @@ const routeIds = [
   'how-to-beat-route-3-3-registeel-wave-100-guide'
 ]
 
+// 所有游戏详情页 addressBar
+const gameAddressBars = [
+  'pokepath-td-1.2.5',
+  'pokepath-td-1.3.3',
+  'pokepath-td-1.3.6'
+]
+
+// 所有 Wiki 详情页 addressBar
+const wikiAddressBars = wikiData
+  .filter(item => item.addressBar)
+  .map(item => item.addressBar)
+
 // 站点配置
 const config = {
   baseUrl: 'https://pokepathgame.org', // 替换为实际域名
@@ -34,6 +47,7 @@ const config = {
       changefreq: 'monthly'
     })),
     { path: '/enemies', priority: '0.8', changefreq: 'weekly' },
+    { path: '/items', priority: '0.8', changefreq: 'weekly' },
     { path: '/tier-list', priority: '0.8', changefreq: 'weekly' },
     { path: '/tools', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools/dps-calculator', priority: '0.8', changefreq: 'monthly' },
@@ -41,6 +55,18 @@ const config = {
     { path: '/tools/enemy-counter', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools/route-strategy', priority: '0.7', changefreq: 'monthly' },
     { path: '/wiki', priority: '0.6', changefreq: 'monthly' },
+    // 添加所有 Wiki 详情页
+    ...wikiAddressBars.map(addressBar => ({
+      path: `/wiki/${addressBar}`,
+      priority: '0.7',
+      changefreq: 'monthly'
+    })),
+    // 添加所有游戏详情页
+    ...gameAddressBars.map(addressBar => ({
+      path: `/game/${addressBar}`,
+      priority: '0.8',
+      changefreq: 'monthly'
+    })),
     { path: '/about-us', priority: '0.5', changefreq: 'monthly' },
     { path: '/contact-us', priority: '0.5', changefreq: 'monthly' },
     { path: '/copyright', priority: '0.5', changefreq: 'monthly' },

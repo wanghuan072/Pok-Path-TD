@@ -13,6 +13,7 @@
           <li><a href="/all-pokemon" class="nav-link" @click="closeMobileMenu">All Pokemon</a></li>
           <li><a href="/tier-list" class="nav-link" @click="closeMobileMenu">Tier List</a></li>
           <li><a href="/enemies" class="nav-link" @click="closeMobileMenu">Enemy Database</a></li>
+          <li><a href="/items" class="nav-link" @click="closeMobileMenu">Items</a></li>
           <li><a href="/map-router" class="nav-link" @click="closeMobileMenu">Map Router</a></li>
           <li><a href="/tools" class="nav-link" @click="closeMobileMenu">Tools</a></li>
           <li><a href="/wiki" class="nav-link" @click="closeMobileMenu">Wiki</a></li>

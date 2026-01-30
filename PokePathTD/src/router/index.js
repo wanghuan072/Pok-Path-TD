@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AllPokemonView from '../views/AllPokemonView.vue'
 import RoutesView from '../views/RoutesView.vue'
 import EnemyDatabaseView from '../views/EnemyDatabaseView.vue'
+import ItemsView from '../views/ItemsView.vue'
 import ToolsView from '../views/tools/ToolsView.vue'
 import DpsCalculatorView from '../views/tools/DpsCalculatorView.vue'
 import PokemonCategoriesView from '../views/tools/PokemonCategoriesView.vue'
@@ -11,6 +12,8 @@ import RouteStrategyView from '../views/tools/RouteStrategyView.vue'
 import RouteDetailView from '../views/RouteDetailView.vue'
 import TierListView from '../views/TierListView.vue'
 import WikiView from '../views/WikiView.vue'
+import WikiDetailView from '../views/WikiDetailView.vue'
+import GameDetailView from '../views/GameDetailView.vue'
 
 // Legal Pages
 import AboutUsView from '../views/legal/AboutUsView.vue'
@@ -74,6 +77,17 @@ const router = createRouter({
         title: 'Enemy Database & Boss Stats Guide | PokéPath TD Wiki',
         description: 'The complete guide to PokéPath TD enemies. Check boss HP, speed, and immunities to build the perfect defense for every wave and challenging level in the game.',
         keywords: 'Enemy Database, Counter Strategies, Enemy Stats, Boss Fights',
+        image: '/images/logo.webp'
+      }
+    },
+    {
+      path: '/items',
+      name: 'items',
+      component: ItemsView,
+      meta: {
+        title: 'Items Database & Held Items Guide | PokéPath TD Wiki',
+        description: 'Complete PokéPath TD items database. Explore all held items, their effects, requirements, and strategic usage guides for optimal team building.',
+        keywords: 'Items Database, Held Items, Item Effects, Equipment Guide, PokéPath TD Items',
         image: '/images/logo.webp'
       }
     },
@@ -148,9 +162,31 @@ const router = createRouter({
       name: 'wiki',
       component: WikiView,
       meta: {
-        title: 'Game Wiki & Core Mechanics Guide | PokéPath TD Strategy',
-        description: 'Master the core mechanics with our PokéPath TD Wiki. Find detailed guides on damage types, status effects, and held items to improve your gameplay strategy.',
-        keywords: 'Wiki, Game Guide, FAQ, Tips, Advanced Strategies',
+        title: 'PokéPath TD Wiki - Complete Game Guide & Tips',
+        description: 'Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.',
+        keywords: 'PokéPath TD Wiki, Game Guide, Strategy Guide, Tips and Tricks, Game Mechanics',
+        image: '/images/logo.webp'
+      }
+    },
+    {
+      path: '/wiki/:addressBar',
+      name: 'wiki-detail',
+      component: WikiDetailView,
+      meta: {
+        title: 'Wiki Article - PokéPath TD Guide',
+        description: 'Detailed PokéPath TD wiki article with comprehensive guides and strategies.',
+        keywords: 'Wiki Article, Game Guide, Strategy Guide, PokéPath TD',
+        image: '/images/logo.webp'
+      }
+    },
+    {
+      path: '/game/:addressBar',
+      name: 'game-detail',
+      component: GameDetailView,
+      meta: {
+        title: 'Play PokéPath TD - Game Version',
+        description: 'Play PokéPath TD tower defense game. Choose your version and start defending against waves of enemies.',
+        keywords: 'PokéPath TD, Play Game, Tower Defense, Pokemon Game',
         image: '/images/logo.webp'
       }
     },
