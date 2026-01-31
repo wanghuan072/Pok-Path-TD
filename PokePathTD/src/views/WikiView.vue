@@ -70,25 +70,25 @@
 import { computed, ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import AppHeader from '../components/AppHeader.vue'
-import AppFooter from '../components/AppFooter.vue'
-import { useSEO } from '../seo/composables.js'
-import { useWikiData } from '../composables/useWikiData'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import { useSEO } from '@/seo/composables.js'
+import { useWikiData } from '@/composables/useWikiData'
 
 const router = useRouter()
 const { locale, t } = useI18n()
 const { wikiData, loadData } = useWikiData()
 const { setSEO } = useSEO()
 
-// SEO Configuration
-setSEO({
-  title: 'PokéPath TD Wiki - Complete Game Guide & Tips',
-  description: 'Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.',
-  keywords: 'PokéPath TD Wiki, Game Guide, Strategy Guide, Tips and Tricks, Game Mechanics',
-  canonicalUrl: '/wiki'
-})
-
 onMounted(() => {
+  // SEO Configuration
+  setSEO({
+    title: 'PokéPath TD Wiki - Complete Game Guide & Tips',
+    description: 'Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.',
+    keywords: 'PokéPath TD Wiki, Game Guide, Strategy Guide, Tips and Tricks, Game Mechanics',
+    canonicalUrl: '/wiki'
+  })
+  
   loadData()
 })
 

@@ -104,10 +104,10 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import AppHeader from '../components/AppHeader.vue'
-import AppFooter from '../components/AppFooter.vue'
-import { useSEO } from '../seo/composables.js'
-import { useWikiData } from '../composables/useWikiData'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import { useSEO } from '@/seo/composables.js'
+import { useWikiData } from '@/composables/useWikiData'
 
 const route = useRoute()
 const { t, locale } = useI18n()
