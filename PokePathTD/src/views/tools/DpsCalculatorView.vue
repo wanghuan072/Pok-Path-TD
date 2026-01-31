@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">⚡</span>
-            <span class="badge-text">DPS Calculator</span>
+            <span class="badge-text">{{ t('DpsCalculatorView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD DPS Calculator - Damage Calculation Tool</h1>
+          <h1 class="page-title">{{ t('DpsCalculatorView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Calculate precise DPS for any PokéPath TD Pokémon with our advanced calculator. Input stats manually or select from the database for accurate damage calculations.
+            {{ t('DpsCalculatorView.pageSubtitle') }}
           </p>
       </div>
     </section>
@@ -63,23 +63,23 @@
                   <div class="dps-results-side">
                     <div class="dps-primary">
                       <div class="dps-primary-item">
-                        <div class="dps-primary-label">BASE DPS</div>
+                        <div class="dps-primary-label">{{ t('DpsCalculatorView.results.baseDps') }}</div>
                         <div class="dps-primary-value">{{ baseDPS.toFixed(2) }}</div>
                       </div>
                       <div class="dps-primary-item highlight">
-                        <div class="dps-primary-label">EXPECTED DPS</div>
+                        <div class="dps-primary-label">{{ t('DpsCalculatorView.results.expectedDps') }}</div>
                         <div class="dps-primary-value highlight">{{ expectedDPS.toFixed(2) }}</div>
                       </div>
                     </div>
                     <div class="dps-secondary">
                       <div class="dps-secondary-item">
-                        <span class="dps-secondary-label">Avg Damage</span>
+                        <span class="dps-secondary-label">{{ t('DpsCalculatorView.results.avgDamage') }}</span>
                         <span class="dps-secondary-value">{{ avgDamage.toFixed(2) }}</span>
                       </div>
                       <div class="dps-secondary-item">
-                        <span class="dps-secondary-label">Attacks/sec</span>
+                        <span class="dps-secondary-label">{{ t('DpsCalculatorView.results.attacksPerSec') }}</span>
                         <span class="dps-secondary-value">{{ attacksPerSecond.toFixed(2) }}</span>
-                  </div>
+                      </div>
                   </div>
                   </div>
                 </div>
@@ -280,14 +280,27 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
-import pokemonData from '../../data/pokemon.js'
+import { usePokemonData } from '../../composables/usePokemonData'
+
+const { locale, t } = useI18n()
+const { pokemonData, loadData } = usePokemonData()
+
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
 
 // Get level 100 Pokémon
 const level100Pokemon = computed(() => {
-  return pokemonData.filter(pokemon => {
+  if (!pokemonData.value) return []
+  return pokemonData.value.filter(pokemon => {
     const levelMatch = pokemon.name.match(/\[(\d+)\]/)
     return levelMatch && parseInt(levelMatch[1]) === 100
   }).sort((a, b) => a.name.localeCompare(b.name))
@@ -873,71 +886,5 @@ const formatCritical = (critical) => {
   font-size: 0.95rem;
 }
 
-/* 1024px 响应式样式 */
-@media (max-width: 1024px) {
-  .calculator-section { padding: 1.8rem 0; }
-  .calculator-header { gap: 10px; margin-bottom: 20px; }
-  .calculator-icon { width: 36px; height: 36px; font-size: 1.4rem; }
-  .calculator-title { font-size: 1.6rem; }
-  .calculator-main-container { gap: 18px; }
-  .calculator-step-card { padding: 18px; gap: 14px; }
-  .step-number { width: 28px; height: 28px; font-size: 0.85rem; }
-  .step-label { font-size: 0.85rem; }
-  .calculator-select { padding: 10px 14px; font-size: 0.95rem; }
-  .calculator-results-card { }
-  .result-header { padding: 20px 20px 18px; }
-  .result-title { font-size: 1.4rem; margin-bottom: 10px; }
-  .result-stats-grid { gap: 10px; padding: 20px; }
-  .result-stat-item { padding: 12px; gap: 10px; }
-  .stat-icon { font-size: 1.1rem; width: 28px; height: 28px; }
-  .result-stat-item .stat-label { font-size: 0.7rem; }
-  .result-stat-item .stat-value { font-size: 1.05rem; }
-  .result-dps-section { gap: 10px; padding: 20px; }
-  .dps-result-item { padding: 14px; }
-  .dps-label { font-size: 0.9rem; }
-  .dps-value { font-size: 1.4rem; }
-  .dps-result-item.highlight .dps-value.highlight-value { font-size: 1.6rem; }
-  .calculator-info-card { }
-  .info-content-wrapper { padding: 20px; }
-  .info-title { font-size: 1.05rem; margin-bottom: 14px; }
-  .info-formulas { padding: 14px; gap: 8px; margin-bottom: 14px; }
-  .formula-item { font-size: 0.85rem; }
-  .info-description { font-size: 0.8rem; }
-}
 
-/* 768px 移动端响应式样式 */
-@media (max-width: 768px) {
-  .calculator-section { padding: 1.2rem 0; }
-  .calculator-header { gap: 0.8rem; margin-bottom: 1.2rem; }
-  .calculator-icon { width: 32px; height: 32px; font-size: 1.3rem; }
-  .calculator-title { font-size: 1.6rem; }
-  .calculator-main-container { gap: 1.2rem; }
-  .calculator-step-card { padding: 1.2rem; gap: 0.8rem; flex-direction: column; text-align: center; }
-  .step-number { width: 2rem; height: 2rem; font-size: 1rem; }
-  .step-content { gap: 0.8rem; }
-  .step-label { font-size: 0.8rem; }
-  .calculator-select { padding: 0.8rem 1.2rem; font-size: 0.9rem; }
-  .calculator-results-card { }
-  .result-header { padding: 1.2rem; }
-  .result-title { font-size: 1.4rem; margin-bottom: 0.8rem; }
-  .result-stats-grid { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.2rem; }
-  .result-stat-item { padding: 0.8rem; gap: 0.8rem; }
-  .stat-icon { font-size: 1rem; width: 24px; height: 24px; }
-  .result-stat-item .stat-label { font-size: 0.65rem; }
-  .result-stat-item .stat-value { font-size: 1rem; }
-  .result-section-divider { margin: 0 1.2rem; }
-  .result-dps-section { gap: 0.8rem; padding: 1.2rem; }
-  .dps-result-item { padding: 1.2rem; }
-  .dps-label { font-size: 0.8rem; }
-  .dps-value { font-size: 1.3rem; }
-  .dps-result-item.highlight .dps-value.highlight-value { font-size: 1.5rem; }
-  .dps-note { font-size: 0.65rem; }
-  .calculator-info-card { flex-direction: column; }
-  .info-card-border-left { width: 100%; height: 3px; }
-  .info-content-wrapper { padding: 1.2rem; }
-  .info-title { font-size: 1rem; margin-bottom: 0.8rem; }
-  .info-formulas { padding: 0.8rem; gap: 0.6rem; margin-bottom: 0.8rem; }
-  .formula-item { font-size: 0.8rem; }
-  .info-description { font-size: 0.8rem; }
-}
 </style>

@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">📚</span>
-            <span class="badge-text">Wiki</span>
+            <span class="badge-text">{{ t('WikiView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Wiki - Complete Game Guide & Tips</h1>
+          <h1 class="page-title">{{ t('WikiView.title') }}</h1>
           <p class="page-subtitle">
-            Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.
+            {{ t('WikiView.subtitle') }}
           </p>
         </div>
       </section>
@@ -67,24 +67,40 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import { useSEO } from '../seo/composables.js'
-import wikiData from '../data/wiki.js'
+import { useWikiData } from '../composables/useWikiData'
 
 const router = useRouter()
+const { locale, t } = useI18n()
+const { wikiData, loadData } = useWikiData()
+const { setSEO } = useSEO()
 
 // SEO Configuration
-useSEO({
+setSEO({
   title: 'PokéPath TD Wiki - Complete Game Guide & Tips',
   description: 'Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.',
   keywords: 'PokéPath TD Wiki, Game Guide, Strategy Guide, Tips and Tricks, Game Mechanics',
   canonicalUrl: '/wiki'
 })
 
-const wikiArticles = computed(() => wikiData)
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
+
+const wikiArticles = computed(() => wikiData.value)
+
+const goToWikiDetail = (addressBar) => {
+  router.push(`/wiki/${addressBar}`)
+}
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -92,12 +108,6 @@ const formatDate = (dateString) => {
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
-  })
-}
-
-const goToWikiDetail = (addressBar) => {
-  router.push({
-    path: `/wiki/${addressBar}`
   })
 }
 </script>

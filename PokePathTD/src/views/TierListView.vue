@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">🏆</span>
-            <span class="badge-text">Tier List</span>
+            <span class="badge-text">{{ t('TierListView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Tier List - Best Pokémon Rankings</h1>
+          <h1 class="page-title">{{ t('TierListView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Discover the ultimate PokéPath TD tier list with best Pokémon rankings, meta analysis, and customizable tier charts for competitive play.
+            {{ t('TierListView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -23,9 +23,9 @@
           <div class="list-header">
             <h3 class="section-heading">
               <span class="heading-icon">⚡</span>
-              Level 100 Pokémon
+              {{ t('TierListView.sections.level100') }}
             </h3>
-            <p class="section-subtitle">Drag Pokémon to tiers below</p>
+            <p class="section-subtitle">{{ t('TierListView.sections.dragDrop') }}</p>
           </div>
           
           <div class="pokemon-grid">
@@ -59,10 +59,10 @@
           <div class="tier-list-header">
             <h3 class="section-heading">
               <span class="heading-icon">🏆</span>
-              Tier List
+              {{ t('TierListView.sections.tierList') }}
             </h3>
             <button @click="addTier" class="add-tier-btn">
-              <span>+ Add Tier</span>
+              <span>{{ t('TierListView.buttons.addTier') }}</span>
             </button>
           </div>
 
@@ -107,13 +107,13 @@
                   <button
                     @click="removeFromTier(tier, pokemon)"
                     class="remove-pokemon-btn"
-                    title="Remove from tier"
+                    :title="t('TierListView.buttons.remove')"
                   >
                     ×
                   </button>
                 </div>
                 <div v-if="tier.pokemon.length === 0" class="tier-empty">
-                  Drop Pokémon here
+                  {{ t('TierListView.empty') }}
                 </div>
               </div>
 
@@ -122,7 +122,7 @@
                 <button
                   @click="editTier(tier)"
                   class="tier-control-btn"
-                  title="Edit tier"
+                  :title="t('TierListView.buttons.edit')"
                 >
                   ⚙️
                 </button>
@@ -130,7 +130,7 @@
                   v-if="index > 0"
                   @click="moveTierUp(index)"
                   class="tier-control-btn"
-                  title="Move up"
+                  :title="t('TierListView.buttons.moveUp')"
                 >
                   ↑
                 </button>
@@ -138,14 +138,14 @@
                   v-if="index < tiers.length - 1"
                   @click="moveTierDown(index)"
                   class="tier-control-btn"
-                  title="Move down"
+                  :title="t('TierListView.buttons.moveDown')"
                 >
                   ↓
                 </button>
                 <button
                   @click="deleteTier(index)"
                   class="tier-control-btn delete"
-                  title="Delete tier"
+                  :title="t('TierListView.buttons.delete')"
                 >
                   🗑️
                 </button>
@@ -193,7 +193,7 @@
                 />
                 <div v-else class="ranking-image-placeholder">
                   <span class="placeholder-icon">📊</span>
-                  <p class="placeholder-text">Tier List Image</p>
+                  <p class="placeholder-text">{{ t('TierListView.placeholders.tierListImage') }}</p>
                 </div>
               </div>
             </div>
@@ -206,39 +206,38 @@
     <section class="intro-section">
       <div class="container">
         <div class="intro-card">
-          <h2 class="intro-title">📖 How to Use PokéPath TD Tier List</h2>
+          <h2 class="intro-title">{{ t('TierListView.intro.title') }}</h2>
           <div class="intro-content">
             <p>
-              The Tier List helps you understand the relative strength and viability of different Pokémon in PokéPath TD.
-              Use this interactive tool to create custom rankings, compare Pokémon performance, and build optimal team strategies.
+              {{ t('TierListView.intro.p1') }}
             </p>
             <div class="intro-steps">
               <div class="intro-step">
                 <span class="step-number">1</span>
                 <div class="step-content">
-                  <h4>Understand Tier Rankings</h4>
-                  <p>S-Tier (best), A-Tier (strong), B-Tier (average), C-Tier (below average), D-Tier (weakest). Rankings are based on overall performance.</p>
+                  <h4>{{ t('TierListView.intro.steps.step1.title') }}</h4>
+                  <p>{{ t('TierListView.intro.steps.step1.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">2</span>
                 <div class="step-content">
-                  <h4>Drag and Drop Pokémon</h4>
-                  <p>Drag Pokémon from the available list into your preferred tier. You can also move Pokémon between tiers to adjust rankings.</p>
+                  <h4>{{ t('TierListView.intro.steps.step2.title') }}</h4>
+                  <p>{{ t('TierListView.intro.steps.step2.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">3</span>
                 <div class="step-content">
-                  <h4>Customize Your Rankings</h4>
-                  <p>Create personalized tier lists based on your playstyle, preferred strategies, or specific route requirements.</p>
+                  <h4>{{ t('TierListView.intro.steps.step3.title') }}</h4>
+                  <p>{{ t('TierListView.intro.steps.step3.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">4</span>
                 <div class="step-content">
-                  <h4>Share and Compare</h4>
-                  <p>Use tier lists to discuss strategies with other players and refine your understanding of Pokémon viability.</p>
+                  <h4>{{ t('TierListView.intro.steps.step4.title') }}</h4>
+                  <p>{{ t('TierListView.intro.steps.step4.desc') }}</p>
                 </div>
               </div>
             </div>
@@ -251,42 +250,42 @@
     <section class="faq-section">
       <div class="container">
         <div class="faq-card">
-          <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+          <h2 class="faq-title">{{ t('TierListView.faq.title') }}</h2>
           <div class="faq-list">
             <div class="faq-item">
-              <h3 class="faq-question">What do the tier letters mean?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q1') }}</h3>
               <p class="faq-answer">
-                S-Tier: Exceptional Pokémon that excel in most situations. A-Tier: Strong performers with few weaknesses. B-Tier: Solid choices for specific roles. C-Tier: Situational or niche picks. D-Tier: Generally not recommended due to significant drawbacks.
+                {{ t('TierListView.faq.a1') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Are tier lists objective?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q2') }}</h3>
               <p class="faq-answer">
-                Tier lists are subjective and can vary based on playstyle, team composition, and game updates. Use them as guidelines rather than absolute rules. Community consensus helps identify strong performers.
+                {{ t('TierListView.faq.a2') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How often are tiers updated?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q3') }}</h3>
               <p class="faq-answer">
-                Tiers are updated regularly based on new game patches, balance changes, and community feedback. Major updates may significantly shift rankings as new strategies emerge.
+                {{ t('TierListView.faq.a3') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Can I create my own tier list?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q4') }}</h3>
               <p class="faq-answer">
-                Yes! This interactive tier list allows you to drag and drop Pokémon to create custom rankings. Save your preferred setup or experiment with different team compositions.
+                {{ t('TierListView.faq.a4') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Why are some Pokémon in multiple tiers?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q5') }}</h3>
               <p class="faq-answer">
-                Pokémon can perform differently based on their level, team synergy, and the specific route or challenge. A Pokémon might be S-tier in some situations but C-tier in others.
+                {{ t('TierListView.faq.a5') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How do I know which tier is right for me?</h3>
+              <h3 class="faq-question">{{ t('TierListView.faq.q6') }}</h3>
               <p class="faq-answer">
-                Consider your playstyle, available resources, and goals. Beginners might prefer A/B-tier Pokémon for reliability, while experienced players can experiment with higher-risk, higher-reward options.
+                {{ t('TierListView.faq.a6') }}
               </p>
             </div>
           </div>
@@ -299,15 +298,30 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import pokemonData from '../data/pokemon.js'
-import playerRankingsData from '../data/playerRankings.js'
+import { usePokemonData } from '../composables/usePokemonData'
+import { usePlayerRankingsData } from '../composables/usePlayerRankingsData'
+
+const { locale, t } = useI18n()
+const { pokemonData, loadData: loadPokemon } = usePokemonData()
+const { playerRankingsData, loadData: loadRankings } = usePlayerRankingsData()
+
+onMounted(() => {
+  loadPokemon()
+  loadRankings()
+})
+
+watch(locale, () => {
+  loadPokemon()
+  loadRankings()
+})
 
 // Get level 100 Pokémon
 const level100Pokemon = computed(() => {
-  return pokemonData.filter(pokemon => {
+  return pokemonData.value.filter(pokemon => {
     const levelMatch = pokemon.name.match(/\[(\d+)\]/)
     return levelMatch && parseInt(levelMatch[1]) === 100
   }).sort((a, b) => a.name.localeCompare(b.name))
@@ -508,7 +522,7 @@ const removeFromTier = (tier, pokemon) => {
 }
 
 // Player rankings
-const playerRankings = ref(playerRankingsData)
+const playerRankings = computed(() => playerRankingsData.value)
 
 // Format date
 const formatDate = (dateString) => {
@@ -517,11 +531,11 @@ const formatDate = (dateString) => {
   const diffTime = Math.abs(now - date)
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
   
-  if (diffDays === 0) return 'Today'
-  if (diffDays === 1) return 'Yesterday'
-  if (diffDays < 7) return `${diffDays} days ago`
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`
-  return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })
+  if (diffDays === 0) return t('TierListView.time.today')
+  if (diffDays === 1) return t('TierListView.time.yesterday')
+  if (diffDays < 7) return t('TierListView.time.daysAgo', { days: diffDays })
+  if (diffDays < 30) return t('TierListView.time.weeksAgo', { weeks: Math.floor(diffDays / 7) })
+  return date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 // Global drag handler for auto-scroll

@@ -13,13 +13,23 @@
               <h1 class="game-title">{{ game.name }}</h1>
               <div class="game-container">
                 <div class="game-wrapper-large">
-                  <iframe 
-                    v-if="game.iframeSrc" 
-                    :src="game.iframeSrc" 
-                    class="game-iframe-large" 
-                    frameborder="0"
-                    allowfullscreen
-                  ></iframe>
+                  <template v-if="game.iframeSrc">
+                    <div v-if="!isPlaying" class="game-overlay">
+                      <div class="overlay-background" :style="{ backgroundImage: `url(${game.imageUrl})` }"></div>
+                      <div class="overlay-backdrop"></div>
+                      <button class="play-button" @click="isPlaying = true">
+                        <span class="play-icon">▶</span>
+                        <!-- <span class="play-text">PLAY GAME</span> -->
+                      </button>
+                    </div>
+                    <iframe 
+                      v-else
+                      :src="game.iframeSrc" 
+                      class="game-iframe-large" 
+                      frameborder="0"
+                      allowfullscreen
+                    ></iframe>
+                  </template>
                   <div v-else class="game-placeholder-large">
                     <div class="placeholder-content">
                       <span class="placeholder-icon">🎮</span>
@@ -118,27 +128,35 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import gamesData from '../data/games.js'
+import { useGameData } from '../composables/useGameData'
 import { useSEO } from '../seo/composables.js'
 
 const route = useRoute()
 const router = useRouter()
+const { locale, t } = useI18n()
+const { gamesData, loadData } = useGameData()
+const { setSEO } = useSEO()
 
 const game = ref(null)
-const allGames = computed(() => gamesData)
+const isPlaying = ref(false)
+const allGames = computed(() => gamesData.value)
 
 // Find game by addressBar
 const loadGame = (addressBar) => {
-  const foundGame = gamesData.find(g => g.addressBar === addressBar)
+  if (!gamesData.value.length) return
+
+  const foundGame = gamesData.value.find(g => g.addressBar === addressBar)
   
   if (foundGame) {
     game.value = foundGame
+    isPlaying.value = false
     
     // Set SEO
     if (foundGame.seo?.title) {
-      useSEO({
+      setSEO({
         title: foundGame.seo.title,
         description: foundGame.seo.description || foundGame.description || `Play ${foundGame.name} - PokéPath TD`,
         keywords: foundGame.seo.keywords || `${foundGame.name}, PokéPath TD, Tower Defense Game`,
@@ -161,9 +179,23 @@ watch(() => route.params.addressBar, (newAddressBar) => {
   if (newAddressBar) {
     loadGame(newAddressBar)
   }
-}, { immediate: true })
+})
 
-onMounted(() => {
+// Watch data changes (e.g. after initial load or locale change)
+watch(gamesData, () => {
+  const addressBar = route.params.addressBar
+  if (addressBar) {
+    loadGame(addressBar)
+  }
+})
+
+// Watch locale changes to reload data
+watch(locale, () => {
+  loadData()
+})
+
+onMounted(async () => {
+  await loadData()
   const addressBar = route.params.addressBar
   if (addressBar) {
     loadGame(addressBar)
@@ -299,6 +331,82 @@ const formatDate = (dateString) => {
   border: none;
 }
 
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.overlay-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  transform: scale(1.1);
+}
+
+.overlay-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 20, 30, 0.6);
+}
+
+.play-button {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(107, 163, 232, 0.2);
+  border: 2px solid #6ba3e8;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 30px rgba(107, 163, 232, 0.3);
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: rgba(107, 163, 232, 0.8);
+  box-shadow: 0 0 50px rgba(107, 163, 232, 0.6);
+}
+
+.play-icon {
+  font-size: 3rem;
+  color: #f5f8f0;
+  margin-left: 8px; /* Visual centering adjustment for triangle */
+}
+
+.play-text {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #f5f8f0;
+  letter-spacing: 1px;
+}
+
+.play-button:hover .play-icon,
+.play-button:hover .play-text {
+  color: #fff;
+}
+
 .game-placeholder-large {
   width: 100%;
   height: 100%;
@@ -344,56 +452,172 @@ const formatDate = (dateString) => {
   font-size: 1rem;
 }
 
+/* Base Elements */
 .details-content :deep(h1),
 .details-content :deep(h2),
 .details-content :deep(h3),
 .details-content :deep(h4) {
   color: #6ba3e8;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  font-weight: 700;
 }
 
-.details-content :deep(h1) {
-  font-size: 1.8rem;
+.details-content :deep(h1) { 
+  font-size: 2rem; 
+  border-bottom: 1px solid rgba(107, 163, 232, 0.3); 
+  padding-bottom: 0.5rem; 
 }
 
-.details-content :deep(h2) {
-  font-size: 1.5rem;
+.details-content :deep(h2) { 
+  font-size: 1.6rem;
+  color: #f5f8f0;
+  border-left: 4px solid #6ba3e8;
+  padding-left: 1rem;
 }
 
-.details-content :deep(h3) {
-  font-size: 1.3rem;
-}
-
-.details-content :deep(h4) {
-  font-size: 1.1rem;
+.details-content :deep(h3) { 
+  font-size: 1.3rem; 
+  color: #8abcf5;
 }
 
 .details-content :deep(p) {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
+.details-content :deep(strong) {
+  color: #6ba3e8;
+  font-weight: 700;
+}
+
+.details-content :deep(em) {
+  color: #e6cc80;
+  font-style: italic;
+}
+
+/* Lists */
 .details-content :deep(ul),
 .details-content :deep(ol) {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
 
 .details-content :deep(li) {
   margin-bottom: 0.5rem;
+  position: relative;
 }
 
-.details-content :deep(strong) {
+.details-content :deep(li)::marker {
   color: #6ba3e8;
-  font-weight: 600;
 }
 
+/* Links */
+.details-content :deep(a) {
+  color: #6ba3e8;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(107, 163, 232, 0.3);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.details-content :deep(a):hover {
+  color: #f5f8f0;
+  background: #6ba3e8;
+  border-bottom-color: transparent;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+/* Images */
 .details-content :deep(img) {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border: 1px solid rgba(107, 163, 232, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tables */
+.details-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: rgba(26, 35, 50, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(107, 163, 232, 0.2);
+}
+
+.details-content :deep(th) {
+  background: rgba(107, 163, 232, 0.2);
+  color: #f5f8f0;
+  font-weight: 700;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(107, 163, 232, 0.3);
+}
+
+.details-content :deep(td) {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(107, 163, 232, 0.1);
+  color: rgba(245, 248, 240, 0.8);
+}
+
+.details-content :deep(tr):last-child td {
+  border-bottom: none;
+}
+
+.details-content :deep(tr):hover td {
+  background: rgba(107, 163, 232, 0.05);
+  color: #f5f8f0;
+}
+
+/* Special Sections */
+.details-content :deep(.hero-section),
+.details-content :deep(.intro-section) {
+  background: linear-gradient(135deg, rgba(107, 163, 232, 0.15), rgba(20, 28, 42, 0.6));
+  border: 1px solid rgba(107, 163, 232, 0.3);
+  border-left: 4px solid #6ba3e8;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.details-content :deep(.hero-section) p,
+.details-content :deep(.intro-section) p {
+  font-size: 1.1rem;
+  color: #f5f8f0;
+  margin-bottom: 0;
+}
+
+.details-content :deep(.faq-section) {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(107, 163, 232, 0.2);
+}
+
+.details-content :deep(.faq-section) h3 {
+  color: #e6cc80;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details-content :deep(.faq-section) h3::before {
+  content: "Q.";
+  color: #6ba3e8;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+
+.details-content :deep(.faq-section) p {
+  padding-left: 2rem;
+  color: rgba(245, 248, 240, 0.8);
 }
 
 /* Sidebar */

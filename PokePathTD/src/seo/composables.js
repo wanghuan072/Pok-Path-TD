@@ -1,27 +1,7 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import i18n from '../i18n'
 import { seoConfig } from './config.js'
-
-/**
- * 加载数据模块（用于 SEO）- PokéPath TD 目前无动态数据，预留接口
- */
-// eslint-disable-next-line no-unused-vars
-const loadDataForSEO = async (dataType) => {
-  try {
-    if (dataType === 'pokemon') {
-      const module = await import('../data/pokemon.js')
-      return module.default || []
-    } else if (dataType === 'routes') {
-      const module = await import('../data/routes.js')
-      return module.stages || []
-    } else {
-      throw new Error(`Unknown data type: ${dataType}`)
-    }
-  } catch (error) {
-    console.warn(`Failed to load data for SEO: ${dataType}`, error)
-    return []
-  }
-}
 
 // SEO composable
 export function useSEO() {
@@ -157,6 +137,15 @@ export function useSEO() {
     document.head.appendChild(script)
   }
 
+  const locale = i18n.global.locale
+  watch(locale, () => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale.value
+    }
+    // 当语言改变时，可能需要重新获取SEO数据（如果SEO数据也是多语言的）
+    // 目前假设调用者会在组件中监听locale并重新调用setSEO
+  })
+
   return {
     currentSEO,
     currentPath,
@@ -188,13 +177,13 @@ export function useAutoSEO() {
     // 先从路由 meta 获取 TDK
     if (route.meta) {
       if (route.meta.title) {
-        finalSEOData.title = route.meta.title
+        finalSEOData.title = route.meta.title.startsWith('Meta.') ? i18n.global.t(route.meta.title) : route.meta.title
       }
       if (route.meta.description) {
-        finalSEOData.description = route.meta.description
+        finalSEOData.description = route.meta.description.startsWith('Meta.') ? i18n.global.t(route.meta.description) : route.meta.description
       }
       if (route.meta.keywords) {
-        finalSEOData.keywords = route.meta.keywords
+        finalSEOData.keywords = route.meta.keywords.startsWith('Meta.') ? i18n.global.t(route.meta.keywords) : route.meta.keywords
       }
       if (route.meta.image) {
         finalSEOData.image = route.meta.image

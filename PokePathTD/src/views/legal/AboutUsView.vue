@@ -2,8 +2,8 @@
   <div class="legal-page page-container">
     <section class="legal-header">
       <div class="container">
-        <h1 class="page-title">About Us</h1>
-        <p class="page-date">Last Updated: January 5, 2026</p>
+        <h1 class="page-title">{{ t('AboutUsView.title') }}</h1>
+        <p class="page-date">{{ t('AboutUsView.lastUpdated') }}</p>
       </div>
     </section>
 
@@ -11,49 +11,35 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="legal-text">
-            <h2>Welcome to PokéPath TD Community</h2>
-            <p>
-              PokéPath TD Community is an unofficial community resource dedicated to PokéPath TD game. We are passionate fans who have created this website to help fellow players master the game.
-            </p>
+            <h2>{{ t('AboutUsView.sections.welcome.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.welcome.content') }}</p>
 
-            <h2>Our Mission</h2>
-            <p>
-              Our mission is to provide comprehensive, accurate, and up-to-date information about PokéPath TD game. We archive game mechanics, Pokémon information, tier lists, DPS calculators, and strategy guides so players can improve their gaming experience and achieve their goals.
-            </p>
+            <h2>{{ t('AboutUsView.sections.mission.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.mission.content') }}</p>
 
-            <h2>What We Offer</h2>
-            <p>
-              We provide a wide range of resources including:
-            </p>
+            <h2>{{ t('AboutUsView.sections.offer.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.offer.intro') }}</p>
             <ul>
-              <li>Comprehensive game guides and strategies</li>
-              <li>Detailed wiki with game mechanics and features</li>
-              <li>Complete database of Pokémon, enemies, and routes</li>
-              <li>DPS calculator and team optimization tools</li>
-              <li>Tier lists and meta analysis</li>
-              <li>Latest news and updates</li>
-              <li>Community-driven content and updates</li>
+              <li v-for="(item, key) in tm('AboutUsView.sections.offer.items')" :key="key">
+                {{ item }}
+              </li>
             </ul>
 
-            <h2>Our Commitment</h2>
-            <p>
-              We are committed to maintaining the accuracy and quality of our content. Our team regularly updates information based on game updates, community feedback, and verified gameplay data.
-            </p>
+            <h2>{{ t('AboutUsView.sections.commitment.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.commitment.content') }}</p>
 
-            <h2>Disclaimer</h2>
-            <p>
-              PokéPath TD Community is an independent, fan-operated website. We are not affiliated with, endorsed by, or connected to Khydra98, the game developer, or any official entities. All game-related content is used for informational purposes only.
-            </p>
+            <h2>{{ t('AboutUsView.sections.disclaimer.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.disclaimer.content') }}</p>
 
-            <h2>Contact Us</h2>
-            <p>
-              If you have questions, suggestions, or feedback, please feel free to contact us at <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>. We appreciate your support and contributions to the PokéPath TD community.
-            </p>
+            <h2>{{ t('AboutUsView.sections.contact.title') }}</h2>
+            <i18n-t keypath="AboutUsView.sections.contact.content" tag="p">
+              <template #email>
+                <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>
+              </template>
+            </i18n-t>
 
-            <h2>Thank You</h2>
-            <p>
-              Thank you for visiting PokéPath TD Community. We hope our resources help you master the game and achieve greatness in PokéPath TD!
-            </p>
+            <h2>{{ t('AboutUsView.sections.thankYou.title') }}</h2>
+            <p>{{ t('AboutUsView.sections.thankYou.content') }}</p>
           </div>
         </div>
       </div>
@@ -62,6 +48,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t, tm } = useI18n()
 </script>
 
 <style scoped>

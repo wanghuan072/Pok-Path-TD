@@ -6,48 +6,43 @@
     <section class="hero-section">
       <div class="container">
         <div class="hero-banner">
-          <div class="hero-banner-badge">Updated 2026</div>
+          <div class="hero-banner-badge">{{ $t('HomePage.hero.updated') }}</div>
         </div>
         <div class="hero-content">
           <div class="hero-main">
-            <h1 class="hero-title">PokéPath TD Guide - Complete Wiki, Tier List & Strategy</h1>
-            <p class="hero-subtitle">
-              Master <strong>PokéPath TD</strong> tower defense with our comprehensive strategy
-              guide. Complete Pokémon database, DPS calculator, route strategy analysis, and enemy
-              data. Build the perfect team and conquer all routes with PokéPath TD best teams and
-              meta strategies.
-            </p>
+            <h1 class="hero-title">{{ $t('HomePage.hero.title') }}</h1>
+            <p class="hero-subtitle" v-html="$t('HomePage.hero.subtitle')"></p>
             <div class="hero-stats">
               <div class="stat-item">
                 <div class="stat-value">100+</div>
-                <div class="stat-label">Pokémon</div>
+                <div class="stat-label">{{ $t('HomePage.hero.stats.pokemon') }}</div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">9</div>
-                <div class="stat-label">Routes</div>
+                <div class="stat-label">{{ $t('HomePage.hero.stats.routes') }}</div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">18</div>
-                <div class="stat-label">Types</div>
+                <div class="stat-label">{{ $t('HomePage.hero.stats.types') }}</div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">TD</div>
-                <div class="stat-label">Game Mode</div>
+                <div class="stat-label">{{ $t('HomePage.hero.stats.gameMode') }}</div>
               </div>
             </div>
             <div class="hero-actions">
               <a href="/all-pokemon" class="btn-primary">
-                <span>Explore All Pokemon</span>
+                <span>{{ $t('HomePage.hero.actions.explore') }}</span>
                 <span class="btn-arrow">→</span>
               </a>
               <a href="/tools" class="btn-secondary">
-                <span>View All Tools</span>
+                <span>{{ $t('HomePage.hero.actions.tools') }}</span>
               </a>
             </div>
             <div class="hero-game-versions">
               <div class="section-title-wrapper">
                 <div class="section-title-line"></div>
-                <h2 class="section-title">Play various versions of PokéPath TD online</h2>
+                <h2 class="section-title">{{ $t('HomePage.hero.versions.title') }}</h2>
                 <div class="section-title-line"></div>
               </div>
               <div class="game-versions-buttons">
@@ -74,44 +69,40 @@
         <div class="section-header">
           <div class="section-title-wrapper">
             <div class="section-title-line"></div>
-            <h2 class="section-title">What is PokéPath TD?</h2>
+            <h2 class="section-title">{{ $t('HomePage.intro.title') }}</h2>
             <div class="section-title-line"></div>
           </div>
         </div>
         <div class="game-intro-content">
           <div class="game-intro-text">
-            <p class="intro-main-text">
-              <strong>PokéPath TD</strong> is a tower defense game featuring Pokémon. Strategically
-              place your Pokémon along paths to defend against waves of enemies. Each Pokémon has
-              unique abilities, stats, and evolution paths that unlock at levels 16, 36, and 100.
-            </p>
+            <p class="intro-main-text" v-html="$t('HomePage.intro.text')"></p>
             <div class="game-mechanics-grid">
               <div class="mechanic-item">
                 <div class="mechanic-icon">⚔️</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">Power</h4>
-                  <p class="mechanic-desc">Base damage dealt by each attack</p>
+                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.power.title') }}</h4>
+                  <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.power.desc') }}</p>
                 </div>
               </div>
               <div class="mechanic-item">
                 <div class="mechanic-icon">⏱️</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">Recharge</h4>
-                  <p class="mechanic-desc">Time between attacks (lower is better)</p>
+                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.recharge.title') }}</h4>
+                  <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.recharge.desc') }}</p>
                 </div>
               </div>
               <div class="mechanic-item">
                 <div class="mechanic-icon">💥</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">Critical</h4>
-                  <p class="mechanic-desc">Chance to deal critical damage</p>
+                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.critical.title') }}</h4>
+                  <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.critical.desc') }}</p>
                 </div>
               </div>
               <div class="mechanic-item">
                 <div class="mechanic-icon">📏</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">Range</h4>
-                  <p class="mechanic-desc">Attack range of the Pokémon</p>
+                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.range.title') }}</h4>
+                  <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.range.desc') }}</p>
                 </div>
               </div>
             </div>
@@ -126,22 +117,20 @@
         <div class="section-header">
           <div class="section-title-wrapper">
             <div class="section-title-line"></div>
-            <h2 class="section-title">Complete Databases - PokéPath TD All Pokémon</h2>
+            <h2 class="section-title">{{ $t('HomePage.database.title') }}</h2>
             <div class="section-title-line"></div>
           </div>
-          <p class="section-description">Access comprehensive data for all Pokémon and enemies</p>
+          <p class="section-description">{{ $t('HomePage.database.description') }}</p>
         </div>
         <div class="database-grid">
           <!-- All Pokemon Card -->
           <div class="database-card pokemon-db-card">
             <div class="database-card-header">
               <div class="database-icon">⚔️</div>
-              <h3 class="database-title">All Pokemon</h3>
+              <h3 class="database-title">{{ $t('HomePage.database.pokemon.title') }}</h3>
             </div>
             <p class="database-description">
-              Browse 100+ Pokémon with complete data across all evolution stages. View comprehensive
-              stats, abilities, terrain compatibility, and evolution chains from Level 1 to Level
-              100.
+              {{ $t('HomePage.database.pokemon.description') }}
             </p>
             <div class="database-preview">
               <div class="database-preview-grid">
@@ -170,7 +159,7 @@
             </div>
             <div class="database-action">
               <a href="/all-pokemon" class="btn-primary">
-                <span>Explore All Pokemon</span>
+                <span>{{ $t('HomePage.database.pokemon.action') }}</span>
                 <span class="btn-arrow">→</span>
               </a>
             </div>
@@ -180,11 +169,10 @@
           <div class="database-card enemy-db-card">
             <div class="database-card-header">
               <div class="database-icon">👹</div>
-              <h3 class="database-title">Enemy Database</h3>
+              <h3 class="database-title">{{ $t('HomePage.database.enemy.title') }}</h3>
             </div>
             <p class="database-description">
-              Complete reference for 125+ enemies across all threat levels. View stats, resistances,
-              special abilities, and gold rewards to build effective defense strategies.
+              {{ $t('HomePage.database.enemy.description') }}
             </p>
             <div class="database-preview">
               <div class="database-preview-grid">
@@ -216,7 +204,7 @@
             </div>
             <div class="database-action">
               <a href="/enemies" class="btn-primary">
-                <span>View Enemy Database</span>
+                <span>{{ $t('HomePage.database.enemy.action') }}</span>
                 <span class="btn-arrow">→</span>
               </a>
             </div>
@@ -231,20 +219,29 @@
         <div class="section-header">
           <div class="section-title-wrapper">
             <div class="section-title-line"></div>
-            <h2 class="section-title">Route Strategies - PokéPath TD Map Guides</h2>
+            <h2 class="section-title">{{ $t('HomePage.routes.title') }}</h2>
             <div class="section-title-line"></div>
           </div>
-          <p class="section-description">
-            Detailed guides for all 9 routes with recommended teams and terrain analysis. Check out
-            our comprehensive guides for
-            <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link"
-              >Route 1-1 (Articuno)</a
-            >
-            and
-            <a href="/map-router/how-to-beat-route-3-1-regirock-wave-100-guide" class="inline-link"
-              >Route 3-1 (Regirock)</a
-            >.
-          </p>
+          <i18n-t
+            keypath="HomePage.routes.description"
+            tag="p"
+            class="section-description"
+            scope="global"
+          >
+            <template #link1>
+              <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">
+                {{ $t('HomePage.routes.link1') }}
+              </a>
+            </template>
+            <template #link2>
+              <a
+                href="/map-router/how-to-beat-route-3-1-regirock-wave-100-guide"
+                class="inline-link"
+              >
+                {{ $t('HomePage.routes.link2') }}
+              </a>
+            </template>
+          </i18n-t>
         </div>
         <div class="routes-preview-grid">
           <a
@@ -293,11 +290,11 @@
         </div>
         <div class="section-footer">
           <a href="/map-router/how-to-beat-route-1-3-6" class="btn-secondary">
-            <span>Route 1-3-6 Guide</span>
+            <span>{{ $t('HomePage.routes.action.guide') }}</span>
             <span class="btn-arrow">→</span>
           </a>
           <a href="/map-router" class="btn-secondary">
-            <span>View All Routes</span>
+            <span>{{ $t('HomePage.routes.action.viewAll') }}</span>
             <span class="btn-arrow">→</span>
           </a>
         </div>
@@ -310,11 +307,11 @@
         <div class="section-header">
           <div class="section-title-wrapper">
             <div class="section-title-line"></div>
-            <h2 class="section-title">Wiki Guides - PokéPath TD Strategy</h2>
+            <h2 class="section-title">{{ $t('HomePage.wiki.title') }}</h2>
             <div class="section-title-line"></div>
           </div>
           <p class="section-description">
-            Essential guides and tips to master PokéPath TD gameplay
+            {{ $t('HomePage.wiki.description') }}
           </p>
         </div>
         <div class="wiki-preview-grid">
@@ -340,7 +337,7 @@
               <h3 class="wiki-preview-title">{{ article.title }}</h3>
               <p class="wiki-preview-description">{{ article.description }}</p>
               <div class="wiki-card-footer">
-                <span class="wiki-read-more">Read More</span>
+                <span class="wiki-read-more">{{ $t('HomePage.wiki.readMore') }}</span>
                 <span class="wiki-arrow">→</span>
               </div>
             </div>
@@ -348,7 +345,7 @@
         </div>
         <div class="section-footer">
           <a href="/wiki" class="btn-secondary">
-            <span>View All Wiki Articles</span>
+            <span>{{ $t('HomePage.wiki.action') }}</span>
             <span class="btn-arrow">→</span>
           </a>
         </div>
@@ -361,27 +358,27 @@
         <div class="section-header">
           <div class="section-title-wrapper">
             <div class="section-title-line"></div>
-            <h2 class="section-title">Strategy Tools - PokéPath TD DPS Calculator</h2>
+            <h2 class="section-title">{{ $t('HomePage.tools.title') }}</h2>
             <div class="section-title-line"></div>
           </div>
           <p class="section-description">
-            Essential calculators and utilities to optimize your strategy
+            {{ $t('HomePage.tools.description') }}
           </p>
         </div>
         <div class="tools-grid">
           <a v-for="tool in toolsPreview" :key="tool.id" :href="tool.path" class="tool-card">
             <div class="tool-icon">{{ tool.icon }}</div>
-            <h3 class="tool-title">{{ tool.title }}</h3>
-            <p class="tool-description">{{ tool.description }}</p>
+            <h3 class="tool-title">{{ $t(tool.title) }}</h3>
+            <p class="tool-description">{{ $t(tool.description) }}</p>
             <div class="tool-link">
-              <span>Use Tool</span>
+              <span>{{ $t('HomePage.tools.useTool') }}</span>
               <span class="tool-arrow">→</span>
             </div>
           </a>
         </div>
         <div class="section-footer">
           <a href="/tools" class="btn-secondary">
-            <span>View All Tools</span>
+            <span>{{ $t('HomePage.tools.action') }}</span>
             <span class="btn-arrow">→</span>
           </a>
         </div>
@@ -393,20 +390,45 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import pokemonData from '../data/pokemon.js'
-import enemyData from '../data/enemies.js'
-import { stages, difficultyColors } from '../data/routes.js'
-import gamesData from '../data/games.js'
-import wikiData from '../data/wiki.js'
+import { usePokemonData } from '../composables/usePokemonData'
+import { useEnemyData } from '../composables/useEnemyData'
+import { useRoutesData } from '../composables/useRoutesData'
+import { useGameData } from '../composables/useGameData'
+import { useWikiData } from '../composables/useWikiData'
 
 const router = useRouter()
+const { locale } = useI18n()
+const { pokemonData, loadData: loadPokemon } = usePokemonData()
+const { enemyData, loadData: loadEnemies } = useEnemyData()
+const { routesData, loadData: loadRoutes } = useRoutesData()
+const { gamesData, loadData: loadGames } = useGameData()
+const { wikiData, loadData: loadWiki } = useWikiData()
+
+const difficultyColors = {
+  'Easy': '#5cb85c',
+  'Medium': '#f0ad4e',
+  'Hard': '#d9534f',
+  'Very Hard': '#8b0000',
+  'Extreme': '#4a148c'
+}
+
+onMounted(async () => {
+  await Promise.all([loadPokemon(), loadEnemies(), loadRoutes(), loadGames(), loadWiki()])
+})
+
+watch(locale, async () => {
+  await Promise.all([loadPokemon(), loadEnemies(), loadRoutes(), loadGames(), loadWiki()])
+})
+
+const stages = computed(() => routesData.value)
 
 // Get games from data
-const games = computed(() => gamesData)
+const games = computed(() => gamesData.value)
 
 const loadGame = (addressBar) => {
   // Navigate to game detail page
@@ -421,7 +443,7 @@ const featuredRoutes = computed(() => {
 
   for (const difficulty of difficulties) {
     if (samples.length >= 3) break
-    const route = stages.find(
+    const route = stages.value.find(
       (r) => r.difficulty === difficulty && !usedDifficulties.has(difficulty)
     )
     if (route) {
@@ -430,7 +452,7 @@ const featuredRoutes = computed(() => {
     }
   }
 
-  for (const route of stages) {
+  for (const route of stages.value) {
     if (samples.length >= 3) break
     if (!samples.find((r) => r.id === route.id)) {
       samples.push(route)
@@ -445,33 +467,29 @@ const toolsPreview = [
   {
     id: 1,
     icon: '⚡',
-    title: 'DPS Calculator',
-    description:
-      'Calculate and compare Pokémon damage per second. Analyze power, recharge time, and critical hit rate to find the best damage dealers.',
+    title: 'HomePage.tools.items.dpsCalculator.title',
+    description: 'HomePage.tools.items.dpsCalculator.description',
     path: '/tools/dps-calculator',
   },
   {
     id: 2,
     icon: '📋',
-    title: 'Pokémon Categories',
-    description:
-      'Browse Pokémon by tactical categories. Find specialized Pokémon for status effects, AOE attacks, burst damage, and support roles.',
+    title: 'HomePage.tools.items.pokemonCategories.title',
+    description: 'HomePage.tools.items.pokemonCategories.description',
     path: '/tools/pokemon-categories',
   },
   {
     id: 3,
     icon: '⚔️',
-    title: 'Enemy Counter',
-    description:
-      'Find the best Pokémon to counter specific enemies. Analyze resistances and get personalized recommendations based on DPS calculations.',
+    title: 'HomePage.tools.items.enemyCounter.title',
+    description: 'HomePage.tools.items.enemyCounter.description',
     path: '/tools/enemy-counter',
   },
   {
     id: 4,
     icon: '🗺️',
-    title: 'Route Strategy',
-    description:
-      'Optimize your team composition for each map route. Get recommended Pokémon types, terrain advantages, and strategic tips.',
+    title: 'HomePage.tools.items.routeStrategy.title',
+    description: 'HomePage.tools.items.routeStrategy.description',
     path: '/tools/route-strategy',
   },
 ]
@@ -481,7 +499,7 @@ const pokemonPreview = computed(() => {
   const categories = new Set()
   const samples = []
 
-  for (const pokemon of pokemonData) {
+  for (const pokemon of pokemonData.value) {
     if (!categories.has(pokemon.category) && samples.length < 8) {
       categories.add(pokemon.category)
       samples.push({
@@ -505,14 +523,14 @@ const featuredEnemies = computed(() => {
 
   for (const threat of threatLevels) {
     if (samples.length >= 8) break
-    const enemy = enemyData.find((e) => e.threat === threat && !usedThreats.has(threat))
+    const enemy = enemyData.value.find((e) => e.threat === threat && !usedThreats.has(threat))
     if (enemy) {
       usedThreats.add(threat)
       samples.push(enemy)
     }
   }
 
-  for (const enemy of enemyData) {
+  for (const enemy of enemyData.value) {
     if (samples.length >= 8) break
     if (!samples.find((e) => e.id === enemy.id)) {
       samples.push(enemy)
@@ -524,7 +542,7 @@ const featuredEnemies = computed(() => {
 
 // Home Wiki Articles
 const homeWikiArticles = computed(() => {
-  return wikiData.filter((article) => article.isHome === true)
+  return wikiData.value.filter((article) => article.isHome === true)
 })
 </script>
 

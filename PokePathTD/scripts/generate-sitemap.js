@@ -2,10 +2,17 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import wikiData from '../src/data/wiki.js'
+import wikiData from '../src/data/wiki/en.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+// 多语言配置
+const locales = [
+  { code: 'en', prefix: '', isDefault: true }
+  // { code: 'zh', prefix: '/zh', isDefault: false },
+  // { code: 'es', prefix: '/es', isDefault: false }
+]
 
 // 所有路线详情页 ID（已更新为新的 SEO 友好 ID）
 const routeIds = [
@@ -80,15 +87,38 @@ function generateSitemap() {
   const currentDate = new Date().toISOString()
 
   let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
 
   config.routes.forEach(route => {
-    sitemap += '  <url>\n'
-    sitemap += `    <loc>${config.baseUrl}${route.path}</loc>\n`
-    sitemap += `    <lastmod>${currentDate}</lastmod>\n`
-    sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`
-    sitemap += `    <priority>${route.priority}</priority>\n`
-    sitemap += '  </url>\n'
+    locales.forEach(locale => {
+      // 构建当前语言的 URL
+      // 如果是默认语言且没有前缀，直接使用 base + path
+      // 如果有前缀，base + prefix + path
+      const prefix = locale.prefix || ''
+      // 处理 path 为 '/' 的特殊情况，避免出现 //
+      const routePath = route.path === '/' ? '' : route.path
+      const url = `${config.baseUrl}${prefix}${routePath}` || `${config.baseUrl}/`
+
+      sitemap += '  <url>\n'
+      sitemap += `    <loc>${url}</loc>\n`
+      sitemap += `    <lastmod>${currentDate}</lastmod>\n`
+      sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`
+      sitemap += `    <priority>${route.priority}</priority>\n`
+
+      // 生成其他语言的 alternate 链接
+      locales.forEach(altLocale => {
+        // 如果我们有多个语言，需要互相引用
+        // 目前只有一个语言，这个循环实际上不会生成有意义的 alternate（除了自身，但通常不需要引用自身为 alternate，或者引用自身也是可以的 x-default）
+        // 标准做法：列出所有语言版本，包括当前版本
+        const altPrefix = altLocale.prefix || ''
+        const altRoutePath = route.path === '/' ? '' : route.path
+        const altUrl = `${config.baseUrl}${altPrefix}${altRoutePath}` || `${config.baseUrl}/`
+        
+        sitemap += `    <xhtml:link rel="alternate" hreflang="${altLocale.code}" href="${altUrl}"/>\n`
+      })
+
+      sitemap += '  </url>\n'
+    })
   })
 
   sitemap += '</urlset>'

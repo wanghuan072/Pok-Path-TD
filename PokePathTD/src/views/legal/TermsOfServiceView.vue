@@ -2,8 +2,8 @@
   <div class="legal-page page-container">
     <section class="legal-header">
       <div class="container">
-        <h1 class="page-title">Terms of Service</h1>
-        <p class="page-date">Last Updated: January 5, 2026</p>
+        <h1 class="page-title">{{ t('TermsOfServiceView.title') }}</h1>
+        <p class="page-date">{{ t('TermsOfServiceView.lastUpdated') }}</p>
       </div>
     </section>
 
@@ -11,45 +11,33 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="legal-text">
-            <h2>Agreement to Terms</h2>
-            <p>
-              By accessing and using PokéPath TD Community website, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.agreement.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.agreement.content') }}</p>
 
-            <h2>Use of Website</h2>
-            <p>
-              You may use our website for lawful purposes only. You agree not to use the website in any way that violates any applicable laws or regulations, or that could harm, disable, or impair the website.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.use.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.use.content') }}</p>
 
-            <h2>Intellectual Property</h2>
-            <p>
-              All content on this website, including text, graphics, logos, and images, is the property of PokéPath TD Community or its content suppliers and is protected by copyright and other intellectual property laws. Pokémon is a trademark of Nintendo, Game Freak, and The Pokémon Company. PokéPath TD is developed by Khydra98. This website is not affiliated with or endorsed by Nintendo, Game Freak, The Pokémon Company, or Khydra98.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.intellectualProperty.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.intellectualProperty.content') }}</p>
 
-            <h2>User Content</h2>
-            <p>
-              If you submit any content to our website, you grant us a non-exclusive, royalty-free license to use, reproduce, and distribute that content. You represent that you have the right to grant such license.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.userContent.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.userContent.content') }}</p>
 
-            <h2>Disclaimer</h2>
-            <p>
-              The information on this website is provided "as is" without warranties of any kind. We do not guarantee the accuracy, completeness, or usefulness of any information on the website. We are not responsible for any errors or omissions in the content.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.disclaimer.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.disclaimer.content') }}</p>
 
-            <h2>Limitation of Liability</h2>
-            <p>
-              To the fullest extent permitted by law, PokéPath TD Community shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the website.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.liability.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.liability.content') }}</p>
 
-            <h2>Changes to Terms</h2>
-            <p>
-              We reserve the right to modify these Terms of Service at any time. We will notify you of any changes by posting the new Terms of Service on this page and updating the "Last Updated" date.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.changes.title') }}</h2>
+            <p>{{ t('TermsOfServiceView.sections.changes.content') }}</p>
 
-            <h2>Contact Us</h2>
-            <p>
-              If you have any questions about these Terms of Service, please contact us at <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>.
-            </p>
+            <h2>{{ t('TermsOfServiceView.sections.contact.title') }}</h2>
+            <i18n-t keypath="TermsOfServiceView.sections.contact.content" tag="p">
+              <template #email>
+                <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>
+              </template>
+            </i18n-t>
           </div>
         </div>
       </div>
@@ -58,7 +46,9 @@
 </template>
 
 <script setup>
-// SEO handled globally by useAutoSEO and router meta
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <style scoped>

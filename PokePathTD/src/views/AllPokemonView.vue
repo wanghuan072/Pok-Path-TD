@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">⚡</span>
-            <span class="badge-text">All Pokemon</span>
+            <span class="badge-text">{{ t('AllPokemonView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD All Pokémon - Complete Database & Best Teams</h1>
+          <h1 class="page-title">{{ t('AllPokemonView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Discover the complete PokéPath TD all Pokémon database, featuring detailed stats, evolution guides, and optimal team compositions for strategic PokéPath TD best teams.
+            {{ t('AllPokemonView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -20,9 +20,9 @@
       <div class="container">
         <!-- Main Content Area -->
         <div class="content-area">
-          <h2 class="section-main-title">Pokémon by Evolution Family</h2>
+          <h2 class="section-main-title">{{ t('AllPokemonView.sectionMainTitle') }}</h2>
           <p class="section-main-description">
-            All Pokémon are organized by their evolution families, showing every stage from basic forms to fully evolved level 100 variants. Each entry includes detailed combat stats, unique abilities, and terrain advantages.
+            {{ t('AllPokemonView.sectionMainDescription') }}
           </p>
           
           <!-- Pokemon Categories -->
@@ -144,41 +144,37 @@
       <section class="intro-section">
         <div class="container">
           <div class="intro-card">
-            <h2 class="intro-title">📖 How to Use All Pokémon Database</h2>
+            <h2 class="intro-title">{{ t('AllPokemonView.intro.title') }}</h2>
             <div class="intro-content">
-              <p>
-                Welcome to the <strong>most comprehensive and accurate</strong> PokéPath TD Pokémon database available! Our database features <strong>every single Pokémon</strong> in the game, including all standard forms, Mega evolutions, and even <strong>hidden Pokémon</strong> that are rarely documented elsewhere. With over 100+ Pokémon entries covering everything from #000 Charmander to #102 Gholdengo, including rare finds like M-Charizard X, M-Sceptile, M-Absol, M-Alakazam, and many more, this is your complete reference guide for building the ultimate teams.
-              </p>
-              <p>
-                Whether you're looking for the latest additions like Sobble, Inteleon, Rowlet, Decidueye, or discovering hidden gems like Carbink and Gholdengo, our database is continuously updated to ensure you have access to the <strong>most complete and up-to-date</strong> Pokémon information available. Use this tool to explore detailed stats, evolution paths, unique abilities, and build optimal team compositions for strategic gameplay.
-              </p>
+              <p v-html="t('AllPokemonView.intro.p1')"></p>
+              <p v-html="t('AllPokemonView.intro.p2')"></p>
               <div class="intro-steps">
                 <div class="intro-step">
                   <span class="step-number">1</span>
                   <div class="step-content">
-                    <h4>Browse by Evolution Family</h4>
-                    <p>Explore Pokémon organized by their evolution families, from basic forms to level 100 variants. Includes all standard Pokémon, Mega evolutions, and hidden forms.</p>
+                    <h4>{{ t('AllPokemonView.intro.steps.step1.title') }}</h4>
+                    <p>{{ t('AllPokemonView.intro.steps.step1.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">2</span>
                   <div class="step-content">
-                    <h4>Review Combat Stats</h4>
-                    <p>Check detailed Power, Recharge, Critical, Range, and other combat stats for each Pokémon form. All data is verified and updated regularly.</p>
+                    <h4>{{ t('AllPokemonView.intro.steps.step2.title') }}</h4>
+                    <p>{{ t('AllPokemonView.intro.steps.step2.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">3</span>
                   <div class="step-content">
-                    <h4>Understand Abilities</h4>
-                    <p>Learn about unique abilities, terrain advantages, target types, and strategic roles. Discover hidden abilities that can turn the tide of battle.</p>
+                    <h4>{{ t('AllPokemonView.intro.steps.step3.title') }}</h4>
+                    <p>{{ t('AllPokemonView.intro.steps.step3.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">4</span>
                   <div class="step-content">
-                    <h4>Plan Team Strategies</h4>
-                    <p>Use the database to build balanced teams with proper type coverage, terrain advantages, and role distribution. Find the perfect combination for any challenge.</p>
+                    <h4>{{ t('AllPokemonView.intro.steps.step4.title') }}</h4>
+                    <p>{{ t('AllPokemonView.intro.steps.step4.desc') }}</p>
                   </div>
                 </div>
               </div>
@@ -191,61 +187,43 @@
       <section class="faq-section">
         <div class="container">
           <div class="faq-card">
-            <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+            <h2 class="faq-title">{{ t('AllPokemonView.faq.title') }}</h2>
             <div class="faq-list">
               <div class="faq-item">
-                <h3 class="faq-question">Why are Pokémon organized by evolution families?</h3>
-                <p class="faq-answer">
-                  Evolution families show the complete growth path of each Pokémon, from basic forms to their fully evolved level 100 variants. This helps you understand how your Pokémon will develop and what their final stats will be.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q1') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a1') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">What do the different stat values represent?</h3>
-                <p class="faq-answer">
-                  Stats include HP (health), Attack (physical damage), Defense (physical resistance), Sp. Attack (special damage), Sp. Defense (special resistance), and Speed (turn order). Higher values indicate better performance in those areas.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q2') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a2') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How do abilities affect gameplay?</h3>
-                <p class="faq-answer">
-                  Abilities provide passive bonuses or special effects. Some increase damage output, others provide resistances, healing, or strategic advantages. Understanding abilities is crucial for building effective teams.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q3') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a3') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Should I use level 100 Pokémon immediately?</h3>
-                <p class="faq-answer">
-                  Level 100 Pokémon offer maximum stats but may be expensive to deploy. Consider using lower-level forms early in the game for cost efficiency, then upgrading to level 100 variants when you have sufficient resources.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q4') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a4') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How do types affect team composition?</h3>
-                <p class="faq-answer">
-                  Type advantages are crucial for damage effectiveness. Include a mix of types to cover weaknesses and exploit enemy vulnerabilities. The database shows type information to help you build well-rounded teams.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q5') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a5') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How complete is this Pokémon database?</h3>
-                <p class="faq-answer">
-                  Our database is the <strong>most comprehensive and accurate</strong> PokéPath TD Pokémon reference available. We cover <strong>every single Pokémon</strong> in the game, including all standard forms (#000-#102), Mega evolutions (M-Charizard X, M-Sceptile, M-Absol, M-Alakazam), and even <strong>hidden Pokémon</strong> that are rarely documented elsewhere. With over 100+ entries continuously updated, you'll find Pokémon that other databases miss, making this your definitive source for complete Pokémon information.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q6') }}</h3>
+                <p class="faq-answer" v-html="t('AllPokemonView.faq.a6')"></p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">What are hidden Pokémon and why are they important?</h3>
-                <p class="faq-answer">
-                  Hidden Pokémon are rare or special forms that aren't always visible in standard game menus or other databases. These include Mega evolutions, special variants, and Pokémon with unique abilities like Carbink, Gholdengo, and various Mega forms. Understanding these hidden Pokémon is crucial for advanced team building, as they often provide unique strategic advantages that can make the difference between victory and defeat in challenging routes.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q7') }}</h3>
+                <p class="faq-answer">{{ t('AllPokemonView.faq.a7') }}</p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How often is the Pokémon database updated?</h3>
-                <p class="faq-answer">
-                  The database is <strong>regularly updated</strong> with the latest Pokémon additions, including newly released Pokémon like Sobble, Inteleon, Rowlet, Decidueye, Fuecoco, Skeledirge, and many others. We also update stat corrections, ability details, and add newly discovered hidden Pokémon as they're found. Our commitment is to maintain the <strong>most complete and up-to-date</strong> database, ensuring you always have access to the latest information for optimal gameplay.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q8') }}</h3>
+                <p class="faq-answer" v-html="t('AllPokemonView.faq.a8')"></p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Why should I use this database over others?</h3>
-                <p class="faq-answer">
-                  Unlike other databases that may be incomplete or outdated, ours is the <strong>most accurate and comprehensive</strong> resource available. We include <strong>all Pokémon</strong>, including hidden forms and Mega evolutions that other sources miss. Our data is verified, regularly updated, and organized for easy navigation. Whether you're a beginner or an advanced player, you'll find everything you need here - from basic stats to advanced strategic information about rare and hidden Pokémon.
-                </p>
+                <h3 class="faq-question">{{ t('AllPokemonView.faq.q9') }}</h3>
+                <p class="faq-answer" v-html="t('AllPokemonView.faq.a9')"></p>
               </div>
             </div>
           </div>
@@ -267,15 +245,26 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import PokemonDetailModal from '../components/PokemonDetailModal.vue'
-import pokemonData from '../data/pokemon.js'
+import { usePokemonData } from '../composables/usePokemonData'
 
 const isModalOpen = ref(false)
 const selectedPokemon = ref(null)
 const currentEvolutionFamily = ref([])
+const { t, locale } = useI18n()
+const { pokemonData, loadData } = usePokemonData()
+
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
 
 const openPokemonModal = (pokemon, evolutionFamily) => {
   selectedPokemon.value = pokemon
@@ -298,7 +287,7 @@ const categoryGroups = computed(() => {
   const categoryMap = new Map()
 
   // 按 category 分组
-  pokemonData.forEach((pokemon) => {
+  pokemonData.value.forEach((pokemon) => {
     if (!categoryMap.has(pokemon.category)) {
       categoryMap.set(pokemon.category, [])
     }

@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">🗺️</span>
-            <span class="badge-text">Map Router</span>
+            <span class="badge-text">{{ t('RoutesView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Routes - Complete Strategy Guide & Teams</h1>
+          <h1 class="page-title">{{ t('RoutesView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Explore comprehensive PokéPath TD routes strategies, including detailed map guides, terrain analysis, and recommended teams for every PokéPath TD route 1-1 and beyond.
+            {{ t('RoutesView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@
                 />
                 <div v-else class="map-placeholder">
                   <span class="placeholder-icon">🗺️</span>
-                  <span class="placeholder-text">Map Preview</span>
+                  <span class="placeholder-text">{{ t('RoutesView.mapPreview') }}</span>
                 </div>
 
                 <!-- Overlay Gradient -->
@@ -79,7 +79,7 @@
                 <div v-if="stage.terrain && stage.terrain.length > 0" class="info-row">
                   <div class="info-row-label">
                     <span class="label-icon">🗺️</span>
-                    <span>Terrain</span>
+                    <span>{{ t('RoutesView.terrain') }}</span>
                   </div>
                   <div class="terrain-tags">
                     <span v-for="terrain in stage.terrain" :key="terrain" class="terrain-tag">
@@ -90,7 +90,7 @@
 
                 <!-- View Details Button -->
                 <button class="view-details-btn" @click.stop="goToRouteDetail(stage.id)">
-                  <span>View Route Details</span>
+                  <span>{{ t('RoutesView.viewDetails') }}</span>
                   <span class="btn-arrow">→</span>
                 </button>
               </div>
@@ -104,39 +104,36 @@
     <section class="intro-section">
       <div class="container">
         <div class="intro-card">
-          <h2 class="intro-title">📖 How to Use PokéPath TD Routes Guide</h2>
+          <h2 class="intro-title">{{ t('RoutesView.intro.title') }}</h2>
           <div class="intro-content">
-              <p>
-              The Routes Guide provides comprehensive strategies for every map in PokéPath TD.
-              Browse all available routes and access detailed strategy guides with recommended teams and tactics. Explore our in-depth guides for challenging routes like <a href="/map-router/how-to-beat-route-3-2-regice-dewgong-strategy" class="inline-link">Route 3-2 (Regice)</a> and <a href="/map-router/how-to-beat-route-2-1-raikou-wave-100" class="inline-link">Route 2-1 (Raikou)</a>.
-            </p>
+              <p v-html="t('RoutesView.intro.p1')"></p>
             <div class="intro-steps">
               <div class="intro-step">
                 <span class="step-number">1</span>
                 <div class="step-content">
-                  <h4>Browse All Routes</h4>
-                  <p>Explore all available routes organized by route number. Each route card displays key information including difficulty rating, terrain types, and recommended playstyles.</p>
+                  <h4>{{ t('RoutesView.intro.steps.step1.title') }}</h4>
+                  <p>{{ t('RoutesView.intro.steps.step1.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">2</span>
                 <div class="step-content">
-                  <h4>Review Route Information</h4>
-                  <p>Each route card shows key details including difficulty rating, terrain advantages, recommended playstyles, and enemy types.</p>
+                  <h4>{{ t('RoutesView.intro.steps.step2.title') }}</h4>
+                  <p>{{ t('RoutesView.intro.steps.step2.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">3</span>
                 <div class="step-content">
-                  <h4>Access Route Details</h4>
-                  <p>Click "View Route Details" to get detailed terrain analysis, optimal team compositions, and tactical advice for each route. For example, check out our <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">Route 1-1 guide</a> for Articuno strategies.</p>
+                  <h4>{{ t('RoutesView.intro.steps.step3.title') }}</h4>
+                  <p v-html="t('RoutesView.intro.steps.step3.desc')"></p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">4</span>
                 <div class="step-content">
-                  <h4>Adapt to Your Style</h4>
-                  <p>Routes support different playstyles (Aggressive, Defensive, Balanced). Choose strategies that match your preferred approach.</p>
+                  <h4>{{ t('RoutesView.intro.steps.step4.title') }}</h4>
+                  <p>{{ t('RoutesView.intro.steps.step4.desc') }}</p>
                 </div>
               </div>
             </div>
@@ -149,43 +146,31 @@
     <section class="faq-section">
       <div class="container">
         <div class="faq-card">
-          <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+          <h2 class="faq-title">{{ t('RoutesView.faq.title') }}</h2>
           <div class="faq-list">
             <div class="faq-item">
-              <h3 class="faq-question">How do difficulty levels work?</h3>
-              <p class="faq-answer">
-                Difficulty is based on enemy strength, terrain complexity, and strategic requirements. Easy routes are straightforward, while Very Hard routes require precise team composition and advanced tactics.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q1') }}</h3>
+              <p class="faq-answer">{{ t('RoutesView.faq.a1') }}</p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">What do terrain types affect?</h3>
-              <p class="faq-answer">
-                Terrain influences Pokémon effectiveness, movement patterns, and strategic options. Some Pokémon excel on specific terrains, so choose teams that match the route's terrain advantages.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q2') }}</h3>
+              <p class="faq-answer">{{ t('RoutesView.faq.a2') }}</p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Can I complete routes with different playstyles?</h3>
-              <p class="faq-answer">
-                Yes! Most routes can be completed with Aggressive (fast clearing), Defensive (turtle strategies), or Balanced approaches. Choose based on your available Pokémon and preferred playstyle.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q3') }}</h3>
+              <p class="faq-answer">{{ t('RoutesView.faq.a3') }}</p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How often are route strategies updated?</h3>
-              <p class="faq-answer">
-                Route guides are updated with new game patches, balance changes, and community-discovered strategies. Major updates may introduce new optimal teams or tactics.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q4') }}</h3>
+              <p class="faq-answer">{{ t('RoutesView.faq.a4') }}</p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">What if I don't have the recommended Pokémon?</h3>
-              <p class="faq-answer">
-                Strategy guides include alternative team suggestions and adaptation tips. Focus on type advantages and role coverage rather than exact Pokémon matches. See our <a href="/map-router/how-to-beat-route-2-3-suicune-wave-100" class="inline-link">Route 2-3 guide</a> for alternative strategies.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q5') }}</h3>
+              <p class="faq-answer" v-html="t('RoutesView.faq.a5')"></p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Are there shortcuts or alternative paths?</h3>
-              <p class="faq-answer">
-                Some routes have multiple paths or strategic shortcuts. Advanced guides cover alternative approaches and speedrunning techniques for experienced players.
-              </p>
+              <h3 class="faq-question">{{ t('RoutesView.faq.q6') }}</h3>
+              <p class="faq-answer">{{ t('RoutesView.faq.a6') }}</p>
             </div>
           </div>
         </div>
@@ -197,13 +182,24 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import { stages, difficultyColors } from '../data/routes.js'
+import { useRoutesData } from '../composables/useRoutesData'
 
 const router = useRouter()
+const { t, locale } = useI18n()
+const { routesData, loadData } = useRoutesData()
+
+const difficultyColors = {
+  'Easy': '#5cb85c',
+  'Medium': '#f0ad4e',
+  'Hard': '#d9534f',
+  'Very Hard': '#8b0000',
+  'Extreme': '#4a148c'
+}
 
 // Navigate to route detail page
 const goToRouteDetail = (routeId) => {
@@ -212,8 +208,16 @@ const goToRouteDetail = (routeId) => {
   })
 }
 
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
+
 // Display all stages
-const displayStages = computed(() => stages)
+const displayStages = computed(() => routesData.value)
 </script>
 
 <style scoped>

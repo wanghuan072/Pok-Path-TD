@@ -14,21 +14,21 @@
           
           <div class="route-meta">
             <div class="meta-item">
-              <span class="meta-label">Stars</span>
+              <span class="meta-label">{{ t('RouteDetailView.meta.stars') }}</span>
               <span class="meta-value">{{ route.stars }}</span>
             </div>
             <div class="meta-item">
-              <span class="meta-label">Difficulty</span>
+              <span class="meta-label">{{ t('RouteDetailView.meta.difficulty') }}</span>
               <span class="meta-value" :style="{ color: difficultyColors[route.difficulty] }">
                 {{ route.difficulty }}
               </span>
             </div>
             <div class="meta-item">
-              <span class="meta-label">Waves</span>
+              <span class="meta-label">{{ t('RouteDetailView.meta.waves') }}</span>
               <span class="meta-value">{{ route.totalWaves }}</span>
             </div>
             <div class="meta-item">
-              <span class="meta-label">Playstyle</span>
+              <span class="meta-label">{{ t('RouteDetailView.meta.playstyle') }}</span>
               <span class="meta-value">{{ route.playstyle }}</span>
             </div>
           </div>
@@ -40,28 +40,28 @@
           <div class="content-left">
             <!-- Route Guide (HTML Content) -->
             <section v-if="route.detailsHtml" class="section-card guide-card">
-              <h2 class="section-title">Route Guide</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.guide') }}</h2>
               <div class="guide-content" v-html="route.detailsHtml"></div>
             </section>
 
             <!-- Related Tools -->
             <section class="section-card">
-              <h2 class="section-title">Related Tools</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.tools') }}</h2>
               <div class="tools-list">
                 <a href="/tools/route-strategy" class="tool-link">
-                  <span class="tool-name">Route Strategy Tool</span>
+                  <span class="tool-name">{{ t('RouteDetailView.tools.strategy') }}</span>
                   <span class="tool-arrow">→</span>
                 </a>
                 <a href="/tools/dps-calculator" class="tool-link">
-                  <span class="tool-name">DPS Calculator</span>
+                  <span class="tool-name">{{ t('RouteDetailView.tools.dps') }}</span>
                   <span class="tool-arrow">→</span>
                 </a>
                 <a href="/tools/enemy-counter" class="tool-link">
-                  <span class="tool-name">Enemy Counter</span>
+                  <span class="tool-name">{{ t('RouteDetailView.tools.counter') }}</span>
                   <span class="tool-arrow">→</span>
                 </a>
                 <a href="/tier-list" class="tool-link">
-                  <span class="tool-name">Tier List</span>
+                  <span class="tool-name">{{ t('RouteDetailView.tools.tierList') }}</span>
                   <span class="tool-arrow">→</span>
                 </a>
               </div>
@@ -72,7 +72,7 @@
           <div class="content-right">
             <!-- Map Image Section -->
             <section class="section-card map-card">
-              <h2 class="section-title">Map Overview</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.map') }}</h2>
               <div class="map-container">
                 <img
                   v-if="route.mapImage"
@@ -81,27 +81,27 @@
                   class="map-image"
                 />
                 <div v-else class="map-placeholder">
-                  <span>Map Preview</span>
+                  <span>{{ t('RouteDetailView.map.preview') }}</span>
                 </div>
               </div>
             </section>
 
             <!-- Terrain Analysis -->
             <section class="section-card">
-              <h2 class="section-title">Terrain Analysis</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.terrain') }}</h2>
               
               <!-- Roads -->
               <div v-if="route.terrainAnalysis?.roads?.length" class="terrain-group">
-                <h3 class="group-title">Roads & Paths</h3>
+                <h3 class="group-title">{{ t('RouteDetailView.terrain.groups.roads') }}</h3>
                 <div class="terrain-list">
                   <div v-for="(road, index) in route.terrainAnalysis.roads" :key="index" class="terrain-item">
                     <div class="item-header">
-                      <span class="item-name">Path {{ index + 1 }}</span>
+                      <span class="item-name">{{ t('RouteDetailView.terrain.items.path') }} {{ index + 1 }}</span>
                       <span class="item-badge">{{ road.length }}</span>
                     </div>
                     <p class="item-desc">{{ road.description }}</p>
                     <div v-if="road.chokepoints > 0" class="item-info">
-                      {{ road.chokepoints }} chokepoints
+                      {{ road.chokepoints }} {{ t('RouteDetailView.terrain.chokepoints') }}
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
 
               <!-- Water -->
               <div v-if="route.terrainAnalysis?.water?.length" class="terrain-group">
-                <h3 class="group-title">Water Areas</h3>
+                <h3 class="group-title">{{ t('RouteDetailView.terrain.groups.water') }}</h3>
                 <div class="terrain-list">
                   <div v-for="(water, index) in route.terrainAnalysis.water" :key="index" class="terrain-item water-item">
                     <div class="item-header">
@@ -126,11 +126,11 @@
 
               <!-- Mountains -->
               <div v-if="route.terrainAnalysis?.mountains?.length" class="terrain-group">
-                <h3 class="group-title">Mountains & High Ground</h3>
+                <h3 class="group-title">{{ t('RouteDetailView.terrain.groups.mountains') }}</h3>
                 <div class="terrain-list">
                   <div v-for="(mountain, index) in route.terrainAnalysis.mountains" :key="index" class="terrain-item mountain-item">
                     <div class="item-header">
-                      <span class="item-name">{{ mountain.height }} Elevation</span>
+                      <span class="item-name">{{ mountain.height }} {{ t('RouteDetailView.terrain.items.elevation') }}</span>
                       <span class="item-badge mountain-badge">{{ mountain.strategicValue }}</span>
                     </div>
                     <p class="item-desc">{{ mountain.description }}</p>
@@ -145,12 +145,12 @@
 
               <!-- Grass -->
               <div v-if="route.terrainAnalysis?.grass?.length" class="terrain-group">
-                <h3 class="group-title">Grass & Vegetation</h3>
+                <h3 class="group-title">{{ t('RouteDetailView.terrain.groups.grass') }}</h3>
                 <div class="terrain-list">
                   <div v-for="(grass, index) in route.terrainAnalysis.grass" :key="index" class="terrain-item grass-item">
                     <div class="item-header">
-                      <span class="item-name">{{ grass.coverage }} Coverage</span>
-                      <span class="item-badge grass-badge">Grass Terrain</span>
+                      <span class="item-name">{{ grass.coverage }} {{ t('RouteDetailView.terrain.items.coverage') }}</span>
+                      <span class="item-badge grass-badge">{{ t('RouteDetailView.terrain.items.grass') }}</span>
                     </div>
                     <p class="item-desc">{{ grass.description }}</p>
                     <div v-if="grass.benefits" class="item-benefits">
@@ -164,7 +164,7 @@
 
               <!-- Chokepoints -->
               <div v-if="route.terrainAnalysis?.chokepoints?.length" class="terrain-group">
-                <h3 class="group-title">Strategic Chokepoints</h3>
+                <h3 class="group-title">{{ t('RouteDetailView.terrain.groups.chokepoints') }}</h3>
                 <div class="chokepoints-list">
                   <div v-for="(point, index) in route.terrainAnalysis.chokepoints" :key="index" class="chokepoint-item">
                     <div class="chokepoint-header">
@@ -181,11 +181,11 @@
 
             <!-- Team Composition -->
             <section class="section-card">
-              <h2 class="section-title">Team Composition</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.team') }}</h2>
               
               <div class="team-phases">
                 <div class="team-phase">
-                  <div class="phase-label">Early Game (Levels 1-15)</div>
+                  <div class="phase-label">{{ t('RouteDetailView.team.early') }}</div>
                   <div class="pokemon-list">
                     <span v-for="pokemon in route.teamComposition.early" :key="pokemon" class="pokemon-tag">
                       {{ pokemon }}
@@ -194,7 +194,7 @@
                 </div>
 
                 <div class="team-phase">
-                  <div class="phase-label">Mid Game (Levels 16-35)</div>
+                  <div class="phase-label">{{ t('RouteDetailView.team.mid') }}</div>
                   <div class="pokemon-list">
                     <span v-for="pokemon in route.teamComposition.mid" :key="pokemon" class="pokemon-tag">
                       {{ pokemon }}
@@ -203,7 +203,7 @@
                 </div>
 
                 <div class="team-phase">
-                  <div class="phase-label">Late Game (Levels 36-100)</div>
+                  <div class="phase-label">{{ t('RouteDetailView.team.late') }}</div>
                   <div class="pokemon-list">
                     <span v-for="pokemon in route.teamComposition.late" :key="pokemon" class="pokemon-tag">
                       {{ pokemon }}
@@ -215,7 +215,7 @@
 
             <!-- Recommended Types -->
             <section v-if="route.recommendedTypes?.length" class="section-card">
-              <h2 class="section-title">Recommended Types</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.types') }}</h2>
               <div class="types-list">
                 <span v-for="type in route.recommendedTypes" :key="type" class="type-tag">
                   {{ type }}
@@ -225,7 +225,7 @@
 
             <!-- Strategies -->
             <section v-if="route.strategies?.length" class="section-card">
-              <h2 class="section-title">Key Strategies</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.strategies') }}</h2>
               <div class="strategies-list">
                 <span v-for="strategy in route.strategies" :key="strategy" class="strategy-tag">
                   {{ strategy }}
@@ -235,7 +235,7 @@
 
             <!-- Tips -->
             <section v-if="route.tips?.length" class="section-card">
-              <h2 class="section-title">Pro Tips</h2>
+              <h2 class="section-title">{{ t('RouteDetailView.sections.tips') }}</h2>
               <div class="tips-list">
                 <div v-for="(tip, index) in route.tips" :key="index" class="tip-item">
                   <span class="tip-number">{{ index + 1 }}</span>
@@ -248,7 +248,7 @@
 
         <!-- Back Button -->
         <div class="back-section">
-          <a href="/map-router" class="back-link">← Back to Routes</a>
+          <a href="/map-router" class="back-link">{{ t('RouteDetailView.navigation.back') }}</a>
         </div>
       </div>
     </div>
@@ -256,9 +256,9 @@
     <div v-else class="page-content">
       <div class="container">
         <div class="error-message">
-          <h2>Route not found</h2>
-          <p>The route you're looking for doesn't exist.</p>
-          <a href="/map-router" class="back-link">Back to Routes List</a>
+          <h2>{{ t('RouteDetailView.error.notFound') }}</h2>
+          <p>{{ t('RouteDetailView.error.message') }}</p>
+          <a href="/map-router" class="back-link">{{ t('RouteDetailView.navigation.backList') }}</a>
         </div>
       </div>
     </div>
@@ -270,20 +270,31 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import { stages, difficultyColors } from '../data/routes.js'
+import { useRoutesData } from '../composables/useRoutesData'
 import { useSEO } from '../seo/composables.js'
 
 const routeParams = useRoute()
+const { t, locale } = useI18n()
+const { routesData, loadData } = useRoutesData()
 const routeData = ref(null)
 const { setSEO } = useSEO()
 
+
+const difficultyColors = {
+  'Easy': '#5cb85c',
+  'Medium': '#f0ad4e',
+  'Hard': '#d9534f',
+  'Very Hard': '#8b0000',
+  'Extreme': '#4a148c'
+}
+
 const loadRoute = () => {
   const routeId = routeParams.params.id
-  routeData.value = stages.find(s => s.id === routeId)
+  routeData.value = routesData.value.find(s => s.id === routeId)
   if (routeData.value && routeData.value.seo) {
-    // 使用数据中的 seo 字段设置 TDK
     const seoData = {
       title: routeData.value.seo.title || `${routeData.value.name} - Detailed Strategy Guide | PokéPath TD`,
       description: routeData.value.seo.description || routeData.value.description,
@@ -296,11 +307,19 @@ const loadRoute = () => {
 }
 
 onMounted(() => {
-  loadRoute()
+  loadData().then(() => {
+    loadRoute()
+  })
 })
 
 watch(() => routeParams.params.id, () => {
   loadRoute()
+})
+
+watch(locale, () => {
+  loadData().then(() => {
+    loadRoute()
+  })
 })
 
 const route = computed(() => routeData.value)

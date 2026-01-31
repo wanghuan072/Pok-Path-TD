@@ -8,12 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">🎒</span>
-            <span class="badge-text">Items Database</span>
+            <span class="badge-text">{{ t('ItemsView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Items Database - Complete Guide & Effects</h1>
+          <h1 class="page-title">{{ t('ItemsView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Explore all held items in the PokéPath TD items database with detailed effects, requirements,
-            and strategic usage guides for optimal team building.
+            {{ t('ItemsView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -24,22 +23,22 @@
           <table class="items-table">
             <thead>
               <tr>
-                <th class="col-image">Image</th>
+                <th class="col-image">{{ t('ItemsView.table.image') }}</th>
                 <th class="col-name sortable" @click="sortBy('name')">
-                  Name
+                  {{ t('ItemsView.table.name') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'name'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else-if="sortField === null">↑↓</span>
                   </span>
                 </th>
                 <th class="col-price sortable" @click="sortBy('price')">
-                  Price
+                  {{ t('ItemsView.table.price') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'price'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else-if="sortField === null">↑↓</span>
                   </span>
                 </th>
-                <th class="col-description">Description</th>
+                <th class="col-description">{{ t('ItemsView.table.description') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -78,40 +77,38 @@
       <section class="intro-section">
         <div class="container">
           <div class="intro-card">
-            <h2 class="intro-title">📖 How to Use Items Database</h2>
+            <h2 class="intro-title">{{ t('ItemsView.intro.title') }}</h2>
             <div class="intro-content">
               <p>
-                The Items Database provides comprehensive information about all held items in PokéPath
-                TD. Use this tool to understand item effects, requirements, and plan optimal item
-                combinations for your Pokémon team.
+                {{ t('ItemsView.intro.p1') }}
               </p>
               <div class="intro-steps">
                 <div class="intro-step">
                   <span class="step-number">1</span>
                   <div class="step-content">
-                    <h4>Browse Item Effects</h4>
-                    <p>Review detailed descriptions of each item's effects and how they modify Pokémon stats and abilities.</p>
+                    <h4>{{ t('ItemsView.intro.steps.step1.title') }}</h4>
+                    <p>{{ t('ItemsView.intro.steps.step1.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">2</span>
                   <div class="step-content">
-                    <h4>Check Requirements</h4>
-                    <p>Some items can only be held by specific Pokémon. Check the Required Pokémon column to see restrictions.</p>
+                    <h4>{{ t('ItemsView.intro.steps.step2.title') }}</h4>
+                    <p>{{ t('ItemsView.intro.steps.step2.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">3</span>
                   <div class="step-content">
-                    <h4>Plan Item Strategy</h4>
-                    <p>Use items strategically to enhance your Pokémon's strengths or compensate for weaknesses in your team composition.</p>
+                    <h4>{{ t('ItemsView.intro.steps.step3.title') }}</h4>
+                    <p>{{ t('ItemsView.intro.steps.step3.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">4</span>
                   <div class="step-content">
-                    <h4>Sort and Filter</h4>
-                    <p>Click on column headers to sort items by name or price for easier browsing and comparison.</p>
+                    <h4>{{ t('ItemsView.intro.steps.step4.title') }}</h4>
+                    <p>{{ t('ItemsView.intro.steps.step4.desc') }}</p>
                   </div>
                 </div>
               </div>
@@ -124,42 +121,42 @@
       <section class="faq-section">
         <div class="container">
           <div class="faq-card">
-            <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+            <h2 class="faq-title">{{ t('ItemsView.faq.title') }}</h2>
             <div class="faq-list">
               <div class="faq-item">
-                <h3 class="faq-question">What are held items in PokéPath TD?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q1') }}</h3>
                 <p class="faq-answer">
-                  Held items are special equipment that can be given to Pokémon to modify their stats, abilities, or behavior. Each item provides unique effects that can significantly impact gameplay strategy.
+                  {{ t('ItemsView.faq.a1') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Do all items cost money?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q2') }}</h3>
                 <p class="faq-answer">
-                  Currently, all items in the database are free ($0). Items are typically obtained through gameplay progression or special events rather than purchased with in-game currency.
+                  {{ t('ItemsView.faq.a2') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Can any Pokémon hold any item?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q3') }}</h3>
                 <p class="faq-answer">
-                  Most items can be held by any Pokémon, but some items have specific requirements. Items like Condensed Blizzard, Ancient Sword, Ancient Shield, and Wrestling Mask can only be held by their designated Pokémon.
+                  {{ t('ItemsView.faq.a3') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How do I equip items to my Pokémon?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q4') }}</h3>
                 <p class="faq-answer">
-                  Items are equipped during team setup or in the game's item management interface. Simply select a Pokémon and assign an available item from your inventory.
+                  {{ t('ItemsView.faq.a4') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Can items be removed after equipping?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q5') }}</h3>
                 <p class="faq-answer">
-                  Yes, items can typically be removed and reassigned to different Pokémon as needed. This allows for flexible team building and strategy adjustments.
+                  {{ t('ItemsView.faq.a5') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Do item effects stack with Pokémon abilities?</h3>
+                <h3 class="faq-question">{{ t('ItemsView.faq.q6') }}</h3>
                 <p class="faq-answer">
-                  Yes, item effects work in combination with Pokémon abilities. For example, Black Glasses doubles the Moxie ability bonus, creating powerful synergies when used together.
+                  {{ t('ItemsView.faq.a6') }}
                 </p>
               </div>
             </div>
@@ -173,25 +170,34 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import itemsData from '../data/items.js'
+import { useItemsData } from '../composables/useItemsData'
 import { useSEO } from '../seo/composables.js'
 
 const route = useRoute()
+const { locale, t } = useI18n()
+const { itemsData, loadData } = useItemsData()
+const { setSEO } = useSEO()
 
 // Set SEO from route meta
 onMounted(() => {
+  loadData()
   if (route.meta?.title) {
-    useSEO({
+    setSEO({
       title: route.meta.title,
       description: route.meta.description || 'Complete PokéPath TD items database with detailed effects and strategic usage guides.',
       keywords: route.meta.keywords || 'Items Database, Held Items, Item Effects, Equipment Guide',
       canonical: `${window.location.origin}/items`
     })
   }
+})
+
+watch(locale, () => {
+  loadData()
 })
 
 // Sorting
@@ -209,7 +215,7 @@ const sortBy = (field) => {
 
 // Sorted items
 const sortedItems = computed(() => {
-  const items = [...itemsData]
+  const items = [...itemsData.value]
 
   // If no sort field is selected, return items in original order
   if (!sortField.value) {

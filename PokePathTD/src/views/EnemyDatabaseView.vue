@@ -8,13 +8,10 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">👹</span>
-            <span class="badge-text">Enemy Database</span>
+            <span class="badge-text">{{ t('EnemyDatabaseView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Enemy Database - Complete Guide & Counters</h1>
-          <p class="page-subtitle">
-            Master every enemy in the PokéPath TD enemy database with detailed stats, resistance
-            analysis, and effective counter strategies for optimal gameplay.
-          </p>
+          <h1 class="page-title">{{ t('EnemyDatabaseView.pageTitle') }}</h1>
+          <p class="page-subtitle">{{ t('EnemyDatabaseView.pageSubtitle') }}</p>
         </div>
       </section>
 
@@ -24,52 +21,52 @@
           <table class="enemy-table">
             <thead>
               <tr>
-                <th class="col-image">Image</th>
+                <th class="col-image">{{ t('EnemyDatabaseView.table.image') }}</th>
                 <th class="col-name sortable" @click="sortBy('name')">
-                  Name
+                  {{ t('EnemyDatabaseView.table.name') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'name'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
                 <th class="col-threat sortable" @click="sortBy('threat')">
-                  Threat
+                  {{ t('EnemyDatabaseView.table.threat') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'threat'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
                 <th class="col-hp sortable" @click="sortBy('hp')">
-                  HP
+                  {{ t('EnemyDatabaseView.table.hp') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'hp'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
                 <th class="col-armor sortable" @click="sortBy('armor')">
-                  Armor
+                  {{ t('EnemyDatabaseView.table.armor') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'armor'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
                 <th class="col-speed sortable" @click="sortBy('speed')">
-                  Speed
+                  {{ t('EnemyDatabaseView.table.speed') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'speed'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
                 <th class="col-gold sortable" @click="sortBy('gold')">
-                  Gold
+                  {{ t('EnemyDatabaseView.table.gold') }}
                   <span class="sort-indicator">
                     <span v-if="sortField === 'gold'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                     <span v-else>↑↓</span>
                   </span>
                 </th>
-                <th class="col-regeneration">Regeneration</th>
-                <th class="col-invisible">Invisible</th>
-                <th class="col-resistances">Resistances</th>
+                <th class="col-regeneration">{{ t('EnemyDatabaseView.table.regeneration') }}</th>
+                <th class="col-invisible">{{ t('EnemyDatabaseView.table.invisible') }}</th>
+                <th class="col-resistances">{{ t('EnemyDatabaseView.table.resistances') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -106,8 +103,8 @@
                 <td class="col-gold">{{ formatNumber(enemy.gold) }}</td>
                 <td class="col-regeneration">{{ enemy.regeneration }}</td>
                 <td class="col-invisible">
-                  <span v-if="enemy.invisible" class="invisible-badge">Yes</span>
-                  <span v-else class="no-badge">No</span>
+                  <span v-if="enemy.invisible" class="invisible-badge">{{ t('EnemyDatabaseView.table.yes') }}</span>
+                  <span v-else class="no-badge">{{ t('EnemyDatabaseView.table.no') }}</span>
                 </td>
                 <td class="col-resistances">
                   <div
@@ -122,7 +119,7 @@
                       {{ resistance }}
                     </span>
                   </div>
-                  <span v-else class="no-resistances">No resistances</span>
+                  <span v-else class="no-resistances">{{ t('EnemyDatabaseView.table.noResistances') }}</span>
                 </td>
               </tr>
             </tbody>
@@ -134,48 +131,43 @@
       <section class="intro-section">
         <div class="container">
           <div class="intro-card">
-            <h2 class="intro-title">📖 How to Use Enemy Database</h2>
+            <h2 class="intro-title">{{ t('EnemyDatabaseView.intro.title') }}</h2>
             <div class="intro-content">
               <p>
-                The Enemy Database provides comprehensive information about all enemies in PokéPath
-                TD. Use this tool to understand enemy stats, resistances, and plan effective counter
-                strategies for optimal gameplay.
+                {{ t('EnemyDatabaseView.intro.p1') }}
               </p>
               <div class="intro-steps">
                 <div class="intro-step">
                   <span class="step-number">1</span>
                   <div class="step-content">
-                    <h4>Browse Enemy Stats</h4>
-                    <p>Review HP, armor, speed, and other key statistics for each enemy type.</p>
+                    <h4>{{ t('EnemyDatabaseView.intro.steps.step1.title') }}</h4>
+                    <p>{{ t('EnemyDatabaseView.intro.steps.step1.desc') }}</p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">2</span>
                   <div class="step-content">
-                    <h4>Check Resistances</h4>
+                    <h4>{{ t('EnemyDatabaseView.intro.steps.step2.title') }}</h4>
                     <p>
-                      Understand which damage types each enemy resists or is weak to for effective
-                      counter planning.
+                      {{ t('EnemyDatabaseView.intro.steps.step2.desc') }}
                     </p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">3</span>
                   <div class="step-content">
-                    <h4>Analyze Threat Levels</h4>
+                    <h4>{{ t('EnemyDatabaseView.intro.steps.step3.title') }}</h4>
                     <p>
-                      Use threat indicators to prioritize which enemies need immediate attention and
-                      stronger counters.
+                      {{ t('EnemyDatabaseView.intro.steps.step3.desc') }}
                     </p>
                   </div>
                 </div>
                 <div class="intro-step">
                   <span class="step-number">4</span>
                   <div class="step-content">
-                    <h4>Plan Counter Strategies</h4>
+                    <h4>{{ t('EnemyDatabaseView.intro.steps.step4.title') }}</h4>
                     <p>
-                      Combine enemy data with our counter recommendations to build effective
-                      defensive teams.
+                      {{ t('EnemyDatabaseView.intro.steps.step4.desc') }}
                     </p>
                   </div>
                 </div>
@@ -189,55 +181,42 @@
       <section class="faq-section">
         <div class="container">
           <div class="faq-card">
-            <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+            <h2 class="faq-title">{{ t('EnemyDatabaseView.faq.title') }}</h2>
             <div class="faq-list">
               <div class="faq-item">
-                <h3 class="faq-question">What do the threat level indicators mean?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q1') }}</h3>
                 <p class="faq-answer">
-                  Threat levels indicate enemy difficulty and priority: ✅ Normal (standard
-                  enemies), ⚔️ Strong (requires attention), ⚡ Elite (high priority targets), 💀
-                  Boss (maximum threat), 🔥 Legendary (ultimate challenges requiring specialized
-                  counters).
+                  {{ t('EnemyDatabaseView.faq.a1') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How do resistances affect damage?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q2') }}</h3>
                 <p class="faq-answer">
-                  Enemies with resistances take reduced damage from certain types. For example, a
-                  Fire-resistant enemy takes less damage from Fire-type attacks. Always check
-                  resistances when selecting counter Pokémon to maximize your damage output.
+                  {{ t('EnemyDatabaseView.faq.a2') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">Why is armor important?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q3') }}</h3>
                 <p class="faq-answer">
-                  Armor reduces physical damage taken by enemies. Higher armor values mean physical
-                  attacks are less effective. Use special attacks or armor-piercing abilities
-                  against heavily armored enemies for better results.
+                  {{ t('EnemyDatabaseView.faq.a3') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How should I use the sorting features?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q4') }}</h3>
                 <p class="faq-answer">
-                  Click column headers to sort enemies by different criteria. Sort by HP to find
-                  tankiest enemies, by threat level to prioritize dangerous foes, or by speed to
-                  identify fast-moving threats that require quick reactions.
+                  {{ t('EnemyDatabaseView.faq.a4') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">What does "No resistances" mean?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q5') }}</h3>
                 <p class="faq-answer">
-                  Some enemies have no specific type resistances, making them vulnerable to all
-                  damage types. This doesn't mean they're weak - they may still have high HP, armor,
-                  or other defensive stats that require appropriate counters.
+                  {{ t('EnemyDatabaseView.faq.a5') }}
                 </p>
               </div>
               <div class="faq-item">
-                <h3 class="faq-question">How often is the enemy database updated?</h3>
+                <h3 class="faq-question">{{ t('EnemyDatabaseView.faq.q6') }}</h3>
                 <p class="faq-answer">
-                  The enemy database is regularly updated with new enemy information as the game
-                  receives updates. We also refine counter strategies based on community feedback
-                  and gameplay data to ensure accuracy and effectiveness.
+                  {{ t('EnemyDatabaseView.faq.a6') }}
                 </p>
               </div>
             </div>
@@ -251,14 +230,25 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
-import enemyData from '../data/enemies.js'
+import { useEnemyData } from '../composables/useEnemyData'
 
 // Sorting
 const sortField = ref('name')
 const sortOrder = ref('asc')
+const { t, locale } = useI18n()
+const { enemyData, loadData } = useEnemyData()
+
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
 
 const sortBy = (field) => {
   if (sortField.value === field) {
@@ -271,7 +261,7 @@ const sortBy = (field) => {
 
 // Sorted enemies
 const sortedEnemies = computed(() => {
-  const enemies = [...enemyData]
+  const enemies = [...enemyData.value]
 
   enemies.sort((a, b) => {
     let aVal = a[sortField.value]
@@ -307,14 +297,27 @@ const formatNumber = (num) => {
   return num.toLocaleString()
 }
 
-// Get threat class for styling
+// Get threat info
+const getThreatInfo = (threatString) => {
+  if (!threatString) return { emoji: '', value: 0, key: 'normal', class: '' }
+  
+  // Normalize string: remove emojis if present and trim
+  const clean = threatString.replace(/✅|⚔️|⚡|💀|🔥/g, '').trim()
+  
+  const map = {
+    'Normal': { emoji: '✅', value: 1, key: 'normal', class: 'threat-normal' },
+    'Strong': { emoji: '⚔️', value: 2, key: 'strong', class: 'threat-strong' },
+    'Elite': { emoji: '⚡', value: 3, key: 'elite', class: 'threat-elite' },
+    'Boss': { emoji: '💀', value: 4, key: 'boss', class: 'threat-boss' },
+    'Legendary': { emoji: '🔥', value: 5, key: 'legendary', class: 'threat-legendary' }
+  }
+  
+  return map[clean] || { emoji: '', value: 0, key: 'normal', class: '' }
+}
+
+// Get threat class for styling (kept for compatibility if needed, but getThreatInfo handles it now)
 const getThreatClass = (threat) => {
-  if (threat.includes('Normal')) return 'threat-normal'
-  if (threat.includes('Strong')) return 'threat-strong'
-  if (threat.includes('Elite')) return 'threat-elite'
-  if (threat.includes('Boss')) return 'threat-boss'
-  if (threat.includes('Legendary')) return 'threat-legendary'
-  return ''
+  return getThreatInfo(threat).class
 }
 </script>
 

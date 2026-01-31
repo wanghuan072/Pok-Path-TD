@@ -2,8 +2,8 @@
   <div class="legal-page page-container">
     <section class="legal-header">
       <div class="container">
-        <h1 class="page-title">Contact Us</h1>
-        <p class="page-date">Last Updated: January 5, 2026</p>
+        <h1 class="page-title">{{ t('ContactUsView.title') }}</h1>
+        <p class="page-date">{{ t('ContactUsView.lastUpdated') }}</p>
       </div>
     </section>
 
@@ -11,48 +11,39 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="legal-text">
-            <h2>Get in Touch</h2>
-            <p>
-              We'd love to hear from you! Whether you have questions, suggestions, feedback, or just want to say hello, please don't hesitate to contact us.
-            </p>
+            <h2>{{ t('ContactUsView.sections.getInTouch.title') }}</h2>
+            <p>{{ t('ContactUsView.sections.getInTouch.content') }}</p>
 
-            <h2>Email</h2>
-            <p>
-              For general inquiries, please email us at: <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>
-            </p>
+            <h2>{{ t('ContactUsView.sections.email.title') }}</h2>
+            <i18n-t keypath="ContactUsView.sections.email.content" tag="p">
+              <template #email>
+                <a href="mailto:wyong@pokepathgame.org">wyong@pokepathgame.org</a>
+              </template>
+            </i18n-t>
 
-            <h2>What We Can Help With</h2>
-            <p>
-              We're here to assist with:
-            </p>
+            <h2>{{ t('ContactUsView.sections.help.title') }}</h2>
+            <p>{{ t('ContactUsView.sections.help.intro') }}</p>
             <ul>
-              <li>Questions about our website or content</li>
-              <li>Suggestions for improvements or new features</li>
-              <li>Reporting errors or outdated information</li>
-              <li>Copyright or legal inquiries</li>
-              <li>Partnership or collaboration opportunities</li>
-              <li>General feedback about PokéPath TD Community</li>
+              <li v-for="(item, key) in tm('ContactUsView.sections.help.items')" :key="key">
+                {{ item }}
+              </li>
             </ul>
 
-            <h2>Response Time</h2>
-            <p>
-              We strive to respond to all inquiries within 2-3 business days. Please be patient as we review and respond to your message.
-            </p>
+            <h2>{{ t('ContactUsView.sections.response.title') }}</h2>
+            <p>{{ t('ContactUsView.sections.response.content') }}</p>
 
-            <h2>Community Contributions</h2>
-            <p>
-              If you'd like to contribute content, corrections, or updates to our website, please contact us with details about your contribution. We appreciate all community support!
-            </p>
+            <h2>{{ t('ContactUsView.sections.contribution.title') }}</h2>
+            <p>{{ t('ContactUsView.sections.contribution.content') }}</p>
 
-            <h2>Privacy</h2>
-            <p>
-              Any information you provide in your correspondence will be kept confidential and used only for the purpose of responding to your inquiry. Please review our <a href="/privacy-policy">Privacy Policy</a> for more information.
-            </p>
+            <h2>{{ t('ContactUsView.sections.privacy.title') }}</h2>
+            <i18n-t keypath="ContactUsView.sections.privacy.content" tag="p">
+              <template #link>
+                <a href="/privacy-policy">Privacy Policy</a>
+              </template>
+            </i18n-t>
 
-            <h2>Thank You</h2>
-            <p>
-              Thank you for your interest in PokéPath TD Community. We look forward to hearing from you!
-            </p>
+            <h2>{{ t('ContactUsView.sections.thankYou.title') }}</h2>
+            <p>{{ t('ContactUsView.sections.thankYou.content') }}</p>
           </div>
         </div>
       </div>
@@ -61,6 +52,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t, tm } = useI18n()
 </script>
 
 <style scoped>

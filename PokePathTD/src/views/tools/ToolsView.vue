@@ -4,36 +4,36 @@
     
     <div class="page-content">
     <!-- Page Header -->
-    <section class="page-header">
+      <section class="page-header">
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">🛠️</span>
-            <span class="badge-text">Utility Tools</span>
+            <span class="badge-text">{{ t('ToolsView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">PokéPath TD Tools - DPS Calculator & Strategy Guides</h1>
+          <h1 class="page-title">{{ t('ToolsView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Access essential PokéPath TD tools including the DPS calculator, team builders, and strategy guides to optimize your gameplay and build winning teams.
+            {{ t('ToolsView.pageSubtitle') }}
           </p>
-      </div>
-    </section>
+        </div>
+      </section>
 
       <div class="container">
         <!-- Tools List -->
         <section class="tools-section">
-        <div class="tools-grid">
+          <div class="tools-grid">
             <a v-for="tool in tools" :key="tool.id" :href="tool.path" class="tool-card">
               <div class="tool-header">
-              <div class="tool-icon">{{ tool.icon }}</div>
+                <div class="tool-icon">{{ tool.icon }}</div>
                 <h3 class="tool-title">{{ tool.title }}</h3>
-            </div>
-            <p class="tool-description">{{ tool.description }}</p>
-            <div class="tool-features">
-              <span v-for="feature in tool.features" :key="feature" class="tool-feature-tag">
-                {{ feature }}
-              </span>
-            </div>
+              </div>
+              <p class="tool-description">{{ tool.description }}</p>
+              <div class="tool-features">
+                <span v-for="feature in tool.features" :key="feature" class="tool-feature-tag">
+                  {{ feature }}
+                </span>
+              </div>
             </a>
-        </div>
+          </div>
         </section>
       </div>
     </div>
@@ -42,39 +42,38 @@
     <section class="intro-section">
       <div class="container">
         <div class="intro-card">
-          <h2 class="intro-title">📖 How to Use PokéPath TD Tools</h2>
+          <h2 class="intro-title">{{ t('ToolsView.intro.title') }}</h2>
           <div class="intro-content">
             <p>
-              The Tools section provides essential utilities to enhance your PokéPath TD gameplay.
-              From damage calculations to strategic planning, these tools help you make informed decisions and optimize your team performance.
+              {{ t('ToolsView.intro.p1') }}
             </p>
             <div class="intro-steps">
               <div class="intro-step">
                 <span class="step-number">1</span>
                 <div class="step-content">
-                  <h4>Choose Your Tool</h4>
-                  <p>Select from available tools like DPS Calculator, Pokémon Categories, Enemy Counter, and Route Strategy guides based on your needs.</p>
+                  <h4>{{ t('ToolsView.intro.steps.step1.title') }}</h4>
+                  <p>{{ t('ToolsView.intro.steps.step1.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">2</span>
                 <div class="step-content">
-                  <h4>Input Your Data</h4>
-                  <p>Enter relevant information such as Pokémon stats, enemy types, or route details to get accurate calculations and recommendations.</p>
+                  <h4>{{ t('ToolsView.intro.steps.step2.title') }}</h4>
+                  <p>{{ t('ToolsView.intro.steps.step2.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">3</span>
                 <div class="step-content">
-                  <h4>Analyze Results</h4>
-                  <p>Review detailed analysis, comparisons, and strategic insights to understand optimal choices for your gameplay style.</p>
+                  <h4>{{ t('ToolsView.intro.steps.step3.title') }}</h4>
+                  <p>{{ t('ToolsView.intro.steps.step3.desc') }}</p>
                 </div>
               </div>
               <div class="intro-step">
                 <span class="step-number">4</span>
                 <div class="step-content">
-                  <h4>Apply in Game</h4>
-                  <p>Use the insights gained from tools to build better teams, counter specific threats, and develop winning strategies.</p>
+                  <h4>{{ t('ToolsView.intro.steps.step4.title') }}</h4>
+                  <p>{{ t('ToolsView.intro.steps.step4.desc') }}</p>
                 </div>
               </div>
             </div>
@@ -87,42 +86,42 @@
     <section class="faq-section">
       <div class="container">
         <div class="faq-card">
-          <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+          <h2 class="faq-title">{{ t('ToolsView.faq.title') }}</h2>
           <div class="faq-list">
             <div class="faq-item">
-              <h3 class="faq-question">What is the DPS Calculator used for?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q1') }}</h3>
               <p class="faq-answer">
-                The DPS Calculator helps you compare Pokémon damage output by calculating base DPS, expected DPS with critical hits, and recharge times. Use it to identify the most efficient damage dealers for your team.
+                {{ t('ToolsView.faq.a1') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How do Pokémon Categories help with team building?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q2') }}</h3>
               <p class="faq-answer">
-                Pokémon Categories organize Pokémon by their tactical roles (AOE, Burst, Support, etc.). This helps you build balanced teams with proper coverage for different situations and enemy types.
+                {{ t('ToolsView.faq.a2') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">What information does the Enemy Counter provide?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q3') }}</h3>
               <p class="faq-answer">
-                The Enemy Counter shows which Pokémon are most effective against specific enemy types. It includes type advantages, recommended counters, and strategic notes for dealing with tough enemies.
+                {{ t('ToolsView.faq.a3') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How accurate are the tool calculations?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q4') }}</h3>
               <p class="faq-answer">
-                Tools use game mechanics and community-tested data for calculations. While highly accurate, results may vary slightly based on game updates, level differences, and specific battle conditions.
+                {{ t('ToolsView.faq.a4') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">Can I use these tools on mobile devices?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q5') }}</h3>
               <p class="faq-answer">
-                Yes! All tools are fully responsive and work on mobile devices, tablets, and desktop computers. The interface adapts to different screen sizes for optimal usability.
+                {{ t('ToolsView.faq.a5') }}
               </p>
             </div>
             <div class="faq-item">
-              <h3 class="faq-question">How often are the tools updated?</h3>
+              <h3 class="faq-question">{{ t('ToolsView.faq.q6') }}</h3>
               <p class="faq-answer">
-                Tools are regularly updated with new Pokémon data, balance changes, and improved calculations. Major game updates may introduce new features or refine existing tool accuracy.
+                {{ t('ToolsView.faq.a6') }}
               </p>
             </div>
           </div>
@@ -135,47 +134,22 @@
 </template>
 
 <script setup>
+import { onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
+import { useToolsData } from '../../composables/useToolsData'
 
-const tools = [
-  {
-    id: 1,
-    icon: '⚡',
-    title: 'DPS Calculator',
-    description:
-      'Calculate and compare Pokémon damage per second. Analyze power, recharge time, and critical hit rate to find the best damage dealers.',
-    path: '/tools/dps-calculator',
-    features: ['Base DPS', 'Expected DPS', 'Compare Pokémon', 'Critical Analysis'],
-  },
-  {
-    id: 2,
-    icon: '📋',
-    title: 'Pokémon Categories',
-    description:
-      'Browse Pokémon by tactical categories. Find specialized Pokémon for status effects, AOE attacks, burst damage, and support roles.',
-    path: '/tools/pokemon-categories',
-    features: ['Status Effects', 'AOE', 'Burst Damage', 'Terrain', 'Support'],
-  },
-  {
-    id: 3,
-    icon: '⚔️',
-    title: 'Enemy Counter',
-    description:
-      'Find the best Pokémon to counter specific enemies. Analyze resistances and get personalized recommendations based on DPS calculations.',
-    path: '/tools/enemy-counter',
-    features: ['Enemy Search', 'Resistance Analysis', 'Counter Recommendations', 'DPS Based'],
-  },
-  {
-    id: 4,
-    icon: '🗺️',
-    title: 'Route Strategy',
-    description:
-      'Optimize your team composition for each map route. Get recommended Pokémon types, terrain advantages, and strategic tips.',
-    path: '/tools/route-strategy',
-    features: ['Route Selection', 'Team Composition', 'Terrain Analysis', 'Strategic Tips'],
-  },
-]
+const { locale, t } = useI18n()
+const { tools, loadData } = useToolsData()
+
+onMounted(() => {
+  loadData()
+})
+
+watch(locale, () => {
+  loadData()
+})
 </script>
 
 <style scoped>

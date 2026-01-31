@@ -9,14 +9,14 @@
           </a>
         </div>
         <ul class="nav-menu" :class="{ active: mobileMenuOpen }">
-          <li><a href="/" class="nav-link" @click="closeMobileMenu">Home</a></li>
-          <li><a href="/all-pokemon" class="nav-link" @click="closeMobileMenu">All Pokemon</a></li>
-          <li><a href="/tier-list" class="nav-link" @click="closeMobileMenu">Tier List</a></li>
-          <li><a href="/enemies" class="nav-link" @click="closeMobileMenu">Enemy Database</a></li>
-          <li><a href="/items" class="nav-link" @click="closeMobileMenu">Items</a></li>
-          <li><a href="/map-router" class="nav-link" @click="closeMobileMenu">Map Router</a></li>
-          <li><a href="/tools" class="nav-link" @click="closeMobileMenu">Tools</a></li>
-          <li><a href="/wiki" class="nav-link" @click="closeMobileMenu">Wiki</a></li>
+          <li><a href="/" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.home') }}</a></li>
+          <li><a href="/all-pokemon" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.allPokemon') }}</a></li>
+          <li><a href="/tier-list" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tierList') }}</a></li>
+          <li><a href="/enemies" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.enemies') }}</a></li>
+          <li><a href="/items" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.items') }}</a></li>
+          <li><a href="/map-router" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.mapRouter') }}</a></li>
+          <li><a href="/tools" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tools') }}</a></li>
+          <li><a href="/wiki" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.wiki') }}</a></li>
         </ul>
         <button class="nav-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
           <span></span>
@@ -30,7 +30,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const mobileMenuOpen = ref(false)
 
 const toggleMobileMenu = () => {

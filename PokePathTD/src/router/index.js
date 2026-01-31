@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import i18n from '../i18n'
 import HomeView from '../views/HomeView.vue'
 import AllPokemonView from '../views/AllPokemonView.vue'
 import RoutesView from '../views/RoutesView.vue'
@@ -30,9 +31,9 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'PokéPath TD Guide & Wiki | Best Strategies, Towers & Maps',
-        description: 'The ultimate PokéPath TD resource. Find comprehensive guides, tier lists, DPS calculators, and winning strategies for every map and enemy in the latest update.',
-        keywords: 'PokéPath TD, PokéPath TD Wiki, PokéPath TD Strategy, Pokemon Tower Defense Guide',
+        title: 'Meta.home.title',
+        description: 'Meta.home.description',
+        keywords: 'Meta.home.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -41,9 +42,9 @@ const router = createRouter({
       name: 'all-pokemon',
       component: AllPokemonView,
       meta: {
-        title: 'All Pokemon Database & Stats List | PokéPath TD Guide',
-        description: 'Browse the complete PokéPath TD Pokedex. Check base stats, hidden abilities, and evolution paths for every tower to optimize your defense and win every battle.',
-        keywords: 'Pokémon Database, PokéPath TD Pokémon, Pokémon Stats, Evolution Guide',
+        title: 'Meta.allPokemon.title',
+        description: 'Meta.allPokemon.description',
+        keywords: 'Meta.allPokemon.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -52,9 +53,9 @@ const router = createRouter({
       name: 'map-router',
       component: RoutesView,
       meta: {
-        title: 'Route Strategies - Map Guide | PokéPath TD Strategy Guide',
-        description: 'Detailed route strategies for all PokéPath TD maps. Terrain analysis, recommended teams, and optimal gameplay tactics.',
-        keywords: 'Route Strategy, Map Guide, Terrain Analysis, Team Composition',
+        title: 'Meta.mapRouter.title',
+        description: 'Meta.mapRouter.description',
+        keywords: 'Meta.mapRouter.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -63,9 +64,9 @@ const router = createRouter({
       name: 'route-detail',
       component: RouteDetailView,
       meta: {
-        title: 'Route Detail - PokéPath TD Strategy Guide',
-        description: 'Detailed terrain analysis, team recommendations, and strategies for this route.',
-        keywords: 'Route Detail, Terrain Analysis, Team Composition, Strategy Guide',
+        title: 'Meta.routeDetail.title',
+        description: 'Meta.routeDetail.description',
+        keywords: 'Meta.routeDetail.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -74,9 +75,9 @@ const router = createRouter({
       name: 'enemies',
       component: EnemyDatabaseView,
       meta: {
-        title: 'Enemy Database & Boss Stats Guide | PokéPath TD Wiki',
-        description: 'The complete guide to PokéPath TD enemies. Check boss HP, speed, and immunities to build the perfect defense for every wave and challenging level in the game.',
-        keywords: 'Enemy Database, Counter Strategies, Enemy Stats, Boss Fights',
+        title: 'Meta.enemies.title',
+        description: 'Meta.enemies.description',
+        keywords: 'Meta.enemies.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -85,9 +86,9 @@ const router = createRouter({
       name: 'items',
       component: ItemsView,
       meta: {
-        title: 'Items Database & Held Items Guide | PokéPath TD Wiki',
-        description: 'Complete PokéPath TD items database. Explore all held items, their effects, requirements, and strategic usage guides for optimal team building.',
-        keywords: 'Items Database, Held Items, Item Effects, Equipment Guide, PokéPath TD Items',
+        title: 'Meta.items.title',
+        description: 'Meta.items.description',
+        keywords: 'Meta.items.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -96,9 +97,9 @@ const router = createRouter({
       name: 'tools',
       component: ToolsView,
       meta: {
-        title: 'PokéPath TD Strategy Tools | DPS Calculator & Counters',
-        description: 'Access all PokéPath TD utility tools in one place. Use our professional DPS calculators, enemy counter guides, and team builders to gain a competitive edge.',
-        keywords: 'DPS Calculator, Team Builder, Strategy Tools, Game Calculators',
+        title: 'Meta.tools.title',
+        description: 'Meta.tools.description',
+        keywords: 'Meta.tools.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -107,9 +108,9 @@ const router = createRouter({
       name: 'dps-calculator',
       component: DpsCalculatorView,
       meta: {
-        title: 'DPS Calculator & Damage Optimizer Tool | PokéPath TD',
-        description: 'Accurately calculate tower damage with our PokéPath TD DPS calculator. Compare levels, natures, and items to find the most efficient damage setup for your team.',
-        keywords: 'DPS Calculator, Damage Calculation, Pokémon Stats, Team Building',
+        title: 'Meta.dpsCalculator.title',
+        description: 'Meta.dpsCalculator.description',
+        keywords: 'Meta.dpsCalculator.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -118,9 +119,9 @@ const router = createRouter({
       name: 'pokemon-categories',
       component: PokemonCategoriesView,
       meta: {
-        title: 'Pokemon Categories & Type Chart | PokéPath TD Database',
-        description: 'Explore all PokéPath TD Pokemon categories. Filter towers by element types, rarities, and special roles like Shiny or Legendary to build your perfect team.',
-        keywords: 'Pokémon Categories, Tactical Guide, Status Effects, Damage Types',
+        title: 'Meta.pokemonCategories.title',
+        description: 'Meta.pokemonCategories.description',
+        keywords: 'Meta.pokemonCategories.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -129,9 +130,9 @@ const router = createRouter({
       name: 'enemy-counter',
       component: EnemyCounterView,
       meta: {
-        title: 'Enemy Counter Tool & Matchup Guide | PokéPath TD',
-        description: 'Find the best Pokemon to defeat any boss. Use our PokéPath TD counter tool to beat tough waves and legendary enemies with the perfect elemental type matchups.',
-        keywords: 'Enemy Counter, Best Matchups, Counter Strategies, Enemy Analysis',
+        title: 'Meta.enemyCounter.title',
+        description: 'Meta.enemyCounter.description',
+        keywords: 'Meta.enemyCounter.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -140,9 +141,9 @@ const router = createRouter({
       name: 'route-strategy',
       component: RouteStrategyView,
       meta: {
-        title: 'Route Strategy & Map Walkthroughs | PokéPath TD Guide',
-        description: 'Master every wave with our PokéPath TD route strategies. Find expert tower placement guides, tactics, and walkthroughs to conquer even the hardest maps.',
-        keywords: 'Route Strategy, Advanced Tactics, Terrain Analysis, Enemy Positioning',
+        title: 'Meta.routeStrategy.title',
+        description: 'Meta.routeStrategy.description',
+        keywords: 'Meta.routeStrategy.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -151,9 +152,9 @@ const router = createRouter({
       name: 'tier-list',
       component: TierListView,
       meta: {
-        title: 'Best Pokemon Tier List (2026 Meta) | PokéPath TD Rank',
-        description: 'Discover the best towers in PokéPath TD today. Our updated 2026 tier list ranks every Pokemon by DPS and utility to help you build the ultimate winning team.',
-        keywords: 'PokéPath TD tier list, best pokemon, tower rankings, meta pokemon 2026, PokéPath ranking',
+        title: 'Meta.tierList.title',
+        description: 'Meta.tierList.description',
+        keywords: 'Meta.tierList.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -162,9 +163,9 @@ const router = createRouter({
       name: 'wiki',
       component: WikiView,
       meta: {
-        title: 'PokéPath TD Wiki - Complete Game Guide & Tips',
-        description: 'Your ultimate PokéPath TD wiki resource, featuring comprehensive game mechanics, advanced strategies, and expert tips to master every aspect of PokéPath TD gameplay.',
-        keywords: 'PokéPath TD Wiki, Game Guide, Strategy Guide, Tips and Tricks, Game Mechanics',
+        title: 'Meta.wiki.title',
+        description: 'Meta.wiki.description',
+        keywords: 'Meta.wiki.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -173,9 +174,9 @@ const router = createRouter({
       name: 'wiki-detail',
       component: WikiDetailView,
       meta: {
-        title: 'Wiki Article - PokéPath TD Guide',
-        description: 'Detailed PokéPath TD wiki article with comprehensive guides and strategies.',
-        keywords: 'Wiki Article, Game Guide, Strategy Guide, PokéPath TD',
+        title: 'Meta.wikiDetail.title',
+        description: 'Meta.wikiDetail.description',
+        keywords: 'Meta.wikiDetail.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -184,9 +185,9 @@ const router = createRouter({
       name: 'game-detail',
       component: GameDetailView,
       meta: {
-        title: 'Play PokéPath TD - Game Version',
-        description: 'Play PokéPath TD tower defense game. Choose your version and start defending against waves of enemies.',
-        keywords: 'PokéPath TD, Play Game, Tower Defense, Pokemon Game',
+        title: 'Meta.gameDetail.title',
+        description: 'Meta.gameDetail.description',
+        keywords: 'Meta.gameDetail.keywords',
         image: '/images/logo.webp'
       }
     },
@@ -196,9 +197,9 @@ const router = createRouter({
       name: 'about-us',
       component: AboutUsView,
       meta: {
-        title: 'About Us | PokéPath TD Community',
-        description: 'Learn about PokéPath TD Community, our mission, and how we help players master the game.',
-        keywords: 'About Us, PokéPath TD Community, Mission, Fan Site'
+        title: 'Meta.aboutUs.title',
+        description: 'Meta.aboutUs.description',
+        keywords: 'Meta.aboutUs.keywords'
       }
     },
     {
@@ -206,9 +207,9 @@ const router = createRouter({
       name: 'contact-us',
       component: ContactUsView,
       meta: {
-        title: 'Contact Us | PokéPath TD Community',
-        description: 'Get in touch with PokéPath TD Community. Contact us for questions, suggestions, or feedback.',
-        keywords: 'Contact Us, Support, Feedback, Inquiries'
+        title: 'Meta.contactUs.title',
+        description: 'Meta.contactUs.description',
+        keywords: 'Meta.contactUs.keywords'
       }
     },
     {
@@ -216,9 +217,9 @@ const router = createRouter({
       name: 'copyright',
       component: CopyrightView,
       meta: {
-        title: 'Copyright | PokéPath TD Community',
-        description: 'Copyright information and intellectual property rights for PokéPath TD Community.',
-        keywords: 'Copyright, Intellectual Property, DMCA, Fair Use'
+        title: 'Meta.copyright.title',
+        description: 'Meta.copyright.description',
+        keywords: 'Meta.copyright.keywords'
       }
     },
     {
@@ -226,9 +227,9 @@ const router = createRouter({
       name: 'privacy-policy',
       component: PrivacyPolicyView,
       meta: {
-        title: 'Privacy Policy | PokéPath TD Community',
-        description: 'Privacy Policy for PokéPath TD Community. Learn how we protect your personal information.',
-        keywords: 'Privacy Policy, Data Protection, Privacy Rights'
+        title: 'Meta.privacyPolicy.title',
+        description: 'Meta.privacyPolicy.description',
+        keywords: 'Meta.privacyPolicy.keywords'
       }
     },
     {
@@ -236,9 +237,9 @@ const router = createRouter({
       name: 'terms-of-service',
       component: TermsOfServiceView,
       meta: {
-        title: 'Terms of Service | PokéPath TD Community',
-        description: 'Terms of Service for PokéPath TD Community. Read our terms and conditions.',
-        keywords: 'Terms of Service, Terms and Conditions, User Agreement'
+        title: 'Meta.termsOfService.title',
+        description: 'Meta.termsOfService.description',
+        keywords: 'Meta.termsOfService.keywords'
       }
     }
   ],
@@ -246,7 +247,16 @@ const router = createRouter({
 
 // Set page title based on route meta
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'PokéPath TD Strategy Guide'
+  const title = to.meta.title
+  if (title) {
+    if (title.startsWith('Meta.')) {
+      document.title = i18n.global.t(title)
+    } else {
+      document.title = title
+    }
+  } else {
+    document.title = 'PokéPath TD Strategy Guide'
+  }
   next()
 })
 

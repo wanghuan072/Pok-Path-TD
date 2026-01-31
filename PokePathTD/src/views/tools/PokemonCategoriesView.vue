@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">📋</span>
-            <span class="badge-text">Pokémon Categories</span>
+            <span class="badge-text">{{ t('PokemonCategoriesView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">pokepath td best units</h1>
+          <h1 class="page-title">{{ t('PokemonCategoriesView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Explore PokéPath TD Pokémon categories by tactical roles, including status effects, damage types, and optimal usage for building the best teams.
+            {{ t('PokemonCategoriesView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -22,7 +22,7 @@
         <section class="filter-section">
           <!-- Main Categories Filter -->
           <div class="filter-group">
-            <h3 class="filter-group-title">MAIN CATEGORIES</h3>
+            <h3 class="filter-group-title">{{ t('PokemonCategoriesView.filters.mainCategories') }}</h3>
             <div class="filter-buttons">
               <button
                 v-for="category in categories"
@@ -90,14 +90,14 @@
                 <table class="pokemon-table">
                   <thead>
                     <tr>
-                      <th class="col-image">Image</th>
-                      <th class="col-name">Level 100 Name</th>
-                      <th class="col-power">Power</th>
-                      <th class="col-recharge">Interval</th>
-                      <th class="col-range">Range</th>
-                      <th class="col-shape">Shape</th>
-                      <th class="col-ability">Passive Skill / Description</th>
-                      <th class="col-desc">Special Ability Summary</th>
+                      <th class="col-image">{{ t('PokemonCategoriesView.table.image') }}</th>
+                      <th class="col-name">{{ t('PokemonCategoriesView.table.name') }}</th>
+                      <th class="col-power">{{ t('PokemonCategoriesView.table.power') }}</th>
+                      <th class="col-recharge">{{ t('PokemonCategoriesView.table.interval') }}</th>
+                      <th class="col-range">{{ t('PokemonCategoriesView.table.range') }}</th>
+                      <th class="col-shape">{{ t('PokemonCategoriesView.table.shape') }}</th>
+                      <th class="col-ability">{{ t('PokemonCategoriesView.table.passive') }}</th>
+                      <th class="col-desc">{{ t('PokemonCategoriesView.table.special') }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -243,20 +243,37 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
-import categoriesData from '../../data/pokemonCategories.js'
-import pokemonData from '../../data/pokemon.js'
+import { usePokemonCategoriesData } from '../../composables/usePokemonCategoriesData'
+import { usePokemonData } from '../../composables/usePokemonData'
+
+const { locale, t } = useI18n()
+const { categoriesData, loadData: loadCategories } = usePokemonCategoriesData()
+const { pokemonData, loadData: loadPokemon } = usePokemonData()
 
 // Selected category
-const selectedCategoryId = ref(categoriesData[0].id)
+const selectedCategoryId = ref(null)
 // Selected sub category
 const selectedSubCategoryId = ref(null)
 
+onMounted(async () => {
+  await Promise.all([loadCategories(), loadPokemon()])
+  if (categoriesData.value.length > 0) {
+    selectedCategoryId.value = categoriesData.value[0].id
+  }
+})
+
+watch(locale, () => {
+  loadCategories()
+  loadPokemon()
+})
+
 // Get selected category
 const selectedCategory = computed(() => {
-  return categoriesData.find((cat) => cat.id === selectedCategoryId.value)
+  return categoriesData.value.find((cat) => cat.id === selectedCategoryId.value)
 })
 
 // Get selected sub category
@@ -282,7 +299,7 @@ const displayedSubCategories = computed(() => {
 })
 
 // Get all categories
-const categories = computed(() => categoriesData)
+const categories = computed(() => categoriesData.value)
 
 // Select category function
 const selectCategory = (categoryId) => {
@@ -293,11 +310,13 @@ const selectCategory = (categoryId) => {
 
 // Get Pokemon image by name
 const getPokemonImage = (name) => {
+  if (!pokemonData.value || pokemonData.value.length === 0) return null
+  
   // Extract base name (remove any brackets or extra text)
   const baseName = name.toUpperCase().split(' ')[0].trim()
 
   // Try to find by exact base name match (e.g., "CHARIZARD" matches "CHARIZARD [100]")
-  let pokemon = pokemonData.find((p) => {
+  let pokemon = pokemonData.value.find((p) => {
     const pokemonBaseName = p.name.toUpperCase().split(' ')[0].trim()
     return pokemonBaseName === baseName
   })
@@ -306,7 +325,7 @@ const getPokemonImage = (name) => {
   if (!pokemon) {
     const categoryName = name.toLowerCase()
     // Find highest level of this category
-    const categoryPokemon = pokemonData
+    const categoryPokemon = pokemonData.value
       .filter((p) => p.category === categoryName)
       .sort((a, b) => {
         const levelA = parseInt(a.name.match(/\[(\d+)\]/)?.[1] || '0')
@@ -318,12 +337,12 @@ const getPokemonImage = (name) => {
 
   // If still not found, try partial match in name
   if (!pokemon) {
-    pokemon = pokemonData.find((p) => p.name.toUpperCase().includes(baseName))
+    pokemon = pokemonData.value.find((p) => p.name.toUpperCase().includes(baseName))
   }
 
   // Return highest level version if multiple found
   if (pokemon) {
-    const allMatches = pokemonData.filter((p) => {
+    const allMatches = pokemonData.value.filter((p) => {
       const pokemonBaseName = p.name.toUpperCase().split(' ')[0].trim()
       return pokemonBaseName === baseName
     })

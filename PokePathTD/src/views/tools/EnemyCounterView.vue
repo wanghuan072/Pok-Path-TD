@@ -8,11 +8,11 @@
         <div class="page-header-content">
           <div class="page-header-badge">
             <span class="badge-icon">⚔️</span>
-            <span class="badge-text">Enemy Counter</span>
+            <span class="badge-text">{{ t('EnemyCounterView.pageBadge') }}</span>
           </div>
-          <h1 class="page-title">Enemy Counter Guide</h1>
+          <h1 class="page-title">{{ t('EnemyCounterView.pageTitle') }}</h1>
           <p class="page-subtitle">
-            Discover optimal PokéPath TD enemy counters with detailed analysis of resistances, stats, and recommended Pokémon matchups for strategic advantage.
+            {{ t('EnemyCounterView.pageSubtitle') }}
           </p>
         </div>
       </section>
@@ -94,7 +94,7 @@
                   <div class="recommendations-header">
                     <h3 class="recommendations-title">
                       <span class="title-icon">⭐</span>
-                      Recommended Pokémon
+                      {{ t('EnemyCounterView.recommendations.title') }}
                     </h3>
                   </div>
                   <div class="pokemon-grid">
@@ -269,21 +269,35 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
-import enemyData from '../../data/enemies.js'
-import pokemonData from '../../data/pokemon.js'
+import { useEnemyData } from '../../composables/useEnemyData'
+import { usePokemonData } from '../../composables/usePokemonData'
+
+const { locale, t } = useI18n()
+const { enemyData, loadData: loadEnemies } = useEnemyData()
+const { pokemonData, loadData: loadPokemon } = usePokemonData()
 
 const selectedEnemy = ref(null)
 const enemySearchQuery = ref('')
 
+onMounted(async () => {
+  await Promise.all([loadEnemies(), loadPokemon()])
+})
+
+watch(locale, () => {
+  loadEnemies()
+  loadPokemon()
+})
+
 const recommendedPokemon = computed(() => {
-  if (!selectedEnemy.value) return []
+  if (!selectedEnemy.value || !pokemonData.value) return []
   
   // Get highest level Pokémon from each category
   const highestLevelPokemon = {}
-  pokemonData.forEach(pokemon => {
+  pokemonData.value.forEach(pokemon => {
     const category = pokemon.category
     if (!highestLevelPokemon[category]) {
       highestLevelPokemon[category] = pokemon

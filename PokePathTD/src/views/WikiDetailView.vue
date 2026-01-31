@@ -62,31 +62,31 @@
 
             <!-- Quick Navigation -->
             <section class="sidebar-section">
-              <h2 class="sidebar-title">Quick Navigation</h2>
+              <h2 class="sidebar-title">{{ t('WikiDetailView.sidebar.quickNavigation') }}</h2>
               <div class="sidebar-links">
                 <a href="/wiki" class="sidebar-link">
                   <span class="sidebar-link-icon">📚</span>
-                  <span class="sidebar-link-text">All Wiki Articles</span>
+                  <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allWiki') }}</span>
                   <span class="sidebar-link-arrow">→</span>
                 </a>
                 <a href="/all-pokemon" class="sidebar-link">
                   <span class="sidebar-link-icon">⚔️</span>
-                  <span class="sidebar-link-text">All Pokémon Database</span>
+                  <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allPokemon') }}</span>
                   <span class="sidebar-link-arrow">→</span>
                 </a>
                 <a href="/map-router" class="sidebar-link">
                   <span class="sidebar-link-icon">🗺️</span>
-                  <span class="sidebar-link-text">Route Strategies</span>
+                  <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.routeStrategies') }}</span>
                   <span class="sidebar-link-arrow">→</span>
                 </a>
                 <a href="/tools" class="sidebar-link">
                   <span class="sidebar-link-icon">🛠️</span>
-                  <span class="sidebar-link-text">Strategy Tools</span>
+                  <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.strategyTools') }}</span>
                   <span class="sidebar-link-arrow">→</span>
                 </a>
                 <a href="/tier-list" class="sidebar-link">
                   <span class="sidebar-link-icon">⭐</span>
-                  <span class="sidebar-link-text">Tier List</span>
+                  <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.tierList') }}</span>
                   <span class="sidebar-link-arrow">→</span>
                 </a>
               </div>
@@ -103,13 +103,17 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import { useSEO } from '../seo/composables.js'
-import wikiData from '../data/wiki.js'
+import { useWikiData } from '../composables/useWikiData'
 
 const route = useRoute()
+const { t, locale } = useI18n()
+const { wikiData, loadData } = useWikiData()
 const article = ref(null)
+const { setSEO } = useSEO()
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -120,15 +124,19 @@ const formatDate = (dateString) => {
   })
 }
 
-const loadArticle = () => {
+const loadArticle = async () => {
+  if (wikiData.value.length === 0) {
+    await loadData()
+  }
+  
   const addressBar = route.params.addressBar
-  const found = wikiData.find(item => item.addressBar === addressBar)
+  const found = wikiData.value.find(item => item.addressBar === addressBar)
   
   if (found) {
     article.value = found
     
     // Set SEO
-    useSEO({
+    setSEO({
       title: found.seo?.title || found.title,
       description: found.seo?.description || found.description,
       keywords: found.seo?.keywords || '',
@@ -142,6 +150,11 @@ onMounted(() => {
 })
 
 watch(() => route.params.addressBar, () => {
+  loadArticle()
+})
+
+watch(locale, async () => {
+  await loadData()
   loadArticle()
 })
 </script>

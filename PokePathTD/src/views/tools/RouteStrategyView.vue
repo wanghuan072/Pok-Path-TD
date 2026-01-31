@@ -25,7 +25,7 @@
             <div class="route-list-header">
               <h3 class="section-heading">
                 <span class="heading-icon">🗺️</span>
-                Route List
+                {{ t('RouteStrategyView.sections.routeList') }}
               </h3>
             </div>
             <div class="route-list-grid">
@@ -303,28 +303,45 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
-import { stages as routesData, difficultyColors } from '../../data/routes.js'
+import { useRoutesData } from '../../composables/useRoutesData'
 
 const route = useRoute()
+const { locale, t } = useI18n()
+const { routesData, loadData } = useRoutesData()
+
 const selectedRouteId = ref('')
 
-const routes = computed(() => routesData)
+const difficultyColors = {
+  'Easy': '#5cb85c',
+  'Medium': '#f0ad4e',
+  'Hard': '#d9534f',
+  'Very Hard': '#8b0000',
+  'Extreme': '#4a148c'
+}
+
+const routes = computed(() => routesData.value)
 
 const selectedRoute = computed(() => {
   if (!selectedRouteId.value) return null
-  return routesData.find(r => r.id === selectedRouteId.value)
+  return routesData.value.find(r => r.id === selectedRouteId.value)
 })
 
 // Auto-select route from query parameter
 onMounted(() => {
+  loadData()
   const routeParam = route.query.route
   if (routeParam) {
     selectedRouteId.value = routeParam
   }
+})
+
+watch(locale, () => {
+  loadData()
 })
 </script>
 
