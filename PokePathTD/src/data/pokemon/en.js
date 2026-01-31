@@ -261,38 +261,23 @@ export default [
   {
     id: 13, 
     name: 'Grumpig',
-    level: 32,
+    level: 100,
     category: 'Frisk',
     imageUrl: '/images/pokemon/pokemon-11.png',
     imageAlt: 'Grumpig-img',
     ability: 'Can hit invisible enemies',
     property: {
-      power: 268,
-      recharge: 1.44,
+      power: 690,
+      recharge: 1.10,
       range: 140,
-      critical: 0.03,
+      critical: 3,
     },
     state: {
       shape: 'Circle',
       acquisition: 'Evolution',
       target: 'Single Target',
-      lv: '3,573,258'
+      lv: '3,580,237'
     },
-  },
-  {
-    id: 'Grumpig-100',
-    name: 'Grumpig [100]',
-    category: 'spoink',
-    imageUrl: '/images/pokemon/pokemon-11.png',
-    imageAlt: 'Grumpig-img',
-    power: 690,
-    recharge: 1.10,
-    critical: 0.03,
-    range: 140,
-    shape: 'Circle',
-    terrain: ['Field', 'Grass', 'Mountain'],
-    target: 'Invisible',
-    ability: 'Can hit invisible enemies'
   },
   // 5
   {
