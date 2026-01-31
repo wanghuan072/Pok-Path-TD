@@ -1,8 +1,3 @@
-// Route/Stage Data for PokéPath TD
-// 每个地图有100关，每关有不同的小怪（不需要全写上）
-// 这里只展示地图的基本信息
-
-// 关卡数据结构：每个地图是一个大关卡，包含100个波次
 export const stages = [
   {
     id: 'how-to-beat-route-1-1-articuno',
@@ -1640,12 +1635,430 @@ export const stages = [
         <p>Deploy Level 100 Meta Pokémon. For waves 1-99, use Grass types (Maractus, Sceptile, Sunflora) and Excadrill. For Wave 100, swap to Gengar, Ditto, Dewgong, and Corsola.</p>
       </div>
     `,
+  },
+
+  {
+    id: 'how-to-beat-route-1-4-regigigas-wave-100-guide',
+    routeNumber: '1-4',
+    name: 'PokéPath TD Route 1-4 Guide: Beating Regigigas (The Swarm)',
+    mapImage: '/images/map-route/1-4.png',
+    stars: 650,
+    starsSecondary: 0,
+    difficulty: 'Very Hard',
+    difficultyLevel: 4,
+    terrain: ['Field', 'Grass', 'Forest'],
+    description: 'The "Heroic" version of Route 1. Features dual spawn points and massive swarms of Normal/Flying types. Boss Regigigas requires massive DPS.',
+    totalWaves: 100,
+    recommendedTypes: ['Fighting', 'Electric', 'Rock', 'Fire'],
+    recommendedPokemon: ['Charizard', 'Raichu', 'Machamp', 'Golem', 'Lucario', 'Zapdos', 'Vileplume', 'Typhlosion'],
+    strategies: ['AOE Spam', 'Dual Lane Defense', 'Rocky Helmet Meta'],
+    playstyle: 'Aggressive',
+    tips: [
+      'Equip Rocky Helmet on your tanks (Golem/Snorlax) - swarms will kill themselves on contact',
+      'Raichu is MVP for Flying-type swarms due to Chain Lightning passive',
+      'Do not use single-target Snipers (like Inteleon); you will get overwhelmed by numbers',
+      'Boss Regigigas has "Slow Start" - he moves slowly for 10 seconds then sprints. Kill him fast!',
+      'Use Vileplume/Butterfree at the path convergence point to sleep/stun the swarm',
+      'Fighting types like Machamp deal 2x damage to 90% of the enemies here'
+    ],
+    teamComposition: {
+      early: ['Charmeleon', 'Pikachu', 'Geodude'],
+      mid: ['Charizard', 'Raichu', 'Golem', 'Machoke'],
+      late: ['Charizard (Y)', 'Raichu', 'Machamp', 'Lucario', 'Zapdos', 'Vileplume']
+    },
+    terrainAnalysis: {
+      roads: [
+        { description: 'Dual spawn points merging into one wide path', length: 'Medium', chokepoints: 3 },
+        { description: 'Open fields with little natural blocking', length: 'Short', chokepoints: 1 }
+      ],
+      water: [
+        { description: 'Small ponds near spawn A', type: 'Shallow Water', strategicValue: 'Low', benefits: ['None significant'] }
+      ],
+      mountains: [
+        { description: 'No high ground modifiers', height: 'None', strategicValue: 'Low', benefits: ['None'] }
+      ],
+      grass: [
+        { description: 'Tall Grass patches covering 70% of map', coverage: 'Very High', benefits: ['Grass-type gain Stealth (Invisible to enemies)'] },
+        { description: 'Dense Thicket at convergence', coverage: 'Medium', benefits: ['Slows enemies by 15%'] }
+      ],
+      chokepoints: [
+        { location: 'The Convergence Point', description: 'Where Path A and Path B meet. Best spot for AOE.', priority: 'Very High' },
+        { location: 'End of the Line', description: 'Straight path before the base. Last stand for fighting types.', priority: 'High' }
+      ]
+    },
     seo: {
-      title: '',
-      description: '',
-      keywords: ''
-    }
-  }
+      title: 'PokéPath TD Route 1-4 Guide: Regigigas & Swarm Strategy',
+      description: 'Route 1-4 features massive swarms of Pidgeots and Raticates. Learn how to counter the "Swarm" mechanic and defeat the Regigigas Boss using Rocky Helmets.',
+      keywords: 'pokepathtd route 1-4, beat regigigas pokepathtd, route 1-4 swarm guide, best aoe pokemon, rocky helmet strategy'
+    },
+    detailsHtml: `
+      <div class="route-guide">
+        <p>Route 1-4 is the first of the "Advanced Maps" added in version 1.4.1. Do not let the "Route 1" name fool you; this is a brutal test of your Crowd Control and Area of Effect (AOE) damage.</p>
+        <p>Unlike other maps that require precision, this map requires raw destruction. You will face <strong>Waves of 50+ enemies</strong> at once. If your kill speed is too slow, your game might lag before you even lose.</p>
+        
+        <h3>🛡️ Boss Analysis: Regigigas</h3>
+        <ul>
+          <li><strong>HP:</strong> Massive (Millions). A pure damage sponge.</li>
+          <li><strong>Ability: Slow Start.</strong> Moves at 50% speed for the first 10 seconds of combat, then doubles movement speed and ignores slow effects.</li>
+          <li><strong>Weaknesses:</strong>
+            <ul>
+              <li>Fighting: (Machamp / Lucario / Conkeldurr). <strong>2x Damage</strong>.</li>
+              <li>Percent Damage: (Curse / Leech Seed).</li>
+            </ul>
+          </li>
+          <li><strong>Threat:</strong> He doesn't attack towers, he just walks. If he speeds up, he is nearly unstoppable.</li>
+        </ul>
+        
+        <h3>🏆 The "Rocky Helmet" & AOE Strategy</h3>
+        <p>Because of the "Swarm" mechanic (High count, Low HP enemies), single-target towers are useless here. You need items and units that hit multiple targets.</p>
+        
+        <h4>1. The MVP: Raichu (Chain Lightning)</h4>
+        <ul>
+          <li><strong>Role:</strong> Anti-Air / Swarm Clear.</li>
+          <li><strong>Why it wins:</strong> Route 1-4 is filled with Flying types (Pidgeot/Fearow). Raichu's attacks bounce to nearby enemies.</li>
+          <li><strong>Item:</strong> <em>Choice Specs</em> (Maximum Special Attack) or <em>Magnet</em>.</li>
+        </ul>
+        
+        <h4>2. The Tank: Golem / Snorlax</h4>
+        <ul>
+          <li><strong>Role:</strong> Physical Wall.</li>
+          <li><strong>Strategy:</strong> Place Golem at the front. The enemies here are mostly Normal type physical attackers (Raticate, Tauros).</li>
+          <li><strong>Key Item:</strong> <strong>Rocky Helmet</strong>. Every time an enemy swarm bites your tank, they take damage. This passive damage kills hundreds of small rats without you doing anything.</li>
+        </ul>
+        
+        <h4>3. The Boss Killer: Machamp</h4>
+        <ul>
+          <li><strong>Role:</strong> Single Target Nuke.</li>
+          <li><strong>Strategy:</strong> While Raichu clears the small mobs, Machamp must focus solely on the Elite mobs and Regigigas.</li>
+          <li><strong>Placement:</strong> Place him at the "Convergence Point" where both paths meet, ensuring he never stops punching.</li>
+        </ul>
+        
+        <h3>📝 Step-by-Step Walkthrough</h3>
+        <ol>
+          <li><strong>Waves 1-30:</strong> Use <strong>Charmeleon</strong> or <strong>Pikachu</strong>. Do not evolve them yet if you need the money for placement. Cover both spawn points.</li>
+          <li><strong>Waves 31-60:</strong> The Flying Swarms begin. Evolve into <strong>Raichu</strong> immediately. Place a <strong>Vileplume</strong> at the center to slow down the rush.</li>
+          <li><strong>Waves 61-90:</strong> Elites (Tauros/Kangaskhan) appear. Deploy <strong>Machamp</strong> equipped with a <em>Black Belt</em> or <em>Muscle Band</em>.</li>
+          <li><strong>Wave 100 (Regigigas):</strong> 
+            <ul>
+              <li>Pause the game.</li>
+              <li>Ensure all your Fighting types are grouped at the start of the path.</li>
+              <li><strong>Focus Fire:</strong> Use the "Target Priority: Strongest" setting on your Machamp to ignore the minions and hit the Boss.</li>
+              <li>Burst him down during his "Slow Start" phase.</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <h3>🗺️ Terrain Analysis</h3>
+        <p>The map features two distinct spawn points that merge into a single, wide avenue. This "Y" shape defines your strategy.</p>
+        
+        <h4>The Dual Spawns</h4>
+        <ul>
+          <li><strong>North Spawn:</strong> Mostly Flying types. Needs Electric defense.</li>
+          <li><strong>West Spawn:</strong> Mostly Ground/Normal types (Rattata/Sandshrew). Needs Grass/Fighting defense.</li>
+        </ul>
+        
+        <h4>The Convergence (Chokepoint)</h4>
+        <ul>
+          <li><strong>Location:</strong> Center of the map.</li>
+          <li><strong>Strategic Value:</strong> This is the only place where AOE towers can hit enemies from BOTH spawn points simultaneously. Your most expensive towers (Charizard/Typhlosion) should go here.</li>
+        </ul>
+        
+        <h4>Grass & Thickets</h4>
+        <ul>
+          <li><strong>Tall Grass:</strong> Covers most of the map. Grass-type Pokemon placed here gain "Stealth," meaning ranged enemies cannot shoot back at them. Great for <strong>Vileplume</strong> or <strong>Venusaur</strong>.</li>
+        </ul>
+        
+        <h3>⚔️ Team Composition Recommendations</h3>
+        <h4>The "Electric/Fighting" Core</h4>
+        <p>Unlike other maps that favor Water or Fire, Route 1-4 is dominated by the Normal/Flying typing of the early game, but scaled to Level 100.</p>
+        <ul>
+          <li><strong>Raichu / Zapdos:</strong> Essential for 50% of the waves.</li>
+          <li><strong>Machamp / Lucario:</strong> Essential for the other 50% and the Boss.</li>
+          <li><strong>Support:</strong> Vileplume (Stun Spore is better than Sleep here due to enemy volume).</li>
+        </ul>
+      </div>
+    `
+},
+
+{
+    id: 'how-to-beat-route-2-4-mega-venusaur-wave-100-guide',
+    routeNumber: '2-4',
+    name: 'PokéPath TD Route 2-4 Guide: Beating Mega Venusaur (The Toxic Maze)',
+    mapImage: '/images/map-route/2-4.png',
+    stars: 650,
+    starsSecondary: 0,
+    difficulty: 'Very Hard',
+    difficultyLevel: 4,
+    terrain: ['Forest', 'Swamp', 'Thicket'],
+    description: 'A twisted version of Viridian Forest. Trees block line-of-sight, and enemies have high Regeneration. Boss Mega Venusaur reduces Fire/Ice damage.',
+    totalWaves: 100,
+    recommendedTypes: ['Psychic', 'Flying', 'Steel', 'Ground'],
+    recommendedPokemon: ['Alakazam', 'Espeon', 'Metagross', 'Braviary', 'Aerodactyl', 'Crobat', 'Slowbro', 'Skarmory'],
+    strategies: ['Psychic Nuke', 'Anti-Regen', 'Drag-and-Drop Micro'],
+    playstyle: 'Micromanagement',
+    tips: [
+      'Boss Mega Venusaur has "Thick Fat" - Fire and Ice attacks deal 50% less damage! Do not rely on Charizard.',
+      'Use Psychic types (Alakazam) to one-shot Poison enemies before they can Regenerate.',
+      'Trees block attack view! Use Flying types (Braviary) or stand on tree stumps for vision.',
+      'Swamp tiles heal Poison-type enemies. Kill them before they enter the sludge.',
+      'Steel types (Metagross) are immune to the map global Poison effect.',
+      'Use the new v1.4.1 Drag-and-Drop feature to move Alakazam around the maze to follow the boss.'
+    ],
+    teamComposition: {
+      early: ['Abra', 'Spearow', 'Zubat'],
+      mid: ['Kadabra', 'Fearow', 'Golbat', 'Metang'],
+      late: ['Alakazam', 'Metagross', 'Braviary', 'Crobat', 'Espeon', 'Slowbro']
+    },
+    terrainAnalysis: {
+      roads: [
+        { description: 'Tight Z-shaped winding path', length: 'Very Long', chokepoints: 8 },
+        { description: 'Path is covered in Toxic Sludge (Heals enemies)', length: 'Medium', chokepoints: 2 }
+      ],
+      water: [
+        { description: 'Poisonous Ponds', type: 'Swamp', strategicValue: 'Negative', benefits: ['Damages non-Poison/Steel types standing in it'] }
+      ],
+      mountains: [
+        { description: 'No mountains, but giant Tree Stumps act as high ground', height: 'Low', strategicValue: 'High', benefits: ['+15% Range', 'Ignores tree vision blocking'] }
+      ],
+      grass: [
+        { description: 'Dense Forest Trees', coverage: 'Max', benefits: ['Blocks Line of Sight for ground units'] },
+        { description: 'Healing Thickets', coverage: 'Low', benefits: ['Enemies standing here heal 10% HP per sec'] }
+      ],
+      chokepoints: [
+        { location: 'The Central Stump', description: 'Center of the maze. Best spot for Alakazam.', priority: 'Very High' },
+        { location: 'The Exit Gate', description: 'Final straight line. Good for Brave Bird spam.', priority: 'High' }
+      ]
+    },
+    seo: {
+      title: 'PokéPath TD Route 2-4 Guide: Mega Venusaur & Regeneration Strategy',
+      description: 'Route 2-4 is a maze of regenerative Poison types. Fire is weak here! Learn how to use Psychic types and the Drag-and-Drop mechanic to beat Mega Venusaur.',
+      keywords: 'pokepathtd route 2-4, beat mega venusaur pokepathtd, route 2-4 guide, anti-regen strategy, alakazam build'
+    },
+    detailsHtml: `
+      <div class="route-guide">
+        <p>Route 2-4, known as "The Toxic Labyrinth," is a nightmare for players who rely on chip damage. The gimmick of this map is <strong>Regeneration</strong>. Almost every enemy here (Kakuna, Beedrill, Arbok, Muk) heals rapidly if they are not taking lethal damage.</p>
+        <p>Furthermore, the dense forest blocks the vision of your towers. A Charizard on the left side cannot see enemies on the right side. This map requires you to master the <strong>v1.4.1 Drag-and-Drop</strong> mechanic to succeed.</p>
+        
+        <h3>🛡️ Boss Analysis: Mega Venusaur</h3>
+        <ul>
+          <li><strong>HP:</strong> Very High. A tank boss.</li>
+          <li><strong>Passive 1: Thick Fat.</strong> Takes <strong>50% Reduced Damage</strong> from Fire and Ice moves. Your Starter Charizard is useless here!</li>
+          <li><strong>Passive 2: Synthesis.</strong> Heals 5% of Max HP every 5 seconds. You must out-DPS this healing.</li>
+          <li><strong>Weaknesses:</strong>
+            <ul>
+              <li>Psychic: (Alakazam / Mewtwo / Espeon). <strong>2x Damage</strong>.</li>
+              <li>Flying: (Braviary / Aerodactyl). <strong>2x Damage</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <h3>🏆 The "Psychic Burst" Strategy</h3>
+        <p>Since enemies heal over time, "Damage over Time" (Burn/Poison) strategies are ineffective. You need "One-Shot" potential.</p>
+        
+        <h4>1. The MVP: Alakazam (Glass Cannon)</h4>
+        <ul>
+          <li><strong>Role:</strong> Burst Assassin.</li>
+          <li><strong>Why it wins:</strong> Poison/Fighting types dominate this route. Alakazam hits them for super-effective damage. His high speed ensures he hits before they can regenerate.</li>
+          <li><strong>Item:</strong> <em>Twisted Spoon</em> (20% Psychic Boost) or <em>Choice Specs</em> (50% Sp.Atk Boost).</li>
+          <li><strong>Placement:</strong> On the "Central Stump" for maximum vision.</li>
+        </ul>
+        
+        <h4>2. The Scout: Braviary / Crobat</h4>
+        <ul>
+          <li><strong>Role:</strong> Vision & Cleanup.</li>
+          <li><strong>Why it wins:</strong> Flying types ignore the "Line of Sight" penalty caused by trees. They can attack enemies hidden behind walls.</li>
+          <li><strong>Item:</strong> <em>Sharp Beak</em>.</li>
+        </ul>
+        
+        <h4>3. The Wall: Metagross</h4>
+        <ul>
+          <li><strong>Role:</strong> Tank.</li>
+          <li><strong>Why it wins:</strong> Being Steel/Psychic, Metagross is <strong>Immune to Poison</strong> clouds on the map and resists almost all attacks from the local wildlife.</li>
+          <li><strong>Strategy:</strong> Place him at the very end of the maze to catch any leaks.</li>
+        </ul>
+        
+        <h3>📝 Step-by-Step Walkthrough</h3>
+        <ol>
+          <li><strong>Waves 1-20:</strong> Start with an <strong>Abra</strong> and a <strong>Spearow</strong>. Abra is weak early game, so keep him protected.</li>
+          <li><strong>Waves 21-50:</strong> The "Regen" enemies appear (Grimer/Muk). If you see damage numbers appearing but the HP bar isn't moving, you lack Burst damage. Upgrade Abra to <strong>Kadabra</strong> ASAP.</li>
+          <li><strong>Waves 51-90:</strong> The Maze phase. Enemies become tanky. Use <strong>Slowbro</strong> to slow them down, grouping them up for Alakazam's Psychic blasts.</li>
+          <li><strong>Wave 100 (Mega Venusaur):</strong> 
+            <ul>
+              <li><strong>Do NOT use Fire.</strong> Sell any Fire types you bought.</li>
+              <li><strong>Micro-Management:</strong> As Venusaur moves through the Z-shape maze, <strong>Drag and Drop</strong> your Alakazam to the next "Tree Stump" ahead of the boss.</li>
+              <li>You need to reposition your main DPS at least 3-4 times during this fight to keep attacking continuously.</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <h3>🗺️ Terrain Analysis</h3>
+        <p>The map is a dense forest with a swampy path. Visibility is your main enemy.</p>
+        
+        <h4>The Forest (Vision Block)</h4>
+        <ul>
+          <li><strong>Trees:</strong> Ground units (like Alakazam/Metagross) cannot shoot through trees. You must place them at corners or intersections.</li>
+          <li><strong>Flying Units:</strong> Flying types ignore trees. If you struggle with placement, build a full Flying team (Bird spam).</li>
+        </ul>
+        
+        <h4>The Toxic Swamp</h4>
+        <ul>
+          <li><strong>Effect:</strong> The path itself is purple sludge.</li>
+          <li><strong>Enemy Buff:</strong> Poison-type enemies (Grimer/Koffing) heal while walking on it.</li>
+          <li><strong>Player Debuff:</strong> Non-Steel/Poison towers placed directly on the path take damage over time. Keep your units on the grass!</li>
+        </ul>
+        
+        <h3>⚔️ Team Composition Recommendations</h3>
+        <h4>The "Anti-Poison" Core</h4>
+        <p>Route 2-4 demands Psychic types. It is the perfect place to level up your Abra or Slowpoke.</p>
+        <ul>
+          <li><strong>Alakazam:</strong> Essential DPS.</li>
+          <li><strong>Metagross:</strong> Best Tank (Immune to Poison).</li>
+          <li><strong>Braviary:</strong> Best physical attacker (Flying ignores trees).</li>
+          <li><strong>Slowbro:</strong> Provides CC (Crowd Control) to stop Regeneration.</li>
+        </ul>
+      </div>
+    `
+},
+
+{
+    id: 'how-to-beat-route-3-4-mega-aggron-wave-100-guide',
+    routeNumber: '3-4',
+    name: 'PokéPath TD Route 3-4 Guide: Beating Mega Aggron (The Iron Gauntlet)',
+    mapImage: '/images/map-route/3-4.png',
+    stars: 700,
+    starsSecondary: 0,
+    difficulty: 'Extreme',
+    difficultyLevel: 5,
+    terrain: ['Mountain', 'Cave', 'Ridge'],
+    description: 'The ultimate test of Special Attack. Enemies have "Heavy Armor" that blocks physical damage. Physical attackers are useless here. Boss Mega Aggron requires Armor Piercing.',
+    totalWaves: 100,
+    recommendedTypes: ['Water', 'Fire', 'Special-Fighting', 'Ground'],
+    recommendedPokemon: ['Starmie', 'Chandelure', 'Lucario', 'Blastoise', 'Nidoking', 'Gardevoir', 'Empoleon', 'Magnezone'],
+    strategies: ['Special Attack Meta', 'Sturdy Breakers', 'Mid-Battle Item Swap'],
+    playstyle: 'Loadout Optimization',
+    tips: [
+      'Physical Attackers (Machamp, Gyarados, Tyranitar) deal 0-1 damage here due to Armor. Do not use them!',
+      'Equip "Wise Glasses" or "Choice Specs" on everyone. Special Attack is the only way to win.',
+      'Enemies have "Sturdy" - they survive lethal hits with 1 HP. Use Hail (Abomasnow) or Burn to finish them off.',
+      'Boss Mega Aggron has "Filter" ability - reduces Super Effective damage by 25%.',
+      'Lucario is MVP only if using "Aura Sphere" (Special Move).',
+      'Use the High Ground! Placing Snipers (Inteleon) on ridges grants massive range.'
+    ],
+    teamComposition: {
+      early: ['Squirtle', 'Charmander', 'Magnemite'],
+      mid: ['Wartortle', 'Charmeleon', 'Magneton', 'Haunter'],
+      late: ['Blastoise (Mega)', 'Chandelure', 'Starmie', 'Magnezone', 'Lucario (Special)', 'Nidoking']
+    },
+    terrainAnalysis: {
+      roads: [
+        { description: 'The Gauntlet: A single, long, straight path with no loops', length: 'Long', chokepoints: 0 },
+        { description: 'Cave Entrance: Narrow tunnel where enemies cluster', length: 'Short', chokepoints: 1 }
+      ],
+      water: [
+        { description: 'Underground Lake', type: 'Deep Water', strategicValue: 'High', benefits: ['Water types gain 2x Power'] }
+      ],
+      mountains: [
+        { description: 'Iron Ridges', height: 'Max', strategicValue: 'Critical', benefits: ['+75% Range', 'Ideal for Snipers'] },
+        { description: 'Cliff Edges', height: 'High', strategicValue: 'Very High', benefits: ['+50% Range'] }
+      ],
+      grass: [
+        { description: 'None', coverage: 'Zero', benefits: ['No Stealth available'] }
+      ],
+      chokepoints: [
+        { location: 'The Bridge', description: 'A narrow bridge over the lake. Enemies act like ducks in a barrel.', priority: 'Max' },
+        { location: 'The Peak', description: 'Final ascent before the base.', priority: 'Medium' }
+      ]
+    },
+    seo: {
+      title: 'PokéPath TD Route 3-4 Guide: Mega Aggron & Armor Piercing Strategy',
+      description: 'Route 3-4 enemies are immune to physical damage! Learn the "Special Attack Meta" and how to defeat Mega Aggron using Starmie and Chandelure in v1.4.1.',
+      keywords: 'pokepathtd route 3-4, beat mega aggron pokepathtd, route 3-4 guide, special attack build, armor piercing guide'
+    },
+    detailsHtml: `
+      <div class="route-guide">
+        <p>Route 3-4, dubbed "The Iron Mountain," is the hardest map introduced in Update 1.4.1. It is a "Stat Check" map designed to punish balanced teams.</p>
+        <p>The gimmick here is <strong>Heavy Armor</strong>. Every enemy (Geodude, Onix, Steelix, Aggron) has massive Defense stats. If you bring a standard physical team (like Snorlax or Machamp), you will fail at Wave 1.</p>
+        <p>To win, you must embrace the <strong>Special Attack (Sp.Atk) Meta</strong>. You need magic, beams, and elemental energy.</p>
+        
+        <h3>🛡️ Boss Analysis: Mega Aggron</h3>
+        <ul>
+          <li><strong>HP:</strong> High.</li>
+          <li><strong>Defense:</strong> Infinite. Physical damage is reduced by 99%.</li>
+          <li><strong>Ability: Filter.</strong> Reduces damage from Super Effective attacks (Fire/Fighting/Ground) by 25%. This makes him surprisingly tanky even against counters.</li>
+          <li><strong>Weaknesses:</strong>
+            <ul>
+              <li>Special Fighting: (Lucario's Aura Sphere). <strong>The best counter</strong>.</li>
+              <li>Special Fire: (Chandelure / Charizard Y).</li>
+              <li>Special Ground: (Nidoking's Earth Power).</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <h3>🏆 The "Wise Glasses" Strategy</h3>
+        <p>Put away your Muscle Bands. This route is all about <strong>Wise Glasses</strong> (+Special Damage) and <strong>Choice Specs</strong> (+Massive Special Damage).</p>
+        
+        <h4>1. The MVP: Starmie / Blastoise</h4>
+        <ul>
+          <li><strong>Role:</strong> The Gatling Gun.</li>
+          <li><strong>Why it wins:</strong> Water type attacks are almost always Special. Starmie has incredible speed and coverage. Blastoise (especially Mega) deals AOE water damage that ignores the single-target armor of enemies.</li>
+          <li><strong>Placement:</strong> On the "Underground Lake" tiles for a 2x damage boost.</li>
+        </ul>
+        
+        <h4>2. The Tank Buster: Chandelure</h4>
+        <ul>
+          <li><strong>Role:</strong> Armor Melter.</li>
+          <li><strong>Why it wins:</strong> Chandelure has the highest non-legendary Sp.Atk stat. Its Fire moves burn through Steel types effortlessly.</li>
+          <li><strong>Item:</strong> <em>Choice Specs</em>. Since there are no branching paths, you don't need to switch targets often.</li>
+        </ul>
+        
+        <h4>3. The Sturdy Counter: Abomasnow (Hail)</h4>
+        <ul>
+          <li><strong>Role:</strong> Finisher.</li>
+          <li><strong>Why it wins:</strong> Many Rock types here have the <strong>"Sturdy"</strong> passive (cannot be one-shot). They will survive with 1 HP and walk into your base. Abomasnow summons <strong>Hail</strong>, which deals global chip damage, killing all 1 HP enemies instantly.</li>
+        </ul>
+        
+        <h3>📝 Step-by-Step Walkthrough</h3>
+        <ol>
+          <li><strong>Waves 1-20:</strong> Survival Mode. Geodudes are tough. Use <strong>Squirtle (Bubbles)</strong> or <strong>Charmander (Ember)</strong>. Do not use Pidgey or Rattata; they do 0 damage.</li>
+          <li><strong>Waves 21-60:</strong> The Iron Wave. Steelix and Magneton appear. You need <strong>Chandelure</strong> or <strong>Nidoking</strong> here. If you rely only on Water, Magneton (Electric) will wipe you.</li>
+          <li><strong>Waves 61-90:</strong> The High Ground. Move your snipers (Inteleon/Starmie) to the "Iron Ridges" using the drag-and-drop feature. The range boost lets them hit the spawn point.</li>
+          <li><strong>Wave 100 (Mega Aggron):</strong> 
+            <ul>
+              <li><strong>Item Swap:</strong> Pause. Unequip <em>Lucky Eggs</em> or <em>Leftovers</em>. Equip <strong>Choice Specs</strong> on your Lucario and Chandelure.</li>
+              <li><strong>Positioning:</strong> Drag your Lucario to the bridge (Chokepoint).</li>
+              <li><strong>Focus:</strong> Aggron's "Filter" ability reduces damage, so you need overwhelming force. Activate all cooldowns immediately.</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <h3>🗺️ Terrain Analysis</h3>
+        <p>Route 3-4 is a "Gauntlet" style map. No loops, no mazes. Just a straight line of death from top to bottom.</p>
+        
+        <h4>The Iron Ridges (High Ground)</h4>
+        <ul>
+          <li><strong>Effect:</strong> Towers placed here gain massive Range (+75%).</li>
+          <li><strong>Usage:</strong> Perfect for glass cannons like <strong>Alakazam</strong> or <strong>Inteleon</strong> who need to stay far away from the path.</li>
+        </ul>
+        
+        <h4>The Underground Lake</h4>
+        <ul>
+          <li><strong>Effect:</strong> Water tiles in the middle of the cave.</li>
+          <li><strong>Usage:</strong> Only Water/Flying types can be placed here. They gain a massive power boost. This is why <strong>Starmie</strong> is Tier S on this map.</li>
+        </ul>
+        
+        <h3>⚔️ Team Composition Recommendations</h3>
+        <h4>The "Special Forces" Team</h4>
+        <p>If a Pokémon uses its fists/claws/body to attack, leave it in the box.</p>
+        <ul>
+          <li><strong>Chandelure:</strong> Essential for Steel types.</li>
+          <li><strong>Starmie / Blastoise:</strong> Essential for Rock/Ground types.</li>
+          <li><strong>Lucario:</strong> Must be built for Special Attack (Aura Sphere).</li>
+          <li><strong>Abomasnow:</strong> Passive Hail kills Sturdy enemies.</li>
+          <li><strong>Magnezone:</strong> Traps Steel enemies (Magnet Pull) and deals Special Electric damage.</li>
+        </ul>
+      </div>
+    `
+}
 ]
 
 // 按路线分组
