@@ -11,7 +11,17 @@
         <div class="hero-content">
           <div class="hero-main">
             <h1 class="hero-title">{{ $t('HomePage.hero.title') }}</h1>
+
+            <!-- 移动横幅广告位1 -->
+            <aside
+              style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden"
+              v-if="isMobile"
+            >
+              <ins class="eas6a97888e10" data-zoneid="5848358"></ins>
+            </aside>
+
             <p class="hero-subtitle" v-html="$t('HomePage.hero.subtitle')"></p>
+
             <div class="hero-stats">
               <div class="stat-item">
                 <div class="stat-value">100+</div>
@@ -30,6 +40,7 @@
                 <div class="stat-label">{{ $t('HomePage.hero.stats.gameMode') }}</div>
               </div>
             </div>
+
             <div class="hero-actions">
               <a href="/all-pokemon" class="btn-primary">
                 <span>{{ $t('HomePage.hero.actions.explore') }}</span>
@@ -39,6 +50,19 @@
                 <span>{{ $t('HomePage.hero.actions.tools') }}</span>
               </a>
             </div>
+
+            <div style="display: flex; gap: 20px; padding: 20px 0 0 0" v-if="!isMobile">
+              <!-- PC横幅广告2 -->
+              <aside>
+                <ins class="eas6a97888e2" data-zoneid="5848208"></ins>
+              </aside>
+
+              <!-- PC横幅广告1 -->
+              <aside>
+                <ins class="eas6a97888e2" data-zoneid="5848206"></ins>
+              </aside>
+            </div>
+
             <div class="hero-game-versions">
               <div class="section-title-wrapper">
                 <div class="section-title-line"></div>
@@ -62,6 +86,21 @@
         </div>
       </div>
     </section>
+
+    <!-- PC粘性横幅广告位1 底部 -->
+    <aside v-if="!isMobile">
+      <ins class="eas6a97888e2" data-zoneid="5848348"></ins>
+    </aside>
+
+    <!-- PC左侧立式广告位1  -->
+    <aside v-if="!isMobile">
+      <ins class="eas6a97888e2" data-zoneid="5848350"></ins>
+    </aside>
+
+    <!-- PC右侧立式广告位2 -->
+    <aside v-if="!isMobile">
+      <ins class="eas6a97888e2" data-zoneid="5848352"></ins>
+    </aside>
 
     <!-- Game Introduction Section -->
     <section class="home-section game-intro-section">
@@ -87,14 +126,18 @@
               <div class="mechanic-item">
                 <div class="mechanic-icon">⏱️</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.recharge.title') }}</h4>
+                  <h4 class="mechanic-title">
+                    {{ $t('HomePage.intro.mechanics.recharge.title') }}
+                  </h4>
                   <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.recharge.desc') }}</p>
                 </div>
               </div>
               <div class="mechanic-item">
                 <div class="mechanic-icon">💥</div>
                 <div class="mechanic-content">
-                  <h4 class="mechanic-title">{{ $t('HomePage.intro.mechanics.critical.title') }}</h4>
+                  <h4 class="mechanic-title">
+                    {{ $t('HomePage.intro.mechanics.critical.title') }}
+                  </h4>
                   <p class="mechanic-desc">{{ $t('HomePage.intro.mechanics.critical.desc') }}</p>
                 </div>
               </div>
@@ -108,6 +151,11 @@
             </div>
           </div>
         </div>
+
+         <!-- 移动横幅广告位2 -->
+         <aside style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden" v-if="isMobile">
+            <ins class="eas6a97888e10" data-zoneid="5848360"></ins>
+          </aside>
       </div>
     </section>
 
@@ -210,6 +258,11 @@
             </div>
           </div>
         </div>
+
+        <!-- 通用原生广告 -->
+        <aside style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden">
+          <ins class="eas6a97888e20" data-zoneid="5848356"></ins>
+        </aside>
       </div>
     </section>
 
@@ -409,16 +462,29 @@ const { routesData, loadData: loadRoutes } = useRoutesData()
 const { gamesData, loadData: loadGames } = useGameData()
 const { wikiData, loadData: loadWiki } = useWikiData()
 
+import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
+
+const { isMobile } = useDeviceDetection()
+
 const difficultyColors = {
-  'Easy': '#5cb85c',
-  'Medium': '#f0ad4e',
-  'Hard': '#d9534f',
+  Easy: '#5cb85c',
+  Medium: '#f0ad4e',
+  Hard: '#d9534f',
   'Very Hard': '#8b0000',
-  'Extreme': '#4a148c'
+  Extreme: '#4a148c',
 }
 
 onMounted(async () => {
   await Promise.all([loadPokemon(), loadEnemies(), loadRoutes(), loadGames(), loadWiki()])
+
+  setTimeout(() => {
+    try {
+      window.AdProvider = window.AdProvider || []
+      window.AdProvider.push({ serve: {} })
+    } catch (e) {
+      console.error('AdProvider push failed:', e)
+    }
+  }, 500)
 })
 
 watch(locale, async () => {
