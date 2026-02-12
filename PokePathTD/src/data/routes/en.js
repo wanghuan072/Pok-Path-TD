@@ -157,9 +157,8 @@ export const stages = [
         <p>Deploy the complete 10-unit team: Water Squad (Omastar, Corsola, Samurott/Feraligatr, Lapras, Octillery) in central lake, Land Squad (Weavile, Farfetch'd, Sunflora, Excadrill) on bottom path, and Honchkrow on the mountain tile for anti-invisible coverage.</p>
       </div>
     `,
-    
   },
-  
+
   {
     id: 'how-to-beat-route-1-2-zapdos-wave-100',
     routeNumber: '1-2',
@@ -325,7 +324,7 @@ export const stages = [
       </div>
     `,
   },
-  
+
   {
     id: 'how-to-beat-route-1-3-moltres',
     routeNumber: '1-3',
@@ -541,7 +540,7 @@ export const stages = [
       </div>
     `,
   },
-  
+
   {
     id: 'how-to-beat-route-2-1-raikou-wave-100',
     routeNumber: '2-1',
@@ -756,9 +755,8 @@ export const stages = [
         <p>Deploy the complete "Control & Burst" team: Absol & Ditto (mountain snipers), Corsola & Ferrothorn & Ampharos (control zone), Weavile & Noivern (execution squad), Honchkrow (anti-invisible).</p>
       </div>
     `,
-    
   },
-  
+
   {
     id: 'how-to-beat-route-2-2-entei',
     routeNumber: '2-2',
@@ -924,7 +922,7 @@ export const stages = [
       </div>
     `,
   },
-  
+
   {
     id: 'how-to-beat-route-2-3-suicune-wave-100',
     routeNumber: '2-3',
@@ -1119,7 +1117,7 @@ export const stages = [
       </div>
     `,
   },
-  
+
   {
     id: 'how-to-beat-route-3-1-regirock-wave-100-guide',
     routeNumber: '3-1',
@@ -1271,7 +1269,7 @@ export const stages = [
       </div>
     `
   },
-  
+
   {
     id: 'how-to-beat-route-3-2-regice-dewgong-strategy',
     routeNumber: '3-2',
@@ -1438,7 +1436,7 @@ export const stages = [
       </div>
     `,
   },
-  
+
   {
     id: 'how-to-beat-route-3-3-registeel-wave-100-guide',
     routeNumber: '3-3',
@@ -1778,9 +1776,9 @@ export const stages = [
         </ul>
       </div>
     `
-},
+  },
 
-{
+  {
     id: 'how-to-beat-route-2-4-mega-venusaur-wave-100-guide',
     routeNumber: '2-4',
     name: 'PokéPath TD Route 2-4 Guide: Beating Mega Venusaur (The Toxic Maze)',
@@ -1918,9 +1916,9 @@ export const stages = [
         </ul>
       </div>
     `
-},
+  },
 
-{
+  {
     id: 'how-to-beat-route-3-4-mega-aggron-wave-100-guide',
     routeNumber: '3-4',
     name: 'PokéPath TD Route 3-4 Guide: Beating Mega Aggron (The Iron Gauntlet)',
@@ -2058,7 +2056,7 @@ export const stages = [
         </ul>
       </div>
     `
-}
+  }
 ]
 
 // 按路线分组

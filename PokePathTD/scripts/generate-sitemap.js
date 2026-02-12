@@ -1,4 +1,4 @@
-// Generate sitemap for PokéPath TD Strategy Guide
+// Generate sitemap for PokéPath TD Strategy Guide (Multi-language)
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -7,14 +7,17 @@ import wikiData from '../src/data/wiki/en.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// 多语言配置
+// 多语言配置 - en 无前缀，其他语言加前缀如 /de/
 const locales = [
-  { code: 'en', prefix: '', isDefault: true }
-  // { code: 'zh', prefix: '/zh', isDefault: false },
-  // { code: 'es', prefix: '/es', isDefault: false }
+  { code: 'en', prefix: '', isDefault: true },
+  { code: 'de', prefix: '/de', isDefault: false },
+  { code: 'fa', prefix: '/fa', isDefault: false },
+  { code: 'ja', prefix: '/ja', isDefault: false },
+  { code: 'ko', prefix: '/ko', isDefault: false },
+  { code: 'ru', prefix: '/ru', isDefault: false }
 ]
 
-// 所有路线详情页 ID（已更新为新的 SEO 友好 ID）
+// 所有路线详情页 ID（与 data/routes 保持一致）
 const routeIds = [
   'how-to-beat-route-1-1-articuno',
   'how-to-beat-route-1-2-zapdos-wave-100',
@@ -31,7 +34,8 @@ const routeIds = [
 const gameAddressBars = [
   'pokepath-td-1.2.5',
   'pokepath-td-1.3.3',
-  'pokepath-td-1.3.6'
+  'pokepath-td-1.3.6',
+  'pokepath-td-1.4.1'
 ]
 
 // 所有 Wiki 详情页 addressBar
@@ -41,13 +45,12 @@ const wikiAddressBars = wikiData
 
 // 站点配置
 const config = {
-  baseUrl: 'https://pokepathgame.org', // 替换为实际域名
+  baseUrl: 'https://pokepathgame.org',
   outputPath: path.join(__dirname, '../public/sitemap.xml'),
   routes: [
     { path: '/', priority: '1.0', changefreq: 'weekly' },
     { path: '/all-pokemon', priority: '0.9', changefreq: 'weekly' },
     { path: '/map-router', priority: '0.8', changefreq: 'weekly' },
-    // 添加所有路线详情页
     ...routeIds.map(id => ({
       path: `/map-router/${id}`,
       priority: '0.8',
@@ -62,13 +65,11 @@ const config = {
     { path: '/tools/enemy-counter', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools/route-strategy', priority: '0.7', changefreq: 'monthly' },
     { path: '/wiki', priority: '0.6', changefreq: 'monthly' },
-    // 添加所有 Wiki 详情页
     ...wikiAddressBars.map(addressBar => ({
       path: `/wiki/${addressBar}`,
       priority: '0.7',
       changefreq: 'monthly'
     })),
-    // 添加所有游戏详情页
     ...gameAddressBars.map(addressBar => ({
       path: `/game/${addressBar}`,
       priority: '0.8',
@@ -82,47 +83,41 @@ const config = {
   ]
 }
 
-// 生成sitemap XML
+// 生成本地化路径（与 vein-game 一致）
+function createLocalizedPath(routePath, locale) {
+  const path = routePath === '/' ? '' : routePath
+  if (locale.code === 'en') {
+    return path || '/'
+  }
+  return `${locale.prefix}${path}` || locale.prefix
+}
+
+// 生成单条 URL XML（vein-game 风格：每一条独立）
+function generateUrlXml(localizedPath, lastmod, changefreq, priority) {
+  const url = `${config.baseUrl}${localizedPath}`
+  return `  <url>
+    <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+}
+
+// 生成 sitemap：每条 URL 独立（参考 vein-game）
 function generateSitemap() {
-  const currentDate = new Date().toISOString()
+  const lastmod = new Date().toISOString().split('T')[0]
 
   let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
   config.routes.forEach(route => {
     locales.forEach(locale => {
-      // 构建当前语言的 URL
-      // 如果是默认语言且没有前缀，直接使用 base + path
-      // 如果有前缀，base + prefix + path
-      const prefix = locale.prefix || ''
-      // 处理 path 为 '/' 的特殊情况，避免出现 //
-      const routePath = route.path === '/' ? '' : route.path
-      const url = `${config.baseUrl}${prefix}${routePath}` || `${config.baseUrl}/`
-
-      sitemap += '  <url>\n'
-      sitemap += `    <loc>${url}</loc>\n`
-      sitemap += `    <lastmod>${currentDate}</lastmod>\n`
-      sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`
-      sitemap += `    <priority>${route.priority}</priority>\n`
-
-      // 生成其他语言的 alternate 链接
-      locales.forEach(altLocale => {
-        // 如果我们有多个语言，需要互相引用
-        // 目前只有一个语言，这个循环实际上不会生成有意义的 alternate（除了自身，但通常不需要引用自身为 alternate，或者引用自身也是可以的 x-default）
-        // 标准做法：列出所有语言版本，包括当前版本
-        const altPrefix = altLocale.prefix || ''
-        const altRoutePath = route.path === '/' ? '' : route.path
-        const altUrl = `${config.baseUrl}${altPrefix}${altRoutePath}` || `${config.baseUrl}/`
-        
-        sitemap += `    <xhtml:link rel="alternate" hreflang="${altLocale.code}" href="${altUrl}"/>\n`
-      })
-
-      sitemap += '  </url>\n'
+      const localizedPath = createLocalizedPath(route.path, locale)
+      sitemap += generateUrlXml(localizedPath, lastmod, route.changefreq, route.priority) + '\n'
     })
   })
 
   sitemap += '</urlset>'
-
   return sitemap
 }
 
@@ -133,11 +128,11 @@ function writeSitemap() {
   try {
     fs.writeFileSync(config.outputPath, sitemap, 'utf8')
     console.log('✅ Sitemap generated successfully at:', config.outputPath)
+    console.log('   Locales:', locales.map(l => l.code).join(', '))
   } catch (error) {
     console.error('❌ Error writing sitemap:', error)
     throw error
   }
 }
 
-// 执行生成
 writeSitemap()

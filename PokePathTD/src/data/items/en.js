@@ -1,6 +1,3 @@
-// Items Data for PokéPath TD
-// Held items that can be equipped to Pokémon
-
 export default [
   {
     id: 'condensed-blizzard',

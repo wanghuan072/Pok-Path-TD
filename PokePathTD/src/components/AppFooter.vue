@@ -7,35 +7,33 @@
             <img src="/images/logo.webp" alt="PokéPath TD Logo" class="logo-image">
             <span class="logo-text">PokéPath TD</span>
           </div>
-          <p class="footer-text">
-            Comprehensive PokéPath TD game resources including guides, wiki, Pokémon database, tier lists, and strategy tools. A fan-created site by fans, for fans.
-          </p>
+          <p class="footer-text">{{ t('AppFooter.description') }}</p>
         </div>
         <div class="link-column">
-          <h2>Navigate</h2>
+          <h2>{{ t('AppFooter.navigate') }}</h2>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/wiki">Wiki</a></li>
-            <li><a href="/all-pokemon">All Pokémon</a></li>
-            <li><a href="/enemies">Enemy Database</a></li>
-            <li><a href="/routes">Routes</a></li>
-            <li><a href="/tools">Tools</a></li>
+            <li><router-link :to="localePath('/')">{{ t('AppFooter.links.home') }}</router-link></li>
+            <li><router-link :to="localePath('/wiki')">{{ t('AppFooter.links.wiki') }}</router-link></li>
+            <li><router-link :to="localePath('/all-pokemon')">{{ t('AppFooter.links.allPokemon') }}</router-link></li>
+            <li><router-link :to="localePath('/enemies')">{{ t('AppFooter.links.enemies') }}</router-link></li>
+            <li><router-link :to="localePath('/map-router')">{{ t('AppFooter.links.routes') }}</router-link></li>
+            <li><router-link :to="localePath('/tools')">{{ t('AppFooter.links.tools') }}</router-link></li>
           </ul>
         </div>
         <div class="link-column">
-          <h2>Legal</h2>
+          <h2>{{ t('AppFooter.legal') }}</h2>
           <ul>
-            <li><a href="/privacy-policy" rel="noopener noreferrer nofollow">Privacy Policy</a></li>
-            <li><a href="/terms-of-service" rel="noopener noreferrer nofollow">Terms of Service</a></li>
-            <li><a href="/copyright" rel="noopener noreferrer nofollow">Copyright</a></li>
-            <li><a href="/about-us" rel="noopener noreferrer nofollow">About Us</a></li>
-            <li><a href="/contact-us" rel="noopener noreferrer nofollow">Contact Us</a></li>
+            <li><router-link :to="localePath('/privacy-policy')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.privacyPolicy') }}</router-link></li>
+            <li><router-link :to="localePath('/terms-of-service')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.termsOfService') }}</router-link></li>
+            <li><router-link :to="localePath('/copyright')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.copyright') }}</router-link></li>
+            <li><router-link :to="localePath('/about-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.aboutUs') }}</router-link></li>
+            <li><router-link :to="localePath('/contact-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.contactUs') }}</router-link></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 pokepathgame.org. All rights reserved.</p>
-        <p>pokepathgame.org is not affiliated with, endorsed by, or connected to the original or its publishers. This is an independent fan site created for informational purposes only. All trademarks and copyrights belong to their respective owners.</p>
+        <p>{{ t('AppFooter.rights') }}</p>
+        <p>{{ t('AppFooter.disclaimer') }}</p>
       </div>
     </div>
   </footer>
@@ -43,8 +41,10 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const { t } = useI18n()
+const { localePath } = useLocalePath()
 </script>
 
 <style scoped>

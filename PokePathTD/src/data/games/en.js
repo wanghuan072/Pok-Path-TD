@@ -1,19 +1,19 @@
 export default [
     {
-    id: '1.2.5',
-    name: 'PokéPath TD 1.2.5',
-    iframeSrc: 'https://html-classic.itch.zone/html/15902423/PokePath%20TD%20WEB/index.html',
-    imageUrl: '/images/video-bg.webp',
-    imageAlt: 'PokéPath TD 1.2.5 Gameplay Screenshot',
-    addressBar: 'pokepath-td-1.2.5',
-    description: 'Experience the ultimate fusion of RPG and Tower Defense in PokéPath TD 1.2.5. Catch, train, and evolve your team to defend against waves of enemies across 9 distinct regions.',
-    releaseDate: '2026-01-31',
-    seo: {
-        title: 'Play PokéPath TD 1.2.5 - The Ultimate Pokémon Tower Defense Game',
-        description: 'Play PokéPath TD 1.2.5 online for free. Defend your path, evolve your Pokémon, and challenge Legendary bosses in this persistent-progression strategy game.',
-        keywords: 'PokéPath TD, Pokemon Tower Defense, Strategy RPG, Browser Game, 1.2.5 update, Idle Defense',
-    },
-    detailsHtml: `
+        id: '1.2.5',
+        name: 'PokéPath TD 1.2.5',
+        iframeSrc: 'https://html-classic.itch.zone/html/15902423/PokePath%20TD%20WEB/index.html',
+        imageUrl: '/images/video-bg.webp',
+        imageAlt: 'PokéPath TD 1.2.5 Gameplay Screenshot',
+        addressBar: 'pokepath-td-1.2.5',
+        description: 'Experience the ultimate fusion of RPG and Tower Defense in PokéPath TD 1.2.5. Catch, train, and evolve your team to defend against waves of enemies across 9 distinct regions.',
+        releaseDate: '2026-01-31',
+        seo: {
+            title: 'Play PokéPath TD 1.2.5 - The Ultimate Pokémon Tower Defense Game',
+            description: 'Play PokéPath TD 1.2.5 online for free. Defend your path, evolve your Pokémon, and challenge Legendary bosses in this persistent-progression strategy game.',
+            keywords: 'PokéPath TD, Pokemon Tower Defense, Strategy RPG, Browser Game, 1.2.5 update, Idle Defense',
+        },
+        detailsHtml: `
         <div class="game-description">
             <p>
                 Welcome to <strong>PokéPath TD 1.2.5</strong>, the game that perfectly blends the nostalgic thrill of creature collection with the high-stakes tension of classic <a href="/wiki">tower defense</a>. In this strategic adventure, you aren't just building static towers—you are a trainer commanding a living, breathing team of <a href="/all-pokemon">Pokémon</a>. Your mission is to defend nine distinct <a href="/map-router">routes</a> from endless waves of wild Pokémon, but the twist lies in how you grow.
@@ -113,23 +113,23 @@ export default [
             </div>
         </div>
     `
-},
-   
-{
-    id: '1.3.3',
-    name: 'PokéPath TD 1.3.3',
-    iframeSrc: 'https://v133.hozygame.online/',
-    imageUrl: '/images/video-bg.webp',
-    imageAlt: 'PokéPath TD 1.3.3 Gameplay Screenshot',
-    addressBar: 'pokepath-td-1.3.3',
-    description: 'The massive "Item Update" (v1.3.3) adds 50+ Held Items, Challenge Modes, and Multi-Save slots. Experience the deepest strategy in Pokémon Tower Defense history.',
-    releaseDate: '2026-01-31',
-    seo: {
-        title: 'Play PokéPath TD 1.3.3 - The Item Update & Challenge Mode',
-        description: 'Play PokéPath TD 1.3.3 online. Full guide on the new Held Items system, Level 50 Challenge Mode, and team building strategies. No download required.',
-        keywords: 'PokéPath TD 1.3.3, Pokemon Tower Defense, Held Items Guide, Strategy RPG, Browser Game, Challenge Mode',
     },
-    detailsHtml: `
+
+    {
+        id: '1.3.3',
+        name: 'PokéPath TD 1.3.3',
+        iframeSrc: 'https://v133.hozygame.online/',
+        imageUrl: '/images/video-bg.webp',
+        imageAlt: 'PokéPath TD 1.3.3 Gameplay Screenshot',
+        addressBar: 'pokepath-td-1.3.3',
+        description: 'The massive "Item Update" (v1.3.3) adds 50+ Held Items, Challenge Modes, and Multi-Save slots. Experience the deepest strategy in Pokémon Tower Defense history.',
+        releaseDate: '2026-01-31',
+        seo: {
+            title: 'Play PokéPath TD 1.3.3 - The Item Update & Challenge Mode',
+            description: 'Play PokéPath TD 1.3.3 online. Full guide on the new Held Items system, Level 50 Challenge Mode, and team building strategies. No download required.',
+            keywords: 'PokéPath TD 1.3.3, Pokemon Tower Defense, Held Items Guide, Strategy RPG, Browser Game, Challenge Mode',
+        },
+        detailsHtml: `
         <div class="game-description">
             <div class="hero-section">
                 <p>
@@ -220,22 +220,23 @@ export default [
             <p>Yes. Playing on Challenge Mode slightly increases the odds of encountering <a href="/wiki">Shiny Pokémon</a>, which often possess superior base stats.</p>
         </div>
     `
-},
-    {
-    id: '1.3.6',
-    name: 'PokéPath TD 1.3.6',
-    iframeSrc: 'https://v136.hozygame.online/',
-    imageUrl: '/images/video-bg.webp',
-    imageAlt: 'PokéPath TD 1.3.6 Gameplay - The Stable Update',
-    addressBar: 'pokepath-td-1.3.6',
-    description: 'Play PokéPath TD 1.3.6 online. The definitive stable version featuring critical fixes for Ditto, Curse mechanics, and Draft Mode. Master the ultimate strategy defense game.',
-    releaseDate: '2026-01-31',
-    seo: {
-        title: 'Play PokéPath TD 1.3.6 - Ultimate Strategy & Bug Fix Guide',
-        description: 'Experience PokéPath TD 1.3.6. Full guide includes Advanced Strategies, Ditto Shiny Fix details, Controls, and why this is the best version for tower defense fans.',
-        keywords: 'PokéPath TD 1.3.6, Pokemon Tower Defense Strategy, Browser Game, Ditto Fix, Curse Mechanic, Idle Defense, RPG',
     },
-    detailsHtml: `
+    
+    {
+        id: '1.3.6',
+        name: 'PokéPath TD 1.3.6',
+        iframeSrc: 'https://v136.hozygame.online/',
+        imageUrl: '/images/video-bg.webp',
+        imageAlt: 'PokéPath TD 1.3.6 Gameplay - The Stable Update',
+        addressBar: 'pokepath-td-1.3.6',
+        description: 'Play PokéPath TD 1.3.6 online. The definitive stable version featuring critical fixes for Ditto, Curse mechanics, and Draft Mode. Master the ultimate strategy defense game.',
+        releaseDate: '2026-01-31',
+        seo: {
+            title: 'Play PokéPath TD 1.3.6 - Ultimate Strategy & Bug Fix Guide',
+            description: 'Experience PokéPath TD 1.3.6. Full guide includes Advanced Strategies, Ditto Shiny Fix details, Controls, and why this is the best version for tower defense fans.',
+            keywords: 'PokéPath TD 1.3.6, Pokemon Tower Defense Strategy, Browser Game, Ditto Fix, Curse Mechanic, Idle Defense, RPG',
+        },
+        detailsHtml: `
         <div class="game-description">
             
             <div class="intro-section">
@@ -346,23 +347,23 @@ export default [
             <p>A: Yes! Once you are comfortable with your defense, press the "Speed Up" button in the UI (or check settings) to breeze through the early waves.</p>
         </div>
     `
-},
-    
-    {
-    id: '1.4.1',
-    name: 'PokéPath TD 1.4.1',
-    iframeSrc: 'https://pokepath-game.pages.dev/',
-    imageUrl: '/images/video-bg.webp',
-    imageAlt: 'PokéPath TD 1.4.1 - New UI and Maps Update',
-    addressBar: 'pokepath-td-1.4.1',
-    description: 'PokéPath TD 1.4.1 brings massive QoL updates! Feature Drag-and-Drop team management, mid-battle item swapping, 3 new maps, and Boss Passive Abilities.',
-    releaseDate: '2026-01-31',
-    seo: {
-        title: 'Play PokéPath TD 1.4.1 - UI Overhaul & New Maps',
-        description: 'Play PokéPath TD 1.4.1 free online. Update features Drag-and-Drop UI, Boss Passives, 28 new items, and Routes 1-4 to 3-4. No download required.',
-        keywords: 'PokéPath TD 1.4.1, Pokemon Tower Defense Update, Strategy Guide, Browser Game, Boss Passives, Drag and Drop UI',
     },
-    detailsHtml: `
+
+    {
+        id: '1.4.1',
+        name: 'PokéPath TD 1.4.1',
+        iframeSrc: 'https://pokepath-game.pages.dev/',
+        imageUrl: '/images/video-bg.webp',
+        imageAlt: 'PokéPath TD 1.4.1 - New UI and Maps Update',
+        addressBar: 'pokepath-td-1.4.1',
+        description: 'PokéPath TD 1.4.1 brings massive QoL updates! Feature Drag-and-Drop team management, mid-battle item swapping, 3 new maps, and Boss Passive Abilities.',
+        releaseDate: '2026-01-31',
+        seo: {
+            title: 'Play PokéPath TD 1.4.1 - UI Overhaul & New Maps',
+            description: 'Play PokéPath TD 1.4.1 free online. Update features Drag-and-Drop UI, Boss Passives, 28 new items, and Routes 1-4 to 3-4. No download required.',
+            keywords: 'PokéPath TD 1.4.1, Pokemon Tower Defense Update, Strategy Guide, Browser Game, Boss Passives, Drag and Drop UI',
+        },
+        detailsHtml: `
         <div class="game-description">
             
             <div class="intro-section">
@@ -469,7 +470,7 @@ export default [
             <p>A: It is in the Settings menu. For high-wave runs (Wave 100+), we highly recommend turning Damage Numbers OFF to prevent lag.</p>
         </div>
     `
-}
+    }
 
 
 

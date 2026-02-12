@@ -21,7 +21,7 @@
         <!-- Tools List -->
         <section class="tools-section">
           <div class="tools-grid">
-            <a v-for="tool in tools" :key="tool.id" :href="tool.path" class="tool-card">
+            <router-link v-for="tool in tools" :key="tool.id" :to="localePath(tool.path)" class="tool-card">
               <div class="tool-header">
                 <div class="tool-icon">{{ tool.icon }}</div>
                 <h3 class="tool-title">{{ tool.title }}</h3>
@@ -32,7 +32,7 @@
                   {{ feature }}
                 </span>
               </div>
-            </a>
+            </router-link>
           </div>
         </section>
       </div>
@@ -139,8 +139,10 @@ import { useI18n } from 'vue-i18n'
 import AppHeader from '../../components/AppHeader.vue'
 import AppFooter from '../../components/AppFooter.vue'
 import { useToolsData } from '../../composables/useToolsData'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const { locale, t } = useI18n()
+const { localePath } = useLocalePath()
 const { tools, loadData } = useToolsData()
 
 onMounted(() => {

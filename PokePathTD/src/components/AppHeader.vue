@@ -3,20 +3,57 @@
     <div class="container">
       <nav class="nav">
         <div class="nav-brand">
-          <a href="/" class="logo">
+          <router-link :to="localePath('/')" class="logo">
             <img src="/images/logo.webp" alt="logo">
             <span class="logo-text">PokéPath TD</span>
-          </a>
+          </router-link>
         </div>
         <ul class="nav-menu" :class="{ active: mobileMenuOpen }">
-          <li><a href="/" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.home') }}</a></li>
-          <li><a href="/all-pokemon" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.allPokemon') }}</a></li>
-          <li><a href="/tier-list" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tierList') }}</a></li>
-          <li><a href="/enemies" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.enemies') }}</a></li>
-          <li><a href="/items" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.items') }}</a></li>
-          <li><a href="/map-router" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.mapRouter') }}</a></li>
-          <li><a href="/tools" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tools') }}</a></li>
-          <li><a href="/wiki" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.wiki') }}</a></li>
+          <li><router-link :to="localePath('/')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.home') }}</router-link></li>
+          <li><router-link :to="localePath('/all-pokemon')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.allPokemon') }}</router-link></li>
+          <li><router-link :to="localePath('/tier-list')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tierList') }}</router-link></li>
+          <li><router-link :to="localePath('/enemies')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.enemies') }}</router-link></li>
+          <li><router-link :to="localePath('/items')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.items') }}</router-link></li>
+          <li><router-link :to="localePath('/map-router')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.mapRouter') }}</router-link></li>
+          <li><router-link :to="localePath('/tools')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tools') }}</router-link></li>
+          <li><router-link :to="localePath('/wiki')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.wiki') }}</router-link></li>
+          <li class="nav-lang">
+            <div class="lang-dropdown" ref="langDropdownRef">
+              <button
+                type="button"
+                class="lang-trigger"
+                :aria-expanded="langOpen"
+                aria-haspopup="listbox"
+                aria-label="Select language"
+                @click="toggleLangDropdown"
+              >
+                <span class="lang-current">{{ currentLocaleFlag() }}</span>
+                <span class="lang-arrow">▼</span>
+              </button>
+              <ul
+                v-show="langOpen"
+                class="lang-menu"
+                role="listbox"
+              >
+                <li
+                  v-for="loc in supportedLocales"
+                  :key="loc.code"
+                  role="option"
+                  :aria-selected="currentLocale() === loc.code"
+                >
+                  <button
+                    type="button"
+                    class="lang-option"
+                    :class="{ active: currentLocale() === loc.code }"
+                    @click="selectLocale(loc.code)"
+                  >
+                    <span class="lang-flag">{{ loc.flag }}</span>
+                    <span class="lang-name">{{ loc.name }}</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
         <button class="nav-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
           <span></span>
@@ -29,11 +66,37 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '@/utils/useLocalePath'
+import { supportedLocales } from '@/i18n'
 
 const { t } = useI18n()
+const { localePath, switchLocale, currentLocale } = useLocalePath()
 const mobileMenuOpen = ref(false)
+const langOpen = ref(false)
+const langDropdownRef = ref(null)
+
+const currentLocaleFlag = () => {
+  const loc = supportedLocales.find(l => l.code === currentLocale())
+  return loc ? loc.flag : '🌐'
+}
+
+const toggleLangDropdown = () => {
+  langOpen.value = !langOpen.value
+}
+
+const selectLocale = (code) => {
+  switchLocale(code)
+  langOpen.value = false
+  mobileMenuOpen.value = false
+}
+
+const handleClickOutside = (e) => {
+  if (langDropdownRef.value && !langDropdownRef.value.contains(e.target)) {
+    langOpen.value = false
+  }
+}
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
@@ -42,6 +105,14 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
   mobileMenuOpen.value = false
 }
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <style scoped>
@@ -130,7 +201,8 @@ const closeMobileMenu = () => {
   font-size: 0.95rem;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.router-link-active {
   background: rgba(107, 163, 232, 0.15);
   color: #6ba3e8;
 }
@@ -139,6 +211,88 @@ const closeMobileMenu = () => {
   background: linear-gradient(135deg, rgba(107, 163, 232, 0.2), rgba(92, 184, 92, 0.2));
   color: #6ba3e8;
   border: 1px solid rgba(107, 163, 232, 0.3);
+}
+
+/* Language Switcher */
+.nav-lang {
+  position: relative;
+}
+
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(107, 163, 232, 0.1);
+  border: 1px solid rgba(107, 163, 232, 0.3);
+  border-radius: 8px;
+  color: #f5f8f0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.lang-trigger:hover {
+  background: rgba(107, 163, 232, 0.2);
+  border-color: rgba(107, 163, 232, 0.5);
+}
+
+.lang-current {
+  font-size: 1.1rem;
+}
+
+.lang-arrow {
+  font-size: 0.6rem;
+  opacity: 0.8;
+  transition: transform 0.2s;
+}
+
+.lang-dropdown:hover .lang-arrow {
+  transform: none;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.35rem;
+  min-width: 140px;
+  background: rgba(26, 35, 50, 0.98);
+  border: 1px solid rgba(107, 163, 232, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: rgba(245, 248, 240, 0.9);
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.lang-option:hover,
+.lang-option.active {
+  background: rgba(107, 163, 232, 0.15);
+  color: #6ba3e8;
+}
+
+.lang-flag {
+  font-size: 1rem;
 }
 
 .nav-toggle {

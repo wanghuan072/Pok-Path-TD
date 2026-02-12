@@ -1,6 +1,3 @@
-// Enemy/Enemy Data for PokéPath TD
-// Enemy data extracted from the provided table
-
 export default [
   {
     id: 'abomasnow',

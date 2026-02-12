@@ -1,6 +1,3 @@
-// Player Rankings Data for Tier List
-// Community player rankings data
-
 export default [
   {
     id: 'player-1',

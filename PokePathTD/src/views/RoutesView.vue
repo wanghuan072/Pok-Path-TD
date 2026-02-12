@@ -188,6 +188,7 @@ import { useI18n } from 'vue-i18n'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import { useRoutesData } from '../composables/useRoutesData'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const router = useRouter()
 const { t, locale } = useI18n()
@@ -202,10 +203,9 @@ const difficultyColors = {
 }
 
 // Navigate to route detail page
+const { localePath } = useLocalePath()
 const goToRouteDetail = (routeId) => {
-  router.push({
-    path: `/map-router/${routeId}`
-  })
+  router.push(localePath(`/map-router/${routeId}`))
 }
 
 onMounted(() => {

@@ -1,28 +1,5 @@
 // 宝可梦数据 - 每个等级是独立的数据项，通过 category 关联
 export default [
-
-  // {
-  //   id: 1,
-  //   name: "Charmander",
-  //   level: 1,
-  //   category: "charmander",
-  //   imageUrl: '/images/pokemon/pokemon-01.png',
-  //   imageAlt: 'Charmander-img',
-  //   ability: "The attacks burn the target for 10 seconds, causing them to lose 0.5% of their life per second.",
-  //   property: {
-  //     power: 43,
-  //     recharge: 1.10,
-  //     range: 110,
-  //     critical: 0.02,
-  //   },
-  //   state: {
-  //     shape: 'Circle',
-  //     acquisition: 'Shop',
-  //     target: "Single Target",
-  //     lv: "3,820,733"
-  //   },
-  // },
-
   // 1
   {
     id: 1,
@@ -216,7 +193,7 @@ export default [
     },
   },
   {
-    id: 11, 
+    id: 11,
     name: 'Greninja',
     level: 100,
     category: 'Ninja',
@@ -259,7 +236,7 @@ export default [
     },
   },
   {
-    id: 13, 
+    id: 13,
     name: 'Grumpig',
     level: 100,
     category: 'Frisk',
@@ -3759,4 +3736,26 @@ export default [
     target: 'First',
     ability: 'Make It Rain: Special attacks with gold-related effects.'
   },
+
+  // {
+  //   id: 1,
+  //   name: "Charmander",
+  //   level: 1,
+  //   category: "charmander",
+  //   imageUrl: '/images/pokemon/pokemon-01.png',
+  //   imageAlt: 'Charmander-img',
+  //   ability: "The attacks burn the target for 10 seconds, causing them to lose 0.5% of their life per second.",
+  //   property: {
+  //     power: 43,
+  //     recharge: 1.10,
+  //     range: 110,
+  //     critical: 0.02,
+  //   },
+  //   state: {
+  //     shape: 'Circle',
+  //     acquisition: 'Shop',
+  //     target: "Single Target",
+  //     lv: "3,820,733"
+  //   },
+  // },
 ]

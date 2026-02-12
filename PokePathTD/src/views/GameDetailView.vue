@@ -89,31 +89,31 @@
             <section class="sidebar-section">
               <h2 class="sidebar-title">Quick Links</h2>
               <div class="sidebar-links">
-                <a href="/all-pokemon" class="sidebar-link">
+                <router-link :to="localePath('/all-pokemon')" class="sidebar-link">
                   <span class="sidebar-link-icon">⚔️</span>
                   <span class="sidebar-link-text">All Pokémon Database</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/map-router" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/map-router')" class="sidebar-link">
                   <span class="sidebar-link-icon">🗺️</span>
                   <span class="sidebar-link-text">Route Strategies</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/tools" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/tools')" class="sidebar-link">
                   <span class="sidebar-link-icon">🛠️</span>
                   <span class="sidebar-link-text">Strategy Tools</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/wiki" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/wiki')" class="sidebar-link">
                   <span class="sidebar-link-icon">📖</span>
                   <span class="sidebar-link-text">Game Wiki</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/tier-list" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/tier-list')" class="sidebar-link">
                   <span class="sidebar-link-icon">📊</span>
                   <span class="sidebar-link-text">Tier List</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
+                </router-link>
               </div>
             </section>
           </aside>
@@ -133,6 +133,7 @@ import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import { useGameData } from '../composables/useGameData'
 import { useSEO } from '../seo/composables.js'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const route = useRoute()
 const router = useRouter()
@@ -140,6 +141,7 @@ const { locale, t } = useI18n()
 const { gamesData, loadData } = useGameData()
 const { setSEO } = useSEO()
 
+const { localePath } = useLocalePath()
 const game = ref(null)
 const isPlaying = ref(false)
 const allGames = computed(() => gamesData.value)
@@ -165,13 +167,13 @@ const loadGame = (addressBar) => {
     }
   } else {
     // Game not found, redirect to home
-    router.push('/')
+    router.push(localePath('/'))
   }
 }
 
 // Switch to another game version
 const switchGame = (addressBar) => {
-  router.push(`/game/${addressBar}`)
+  router.push(localePath(`/game/${addressBar}`))
 }
 
 // Watch route changes

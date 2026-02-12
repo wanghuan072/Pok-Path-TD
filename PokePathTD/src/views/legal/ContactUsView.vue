@@ -38,7 +38,7 @@
             <h2>{{ t('ContactUsView.sections.privacy.title') }}</h2>
             <i18n-t keypath="ContactUsView.sections.privacy.content" tag="p">
               <template #link>
-                <a href="/privacy-policy">Privacy Policy</a>
+                <router-link :to="localePath('/privacy-policy')">Privacy Policy</router-link>
               </template>
             </i18n-t>
 
@@ -53,8 +53,10 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const { t, tm } = useI18n()
+const { localePath } = useLocalePath()
 </script>
 
 <style scoped>

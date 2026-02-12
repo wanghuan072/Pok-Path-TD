@@ -74,6 +74,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import { useSEO } from '@/seo/composables.js'
 import { useWikiData } from '@/composables/useWikiData'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const router = useRouter()
 const { locale, t } = useI18n()
@@ -98,8 +99,9 @@ watch(locale, () => {
 
 const wikiArticles = computed(() => wikiData.value)
 
+const { localePath } = useLocalePath()
 const goToWikiDetail = (addressBar) => {
-  router.push(`/wiki/${addressBar}`)
+  router.push(localePath(`/wiki/${addressBar}`))
 }
 
 const formatDate = (dateString) => {

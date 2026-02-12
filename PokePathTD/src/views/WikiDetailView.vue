@@ -64,31 +64,31 @@
             <section class="sidebar-section">
               <h2 class="sidebar-title">{{ t('WikiDetailView.sidebar.quickNavigation') }}</h2>
               <div class="sidebar-links">
-                <a href="/wiki" class="sidebar-link">
+                <router-link :to="localePath('/wiki')" class="sidebar-link">
                   <span class="sidebar-link-icon">📚</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allWiki') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/all-pokemon" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/all-pokemon')" class="sidebar-link">
                   <span class="sidebar-link-icon">⚔️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allPokemon') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/map-router" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/map-router')" class="sidebar-link">
                   <span class="sidebar-link-icon">🗺️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.routeStrategies') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/tools" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/tools')" class="sidebar-link">
                   <span class="sidebar-link-icon">🛠️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.strategyTools') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
-                <a href="/tier-list" class="sidebar-link">
+                </router-link>
+                <router-link :to="localePath('/tier-list')" class="sidebar-link">
                   <span class="sidebar-link-icon">⭐</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.tierList') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </a>
+                </router-link>
               </div>
             </section>
           </aside>
@@ -108,8 +108,10 @@ import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import { useSEO } from '@/seo/composables.js'
 import { useWikiData } from '@/composables/useWikiData'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const route = useRoute()
+const { localePath } = useLocalePath()
 const { t, locale } = useI18n()
 const { wikiData, loadData } = useWikiData()
 const article = ref(null)

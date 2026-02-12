@@ -12,14 +12,6 @@
           <div class="hero-main">
             <h1 class="hero-title">{{ $t('HomePage.hero.title') }}</h1>
 
-            <!-- 移动横幅广告位1 -->
-            <aside
-              style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden"
-              v-if="isMobile"
-            >
-              <ins class="eas6a97888e10" data-zoneid="5848358"></ins>
-            </aside>
-
             <p class="hero-subtitle" v-html="$t('HomePage.hero.subtitle')"></p>
 
             <div class="hero-stats">
@@ -42,25 +34,13 @@
             </div>
 
             <div class="hero-actions">
-              <a href="/all-pokemon" class="btn-primary">
+              <router-link :to="localePath('/all-pokemon')" class="btn-primary">
                 <span>{{ $t('HomePage.hero.actions.explore') }}</span>
                 <span class="btn-arrow">→</span>
-              </a>
-              <a href="/tools" class="btn-secondary">
+              </router-link>
+              <router-link :to="localePath('/tools')" class="btn-secondary">
                 <span>{{ $t('HomePage.hero.actions.tools') }}</span>
-              </a>
-            </div>
-
-            <div style="display: flex; gap: 20px; padding: 20px 0 0 0" v-if="!isMobile">
-              <!-- PC横幅广告2 -->
-              <aside>
-                <ins class="eas6a97888e2" data-zoneid="5848208"></ins>
-              </aside>
-
-              <!-- PC横幅广告1 -->
-              <aside>
-                <ins class="eas6a97888e2" data-zoneid="5848206"></ins>
-              </aside>
+              </router-link>
             </div>
 
             <div class="hero-game-versions">
@@ -86,21 +66,6 @@
         </div>
       </div>
     </section>
-
-    <!-- PC粘性横幅广告位1 底部 -->
-    <aside v-if="!isMobile">
-      <ins class="eas6a97888e2" data-zoneid="5848348"></ins>
-    </aside>
-
-    <!-- PC左侧立式广告位1  -->
-    <aside v-if="!isMobile">
-      <ins class="eas6a97888e2" data-zoneid="5848350"></ins>
-    </aside>
-
-    <!-- PC右侧立式广告位2 -->
-    <aside v-if="!isMobile">
-      <ins class="eas6a97888e2" data-zoneid="5848352"></ins>
-    </aside>
 
     <!-- Game Introduction Section -->
     <section class="home-section game-intro-section">
@@ -151,11 +116,6 @@
             </div>
           </div>
         </div>
-
-         <!-- 移动横幅广告位2 -->
-         <aside style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden" v-if="isMobile">
-            <ins class="eas6a97888e10" data-zoneid="5848360"></ins>
-          </aside>
       </div>
     </section>
 
@@ -206,10 +166,10 @@
               </div>
             </div>
             <div class="database-action">
-              <a href="/all-pokemon" class="btn-primary">
+              <router-link :to="localePath('/all-pokemon')" class="btn-primary">
                 <span>{{ $t('HomePage.database.pokemon.action') }}</span>
                 <span class="btn-arrow">→</span>
-              </a>
+              </router-link>
             </div>
           </div>
 
@@ -251,18 +211,13 @@
               </div>
             </div>
             <div class="database-action">
-              <a href="/enemies" class="btn-primary">
+              <router-link :to="localePath('/enemies')" class="btn-primary">
                 <span>{{ $t('HomePage.database.enemy.action') }}</span>
                 <span class="btn-arrow">→</span>
-              </a>
+              </router-link>
             </div>
           </div>
         </div>
-
-        <!-- 通用原生广告 -->
-        <aside style="width: 100%; padding: 20px 0; text-align: center; overflow: hidden">
-          <ins class="eas6a97888e20" data-zoneid="5848356"></ins>
-        </aside>
       </div>
     </section>
 
@@ -282,25 +237,25 @@
             scope="global"
           >
             <template #link1>
-              <a href="/map-router/how-to-beat-route-1-1-articuno" class="inline-link">
+              <router-link :to="localePath('/map-router/how-to-beat-route-1-1-articuno')" class="inline-link">
                 {{ $t('HomePage.routes.link1') }}
-              </a>
+              </router-link>
             </template>
             <template #link2>
-              <a
-                href="/map-router/how-to-beat-route-3-1-regirock-wave-100-guide"
+              <router-link
+                :to="localePath('/map-router/how-to-beat-route-3-1-regirock-wave-100-guide')"
                 class="inline-link"
               >
                 {{ $t('HomePage.routes.link2') }}
-              </a>
+              </router-link>
             </template>
           </i18n-t>
         </div>
         <div class="routes-preview-grid">
-          <a
+          <router-link
             v-for="route in featuredRoutes.slice(0, 3)"
             :key="route.id"
-            :href="`/map-router/${route.id}`"
+            :to="localePath(`/map-router/${route.id}`)"
             class="route-preview-card"
           >
             <div class="route-preview-image">
@@ -339,17 +294,17 @@
                 </span>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
         <div class="section-footer">
-          <a href="/map-router/how-to-beat-route-1-3-6" class="btn-secondary">
+          <router-link :to="localePath('/map-router/how-to-beat-route-1-3-6')" class="btn-secondary">
             <span>{{ $t('HomePage.routes.action.guide') }}</span>
             <span class="btn-arrow">→</span>
-          </a>
-          <a href="/map-router" class="btn-secondary">
+          </router-link>
+          <router-link :to="localePath('/map-router')" class="btn-secondary">
             <span>{{ $t('HomePage.routes.action.viewAll') }}</span>
             <span class="btn-arrow">→</span>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
@@ -368,10 +323,10 @@
           </p>
         </div>
         <div class="wiki-preview-grid">
-          <a
+          <router-link
             v-for="article in homeWikiArticles"
             :key="article.id"
-            :href="`/wiki/${article.addressBar}`"
+            :to="localePath(`/wiki/${article.addressBar}`)"
             class="wiki-preview-card"
           >
             <div class="wiki-card-image">
@@ -394,13 +349,13 @@
                 <span class="wiki-arrow">→</span>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
         <div class="section-footer">
-          <a href="/wiki" class="btn-secondary">
+          <router-link :to="localePath('/wiki')" class="btn-secondary">
             <span>{{ $t('HomePage.wiki.action') }}</span>
             <span class="btn-arrow">→</span>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
@@ -419,7 +374,7 @@
           </p>
         </div>
         <div class="tools-grid">
-          <a v-for="tool in toolsPreview" :key="tool.id" :href="tool.path" class="tool-card">
+          <router-link v-for="tool in toolsPreview" :key="tool.id" :to="localePath(tool.path)" class="tool-card">
             <div class="tool-icon">{{ tool.icon }}</div>
             <h3 class="tool-title">{{ $t(tool.title) }}</h3>
             <p class="tool-description">{{ $t(tool.description) }}</p>
@@ -427,13 +382,13 @@
               <span>{{ $t('HomePage.tools.useTool') }}</span>
               <span class="tool-arrow">→</span>
             </div>
-          </a>
+          </router-link>
         </div>
         <div class="section-footer">
-          <a href="/tools" class="btn-secondary">
+          <router-link :to="localePath('/tools')" class="btn-secondary">
             <span>{{ $t('HomePage.tools.action') }}</span>
             <span class="btn-arrow">→</span>
-          </a>
+          </router-link>
         </div>
       </div>
     </section>
@@ -463,8 +418,10 @@ const { gamesData, loadData: loadGames } = useGameData()
 const { wikiData, loadData: loadWiki } = useWikiData()
 
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
+import { useLocalePath } from '@/utils/useLocalePath'
 
 const { isMobile } = useDeviceDetection()
+const { localePath } = useLocalePath()
 
 const difficultyColors = {
   Easy: '#5cb85c',
@@ -497,8 +454,7 @@ const stages = computed(() => routesData.value)
 const games = computed(() => gamesData.value)
 
 const loadGame = (addressBar) => {
-  // Navigate to game detail page
-  router.push(`/game/${addressBar}`)
+  router.push(localePath(`/game/${addressBar}`))
 }
 
 // Featured Routes
