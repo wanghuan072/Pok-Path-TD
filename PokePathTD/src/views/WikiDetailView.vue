@@ -64,31 +64,31 @@
             <section class="sidebar-section">
               <h2 class="sidebar-title">{{ t('WikiDetailView.sidebar.quickNavigation') }}</h2>
               <div class="sidebar-links">
-                <router-link :to="localePath('/wiki')" class="sidebar-link">
+                <a :href="localePath('/wiki')" class="sidebar-link">
                   <span class="sidebar-link-icon">📚</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allWiki') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/all-pokemon')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/all-pokemon')" class="sidebar-link">
                   <span class="sidebar-link-icon">⚔️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.allPokemon') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/map-router')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/map-router')" class="sidebar-link">
                   <span class="sidebar-link-icon">🗺️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.routeStrategies') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tools')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/tools')" class="sidebar-link">
                   <span class="sidebar-link-icon">🛠️</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.strategyTools') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tier-list')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/tier-list')" class="sidebar-link">
                   <span class="sidebar-link-icon">⭐</span>
                   <span class="sidebar-link-text">{{ t('WikiDetailView.sidebar.links.tierList') }}</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
+                </a>
               </div>
             </section>
           </aside>

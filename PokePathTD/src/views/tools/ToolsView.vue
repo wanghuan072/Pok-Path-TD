@@ -21,7 +21,7 @@
         <!-- Tools List -->
         <section class="tools-section">
           <div class="tools-grid">
-            <router-link v-for="tool in tools" :key="tool.id" :to="localePath(tool.path)" class="tool-card">
+            <a v-for="tool in tools" :key="tool.id" :href="localePath(tool.path)" class="tool-card">
               <div class="tool-header">
                 <div class="tool-icon">{{ tool.icon }}</div>
                 <h3 class="tool-title">{{ tool.title }}</h3>
@@ -32,7 +32,7 @@
                   {{ feature }}
                 </span>
               </div>
-            </router-link>
+            </a>
           </div>
         </section>
       </div>

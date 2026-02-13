@@ -89,31 +89,31 @@
             <section class="sidebar-section">
               <h2 class="sidebar-title">Quick Links</h2>
               <div class="sidebar-links">
-                <router-link :to="localePath('/all-pokemon')" class="sidebar-link">
+                <a :href="localePath('/all-pokemon')" class="sidebar-link">
                   <span class="sidebar-link-icon">⚔️</span>
                   <span class="sidebar-link-text">All Pokémon Database</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/map-router')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/map-router')" class="sidebar-link">
                   <span class="sidebar-link-icon">🗺️</span>
                   <span class="sidebar-link-text">Route Strategies</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tools')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/tools')" class="sidebar-link">
                   <span class="sidebar-link-icon">🛠️</span>
                   <span class="sidebar-link-text">Strategy Tools</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/wiki')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/wiki')" class="sidebar-link">
                   <span class="sidebar-link-icon">📖</span>
                   <span class="sidebar-link-text">Game Wiki</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tier-list')" class="sidebar-link">
+                </a>
+                <a :href="localePath('/tier-list')" class="sidebar-link">
                   <span class="sidebar-link-icon">📊</span>
                   <span class="sidebar-link-text">Tier List</span>
                   <span class="sidebar-link-arrow">→</span>
-                </router-link>
+                </a>
               </div>
             </section>
           </aside>

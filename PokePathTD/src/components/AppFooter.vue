@@ -12,22 +12,22 @@
         <div class="link-column">
           <h2>{{ t('AppFooter.navigate') }}</h2>
           <ul>
-            <li><router-link :to="localePath('/')">{{ t('AppFooter.links.home') }}</router-link></li>
-            <li><router-link :to="localePath('/wiki')">{{ t('AppFooter.links.wiki') }}</router-link></li>
-            <li><router-link :to="localePath('/all-pokemon')">{{ t('AppFooter.links.allPokemon') }}</router-link></li>
-            <li><router-link :to="localePath('/enemies')">{{ t('AppFooter.links.enemies') }}</router-link></li>
-            <li><router-link :to="localePath('/map-router')">{{ t('AppFooter.links.routes') }}</router-link></li>
-            <li><router-link :to="localePath('/tools')">{{ t('AppFooter.links.tools') }}</router-link></li>
+            <li><a :href="localePath('/')">{{ t('AppFooter.links.home') }}</a></li>
+            <li><a :href="localePath('/wiki')">{{ t('AppFooter.links.wiki') }}</a></li>
+            <li><a :href="localePath('/all-pokemon')">{{ t('AppFooter.links.allPokemon') }}</a></li>
+            <li><a :href="localePath('/enemies')">{{ t('AppFooter.links.enemies') }}</a></li>
+            <li><a :href="localePath('/map-router')">{{ t('AppFooter.links.routes') }}</a></li>
+            <li><a :href="localePath('/tools')">{{ t('AppFooter.links.tools') }}</a></li>
           </ul>
         </div>
         <div class="link-column">
           <h2>{{ t('AppFooter.legal') }}</h2>
           <ul>
-            <li><router-link :to="localePath('/privacy-policy')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.privacyPolicy') }}</router-link></li>
-            <li><router-link :to="localePath('/terms-of-service')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.termsOfService') }}</router-link></li>
-            <li><router-link :to="localePath('/copyright')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.copyright') }}</router-link></li>
-            <li><router-link :to="localePath('/about-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.aboutUs') }}</router-link></li>
-            <li><router-link :to="localePath('/contact-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.contactUs') }}</router-link></li>
+            <li><a :href="localePath('/privacy-policy')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.privacyPolicy') }}</a></li>
+            <li><a :href="localePath('/terms-of-service')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.termsOfService') }}</a></li>
+            <li><a :href="localePath('/copyright')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.copyright') }}</a></li>
+            <li><a :href="localePath('/about-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.aboutUs') }}</a></li>
+            <li><a :href="localePath('/contact-us')" rel="noopener noreferrer nofollow">{{ t('AppFooter.links.contactUs') }}</a></li>
           </ul>
         </div>
       </div>
