@@ -34,13 +34,13 @@
             </div>
 
             <div class="hero-actions">
-              <router-link :to="localePath('/all-pokemon')" class="btn-primary">
+              <a :href="localePath('/all-pokemon')" class="btn-primary">
                 <span>{{ $t('HomePage.hero.actions.explore') }}</span>
                 <span class="btn-arrow">→</span>
-              </router-link>
-              <router-link :to="localePath('/tools')" class="btn-secondary">
+              </a>
+              <a :href="localePath('/tools')" class="btn-secondary">
                 <span>{{ $t('HomePage.hero.actions.tools') }}</span>
-              </router-link>
+              </a>
             </div>
 
             <div class="hero-game-versions">
@@ -166,10 +166,10 @@
               </div>
             </div>
             <div class="database-action">
-              <router-link :to="localePath('/all-pokemon')" class="btn-primary">
+              <a :href="localePath('/all-pokemon')" class="btn-primary">
                 <span>{{ $t('HomePage.database.pokemon.action') }}</span>
                 <span class="btn-arrow">→</span>
-              </router-link>
+              </a>
             </div>
           </div>
 
@@ -211,10 +211,10 @@
               </div>
             </div>
             <div class="database-action">
-              <router-link :to="localePath('/enemies')" class="btn-primary">
+              <a :href="localePath('/enemies')" class="btn-primary">
                 <span>{{ $t('HomePage.database.enemy.action') }}</span>
                 <span class="btn-arrow">→</span>
-              </router-link>
+              </a>
             </div>
           </div>
         </div>
@@ -237,25 +237,25 @@
             scope="global"
           >
             <template #link1>
-              <router-link :to="localePath('/map-router/how-to-beat-route-1-1-articuno')" class="inline-link">
+              <a :href="localePath('/map-router/how-to-beat-route-1-1-articuno')" class="inline-link">
                 {{ $t('HomePage.routes.link1') }}
-              </router-link>
+              </a>
             </template>
             <template #link2>
-              <router-link
-                :to="localePath('/map-router/how-to-beat-route-3-1-regirock-wave-100-guide')"
+              <a
+                :href="localePath('/map-router/how-to-beat-route-3-1-regirock-wave-100-guide')"
                 class="inline-link"
               >
                 {{ $t('HomePage.routes.link2') }}
-              </router-link>
+              </a>
             </template>
           </i18n-t>
         </div>
         <div class="routes-preview-grid">
-          <router-link
+          <a
             v-for="route in featuredRoutes.slice(0, 3)"
             :key="route.id"
-            :to="localePath(`/map-router/${route.id}`)"
+            :href="localePath(`/map-router/${route.id}`)"
             class="route-preview-card"
           >
             <div class="route-preview-image">
@@ -294,17 +294,17 @@
                 </span>
               </div>
             </div>
-          </router-link>
+          </a>
         </div>
         <div class="section-footer">
-          <router-link :to="localePath('/map-router/how-to-beat-route-1-3-6')" class="btn-secondary">
+          <a :href="localePath('/map-router/how-to-beat-route-1-3-6')" class="btn-secondary">
             <span>{{ $t('HomePage.routes.action.guide') }}</span>
             <span class="btn-arrow">→</span>
-          </router-link>
-          <router-link :to="localePath('/map-router')" class="btn-secondary">
+          </a>
+          <a :href="localePath('/map-router')" class="btn-secondary">
             <span>{{ $t('HomePage.routes.action.viewAll') }}</span>
             <span class="btn-arrow">→</span>
-          </router-link>
+          </a>
         </div>
       </div>
     </section>
@@ -323,10 +323,10 @@
           </p>
         </div>
         <div class="wiki-preview-grid">
-          <router-link
+          <a
             v-for="article in homeWikiArticles"
             :key="article.id"
-            :to="localePath(`/wiki/${article.addressBar}`)"
+            :href="localePath(`/wiki/${article.addressBar}`)"
             class="wiki-preview-card"
           >
             <div class="wiki-card-image">
@@ -349,13 +349,13 @@
                 <span class="wiki-arrow">→</span>
               </div>
             </div>
-          </router-link>
+          </a>
         </div>
         <div class="section-footer">
-          <router-link :to="localePath('/wiki')" class="btn-secondary">
+          <a :href="localePath('/wiki')" class="btn-secondary">
             <span>{{ $t('HomePage.wiki.action') }}</span>
             <span class="btn-arrow">→</span>
-          </router-link>
+          </a>
         </div>
       </div>
     </section>
@@ -374,7 +374,7 @@
           </p>
         </div>
         <div class="tools-grid">
-          <router-link v-for="tool in toolsPreview" :key="tool.id" :to="localePath(tool.path)" class="tool-card">
+          <a v-for="tool in toolsPreview" :key="tool.id" :href="localePath(tool.path)" class="tool-card">
             <div class="tool-icon">{{ tool.icon }}</div>
             <h3 class="tool-title">{{ $t(tool.title) }}</h3>
             <p class="tool-description">{{ $t(tool.description) }}</p>
@@ -382,13 +382,13 @@
               <span>{{ $t('HomePage.tools.useTool') }}</span>
               <span class="tool-arrow">→</span>
             </div>
-          </router-link>
+          </a>
         </div>
         <div class="section-footer">
-          <router-link :to="localePath('/tools')" class="btn-secondary">
+          <a :href="localePath('/tools')" class="btn-secondary">
             <span>{{ $t('HomePage.tools.action') }}</span>
             <span class="btn-arrow">→</span>
-          </router-link>
+          </a>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@
           </div>
           <h1 class="page-title">Route Strategy Guide</h1>
           <p class="page-subtitle">
-            Master PokéPath TD route strategy with expert team compositions, terrain advantages, and map-specific tips for every route. For detailed walkthroughs, check out our comprehensive guides for <router-link :to="localePath('/map-router/how-to-beat-route-1-1-articuno')" class="inline-link">Route 1-1</router-link>, <router-link :to="localePath('/map-router/how-to-beat-route-2-2-entei')" class="inline-link">Route 2-2</router-link>, and <router-link :to="localePath('/map-router/how-to-beat-route-3-1-regirock-wave-100-guide')" class="inline-link">Route 3-1</router-link>.
+            Master PokéPath TD route strategy with expert team compositions, terrain advantages, and map-specific tips for every route. For detailed walkthroughs, check out our comprehensive guides for <a :href="localePath('/map-router/how-to-beat-route-1-1-articuno')" class="inline-link">Route 1-1</a>, <a :href="localePath('/map-router/how-to-beat-route-2-2-entei')" class="inline-link">Route 2-2</a>, and <a :href="localePath('/map-router/how-to-beat-route-3-1-regirock-wave-100-guide')" class="inline-link">Route 3-1</a>.
           </p>
         </div>
       </section>
@@ -196,7 +196,7 @@
             <div v-else class="route-placeholder-card">
               <div class="placeholder-icon">🗺️</div>
               <h3 class="placeholder-title">Select a Route</h3>
-              <p class="placeholder-text">Choose a route from the list to view detailed strategy guide. Or explore our in-depth guides for <router-link :to="localePath('/map-router/how-to-beat-route-1-3-moltres')" class="inline-link">Route 1-3 (Moltres)</router-link> and <router-link :to="localePath('/map-router/how-to-beat-route-3-2-regice-dewgong-strategy')" class="inline-link">Route 3-2 (Regice)</router-link>.</p>
+              <p class="placeholder-text">Choose a route from the list to view detailed strategy guide. Or explore our in-depth guides for <a :href="localePath('/map-router/how-to-beat-route-1-3-moltres')" class="inline-link">Route 1-3 (Moltres)</a> and <a :href="localePath('/map-router/how-to-beat-route-3-2-regice-dewgong-strategy')" class="inline-link">Route 3-2 (Regice)</a>.</p>
             </div>
           </div>
         </section>

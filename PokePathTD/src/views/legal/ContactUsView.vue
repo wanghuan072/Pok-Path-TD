@@ -38,7 +38,7 @@
             <h2>{{ t('ContactUsView.sections.privacy.title') }}</h2>
             <i18n-t keypath="ContactUsView.sections.privacy.content" tag="p">
               <template #link>
-                <router-link :to="localePath('/privacy-policy')">Privacy Policy</router-link>
+                <a :href="localePath('/privacy-policy')">Privacy Policy</a>
               </template>
             </i18n-t>
 

@@ -48,22 +48,22 @@
             <section class="section-card">
               <h2 class="section-title">{{ t('RouteDetailView.sections.tools') }}</h2>
               <div class="tools-list">
-                <router-link :to="localePath('/tools/route-strategy')" class="tool-link">
+                <a :href="localePath('/tools/route-strategy')" class="tool-link">
                   <span class="tool-name">{{ t('RouteDetailView.tools.strategy') }}</span>
                   <span class="tool-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tools/dps-calculator')" class="tool-link">
+                </a>
+                <a :href="localePath('/tools/dps-calculator')" class="tool-link">
                   <span class="tool-name">{{ t('RouteDetailView.tools.dps') }}</span>
                   <span class="tool-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tools/enemy-counter')" class="tool-link">
+                </a>
+                <a :href="localePath('/tools/enemy-counter')" class="tool-link">
                   <span class="tool-name">{{ t('RouteDetailView.tools.counter') }}</span>
                   <span class="tool-arrow">→</span>
-                </router-link>
-                <router-link :to="localePath('/tier-list')" class="tool-link">
+                </a>
+                <a :href="localePath('/tier-list')" class="tool-link">
                   <span class="tool-name">{{ t('RouteDetailView.tools.tierList') }}</span>
                   <span class="tool-arrow">→</span>
-                </router-link>
+                </a>
               </div>
             </section>
           </div>
@@ -248,7 +248,7 @@
 
         <!-- Back Button -->
         <div class="back-section">
-          <router-link :to="localePath('/map-router')" class="back-link">{{ t('RouteDetailView.navigation.back') }}</router-link>
+          <a :href="localePath('/map-router')" class="back-link">{{ t('RouteDetailView.navigation.back') }}</a>
         </div>
       </div>
     </div>
@@ -258,7 +258,7 @@
         <div class="error-message">
           <h2>{{ t('RouteDetailView.error.notFound') }}</h2>
           <p>{{ t('RouteDetailView.error.message') }}</p>
-          <router-link :to="localePath('/map-router')" class="back-link">{{ t('RouteDetailView.navigation.backList') }}</router-link>
+          <a :href="localePath('/map-router')" class="back-link">{{ t('RouteDetailView.navigation.backList') }}</a>
         </div>
       </div>
     </div>

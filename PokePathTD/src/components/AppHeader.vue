@@ -3,20 +3,20 @@
     <div class="container">
       <nav class="nav">
         <div class="nav-brand">
-          <router-link :to="localePath('/')" class="logo">
+          <a :href="localePath('/')" class="logo">
             <img src="/images/logo.webp" alt="logo">
             <span class="logo-text">PokéPath TD</span>
-          </router-link>
+          </a>
         </div>
         <ul class="nav-menu" :class="{ active: mobileMenuOpen }">
-          <li><router-link :to="localePath('/')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.home') }}</router-link></li>
-          <li><router-link :to="localePath('/all-pokemon')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.allPokemon') }}</router-link></li>
-          <li><router-link :to="localePath('/tier-list')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tierList') }}</router-link></li>
-          <li><router-link :to="localePath('/enemies')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.enemies') }}</router-link></li>
-          <li><router-link :to="localePath('/items')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.items') }}</router-link></li>
-          <li><router-link :to="localePath('/map-router')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.mapRouter') }}</router-link></li>
-          <li><router-link :to="localePath('/tools')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tools') }}</router-link></li>
-          <li><router-link :to="localePath('/wiki')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.wiki') }}</router-link></li>
+          <li><a :href="localePath('/')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.home') }}</a></li>
+          <li><a :href="localePath('/all-pokemon')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.allPokemon') }}</a></li>
+          <li><a :href="localePath('/tier-list')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tierList') }}</a></li>
+          <li><a :href="localePath('/enemies')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.enemies') }}</a></li>
+          <li><a :href="localePath('/items')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.items') }}</a></li>
+          <li><a :href="localePath('/map-router')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.mapRouter') }}</a></li>
+          <li><a :href="localePath('/tools')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.tools') }}</a></li>
+          <li><a :href="localePath('/wiki')" class="nav-link" @click="closeMobileMenu">{{ t('AppHeader.nav.wiki') }}</a></li>
           <li class="nav-lang">
             <div class="lang-dropdown" ref="langDropdownRef">
               <button
