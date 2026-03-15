@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import i18n, { localeCodes } from '../i18n'
 import HomeView from '../views/HomeView.vue'
 import AllPokemonView from '../views/AllPokemonView.vue'
@@ -78,7 +78,7 @@ baseRoutes.forEach((route) => {
 })
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior() {
     return { top: 0 }
