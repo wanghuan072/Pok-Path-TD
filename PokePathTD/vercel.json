@@ -1,4 +1,6 @@
 {
+  "outputDirectory": "dist",
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
