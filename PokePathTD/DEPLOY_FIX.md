@@ -1,6 +1,12 @@
 # 解决 Vercel 上 ERR_TOO_MANY_REDIRECTS 白屏
 
-按下面步骤**用 .vercel.app 地址测试**，可以确定是「自定义域名」还是「构建/rewrite」的问题。
+**当前方案**：已改为 **Hash 路由**（`createWebHashHistory`），并**移除了 vercel.json 的 rewrite**。  
+这样所有请求都是访问根路径 `/`，由前端根据 `#/xxx` 渲染页面，不再依赖服务端回退，也不会触发重定向。  
+地址会变成 `https://pokepathgame.org/#/map-router` 这种形式；若之后修好域名/rewrite，可再改回 History 模式。
+
+---
+
+按下面步骤**用 .vercel.app 地址测试**，可以确定是「自定义域名」还是「构建」的问题。
 
 ## 第一步：用默认域名测试
 
